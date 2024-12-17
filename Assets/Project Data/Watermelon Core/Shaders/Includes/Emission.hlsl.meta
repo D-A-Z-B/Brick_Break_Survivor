@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: febecd0204f1c5344b039896aa4cd5ac
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Watermelon Core/Shaders/Includes/Emission.hlsl
+  uploadId: 665943

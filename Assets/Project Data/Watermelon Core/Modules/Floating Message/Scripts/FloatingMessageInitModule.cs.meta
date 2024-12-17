@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 34f27d59b0f7fd64bbdece140f4e0eae
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Watermelon Core/Modules/Floating Message/Scripts/FloatingMessageInitModule.cs
+  uploadId: 665943

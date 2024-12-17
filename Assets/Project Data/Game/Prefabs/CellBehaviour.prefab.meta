@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 39ed9d9837a1e0441add7368a71180ae
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Game/Prefabs/CellBehaviour.prefab
+  uploadId: 665943

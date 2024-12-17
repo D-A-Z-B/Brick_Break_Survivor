@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0a5df27f36204284da99e9561c7c79ac
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Watermelon Core/Modules/Advertisement/IDFA/Editor/Parser/ISkAdNetworkParser.cs
+  uploadId: 665943

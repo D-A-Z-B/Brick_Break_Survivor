@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f517638b73f01c34780e6f4e044107a3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Watermelon Core/Modules/Advertisement/Scripts/AdsManagerInitModule.cs
+  uploadId: 665943

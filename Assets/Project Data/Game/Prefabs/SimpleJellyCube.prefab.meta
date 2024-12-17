@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b7c297b13c508914abe1d730e01b1602
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Game/Prefabs/SimpleJellyCube.prefab
+  uploadId: 665943
