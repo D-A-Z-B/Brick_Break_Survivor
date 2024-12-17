@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 8f16dae29ffd71f4f866dd440f5b894f
+  productGUID: bec382b374d10d24d9b6d59e0d1d4d47
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -930,10 +930,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2be27ed5-743e-4b2a-b1f3-db318063efe2
+  cloudProjectId: af35b854-3401-48cc-a80c-110b849d7563
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Brick_Break_Survivor
+  projectName: Brick_Break_Survivor 2024-12-17_18-05-03
   organizationId: jiwoo2426p
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
