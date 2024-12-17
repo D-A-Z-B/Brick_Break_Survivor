@@ -2,10 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace BBS.Player {
+namespace BBS.Players {
     [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "SO/Player/InputSO")]
     public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions {
-        private Action<bool> attackEvent;
+        public event Action attackDragEvent;
+        public event Action attackEvent;
         
         private Controls controls;
 
@@ -23,10 +24,10 @@ namespace BBS.Player {
 
         public void OnAttack(InputAction.CallbackContext context) {
             if (context.performed) {
-                attackEvent?.Invoke(true);
+                attackDragEvent?.Invoke();
             }
             else if (context.canceled) {
-                attackEvent?.Invoke(false);
+                attackEvent?.Invoke();
             }
         }
     }
