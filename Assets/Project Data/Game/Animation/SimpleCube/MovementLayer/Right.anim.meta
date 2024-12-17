@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3c088c41480ad0b44bc8ed18764dd39e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Game/Animation/SimpleCube/MovementLayer/Right.anim
+  uploadId: 665943

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 74691e588558f2148a523a87125a7321
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Watermelon Core/Extended Editor/Modules/Manifest
+    Generator/AndroidManifestTemplate.txt
+  uploadId: 665943

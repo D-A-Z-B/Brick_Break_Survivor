@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ead52c6b1644da648be106646bcc363a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Game/Animation/LevelCompletePanel/Appearing.anim
+  uploadId: 665943

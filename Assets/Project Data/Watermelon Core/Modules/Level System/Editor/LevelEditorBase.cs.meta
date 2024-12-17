@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fee7635162bd06347ba9dd24b96efd1c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Watermelon Core/Modules/Level System/Editor/LevelEditorBase.cs
+  uploadId: 665943
