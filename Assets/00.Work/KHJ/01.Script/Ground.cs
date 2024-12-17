@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace KHJ
 {
-    public class Test : MonoBehaviour, IPoolable
+    public class Ground : MonoBehaviour, IPoolable
     {
         public PoolTypeSO PoolType {get; set;}
 

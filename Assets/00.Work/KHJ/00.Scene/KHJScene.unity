@@ -293,11 +293,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588117961}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17ab9a36294ad22498857b6b00c4176d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolManager: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
+  groundType: {fileID: 11400000, guid: 9554925310122594aabbea3e140a450e, type: 2}
   groundMapObj: {fileID: 6851661892261023211, guid: 43f44a5986626524b8c3b102890c95a0, type: 3}
   range: 40
   interval: 1

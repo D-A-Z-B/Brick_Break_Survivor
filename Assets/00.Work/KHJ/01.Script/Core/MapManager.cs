@@ -4,6 +4,11 @@ namespace KHJ
 {
     public class MapManager : MonoBehaviour
     {
+        [Header("Pool")]
+        [SerializeField] private PoolManagerSO poolManager;
+        [SerializeField] private PoolTypeSO groundType;
+
+        [Space]
         [SerializeField] private GameObject groundMapObj;
         [SerializeField] private int range;
         [SerializeField] private float interval; 
@@ -19,7 +24,7 @@ namespace KHJ
             {
                 for (int j = 0; j < range; j++)
                 {
-                    GameObject ground = Instantiate(groundMapObj, transform);
+                    Ground ground = poolManager.Pop(groundType) as Ground;
                     ground.transform.position = new Vector3(i, 0, j) * interval;
                 }
             }
