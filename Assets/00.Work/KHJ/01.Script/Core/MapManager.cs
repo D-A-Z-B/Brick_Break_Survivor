@@ -158,14 +158,10 @@ namespace KHJ.Core
             }
         }
 
-        private bool GetEliteType(Coord coord)
+        public void DestroyEntity(Coord coord)
         {
-            for (int i = 0; i < dirX.Length; i++)
-            {
-                if (mapBoardArr[coord.x + dirX[i], coord.y + dirY[i]] == EntityType.Enemy) continue;
-                else return false;
-            }
-            return true;
+            mapBoardArr[coord.x, coord.y] = EntityType.Empty;
+            enemyBoardArr[coord.x, coord.y] = null;
         }
     }
 }

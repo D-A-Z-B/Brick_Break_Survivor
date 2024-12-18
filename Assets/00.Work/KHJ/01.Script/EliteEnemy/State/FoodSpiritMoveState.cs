@@ -23,10 +23,10 @@ namespace BBS.Enemies
             moveCount++;
             if (moveCount >= 2)
             {
+                moveCount = 0;
                 int rand = Random.Range(1, 11);
                 if (rand >= 8)
                     EnemySpawnManager.Instance.ReSpawnEnemy();
-                moveCount = 0;
             }
 
             if (enemy.CanAttack())
