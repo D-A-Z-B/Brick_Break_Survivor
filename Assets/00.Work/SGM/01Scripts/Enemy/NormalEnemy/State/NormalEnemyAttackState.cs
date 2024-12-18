@@ -3,6 +3,7 @@ using BBS.Combat;
 using BBS.Entities;
 using BBS.FSM;
 using BBS.Players;
+using UnityEngine;
 
 namespace BBS.Enemies
 {
@@ -19,10 +20,9 @@ namespace BBS.Enemies
         {
             base.Enter();
 
-            Player player = enemy.player.GetComponent<Player>();
-
             ActionData actionData = new ActionData(enemy.data.damage, enemy.transform);
-            player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
+            PlayerManager.Instance.Player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
+            Debug.Log("attack");
 
             enemy.ChangeState("IDLE");
         }
