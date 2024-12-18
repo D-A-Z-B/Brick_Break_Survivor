@@ -1,3 +1,4 @@
+using KHJ.Core;
 using System;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace BBS
     public enum TurnType
     {
         PlayerTurn,
-        EnemeyTurn
+        EnemyTurn
     }
 
     public class TurnManager : MonoSingleton<TurnManager>
@@ -28,10 +29,7 @@ namespace BBS
 
         public void ChangeTurn(TurnType type)
         {
-            currentTurnType = type;
-            Debug.Log(currentTurnType);
-
-            if (currentTurnType == TurnType.EnemeyTurn && !isBossRound)
+            if (type == TurnType.EnemyTurn && !isBossRound)
             {
                 turnCount++;
                 if (turnCount == firstBossTurn)
@@ -42,8 +40,15 @@ namespace BBS
                 {
                     LastBossEvent?.Invoke();
                 }
-                EnemyTurnStart?.Invoke();
+
+                CameraManager.Instance.StartZoomIn();
             }
+            else if (type == TurnType.PlayerTurn)
+            {
+                CameraManager.Instance.StartZoomOut();
+            }
+
+            currentTurnType = type;
         }
 
         public void EndBossRound()
