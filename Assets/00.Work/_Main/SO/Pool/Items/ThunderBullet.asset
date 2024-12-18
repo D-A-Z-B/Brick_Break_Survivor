@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 632946fafd7a57b44908bfaafd94e309, type: 3}
-  m_Name: BowlingBullet
+  m_Name: ThunderBullet
   m_EditorClassIdentifier: 
-  poolType: {fileID: 11400000, guid: 9a504e7d906551a46a131bac55674115, type: 2}
-  prefab: {fileID: 5705298612502524782, guid: 431a544d94cba894c8e80ceac2d7c715, type: 3}
+  poolType: {fileID: 11400000, guid: b6ae363278c5e6841a9720ca2c1d1007, type: 2}
+  prefab: {fileID: 5705298612502524782, guid: 48738c68b008314489c952176432b0bf, type: 3}
   initCount: 100

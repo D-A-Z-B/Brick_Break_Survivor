@@ -5,7 +5,6 @@ namespace BBS.Bullets {
     public abstract class Bullet : MonoBehaviour, IPoolable {
 		[field: SerializeField] public BulletDataSO dataSO {get; private set;}
 		[field: SerializeField] public int maxLevel {get; private set;}
-        [SerializeField] protected float speed = 5;
 	    protected Vector3 direction;
 
         public PoolTypeSO PoolType {get; set;}
@@ -24,7 +23,7 @@ namespace BBS.Bullets {
 	    }   
 
 	    protected virtual void Update() {
-    		transform.position += direction * speed * Time.deltaTime;   
+    		transform.position += direction * dataSO.currentSpeed * Time.deltaTime;   
 			
 	    }   
 

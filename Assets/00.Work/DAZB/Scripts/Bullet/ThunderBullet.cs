@@ -11,6 +11,10 @@ namespace BBS.Bullets {
             float posX = collision.transform.position.x;
             float posY = collision.transform.position.y;
 
+            if (dataSO.currentLevel >= 5) {
+                // 적 스턴 코드 넣을 거임
+            }
+
             float[] dx = { 0, 0, -1, 1, -1, -1, 1, 1 };
             float[] dy = { 1, -1, 0, 0, 1, -1, 1, -1 };
             for (int i = 0; i < 8; ++i) {
