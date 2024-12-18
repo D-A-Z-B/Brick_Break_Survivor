@@ -35,8 +35,10 @@ namespace BBS.Players {
         }
 
         private void Start() {
-            MapManager.Instance.SetPos(new (MapManager.Instance.range / 2, MapManager.Instance.range / 2), EntityType.Player);
-            transform.position = new (MapManager.Instance.range / 2, 1, MapManager.Instance.range / 2);
+            //MapManager.Instance.SetPos(new (MapManager.Instance.range / 2, MapManager.Instance.range / 2), EntityType.Player);
+            //transform.position = new (MapManager.Instance.range / 2, 1, MapManager.Instance.range / 2);
+            MapManager.Instance.SetPos(new(MapManager.Instance.range / 2, MapManager.Instance.range / 2 - 6), EntityType.Player);
+            transform.position = new(MapManager.Instance.range / 2, 1, MapManager.Instance.range / 2 - 6);
             stateMachine.Initialize("IDLE");
         }
 
