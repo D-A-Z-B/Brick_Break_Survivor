@@ -5,7 +5,7 @@ using BBS.FSM;
 using KHJ.Core;
 using UnityEngine;
 
-namespace BBS
+namespace BBS.Enemies
 {
     public class AssassinEnemyMoveState : EntityState
     {

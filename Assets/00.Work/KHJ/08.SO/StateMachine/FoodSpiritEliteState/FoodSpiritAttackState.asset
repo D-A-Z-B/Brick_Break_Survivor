@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FoodSpiritAttackState
   m_EditorClassIdentifier: 
   stateName: ATTACK
-  className: KHJ.Enemies.FoodSpiritAttackState
+  className: BBS.Enemies.FoodSpiritAttackState
   stateParam: {fileID: 11400000, guid: 9a6161124ed04ac4496fad9ae6b789a6, type: 2}

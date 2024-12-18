@@ -19,22 +19,23 @@ namespace KHJ.Core
         [SerializeField] private int spawnCount;
 
         [Header("EliteAndBossSet")]
-        [SerializeField] private int bossSpawnRadiusMin;
-        [SerializeField] private int bossSpawnRadiusMax;
+        [SerializeField] private int spawnEnemyCount;
 
         private void Awake()
         {
-            mapManager.OnCompleteSpawnMapEvent += HandleSpawnEnemy;
+            mapManager.OnSpawnEnemiesEvent += HandleSpawnEnemy;
+        }
+
+        public void ReSpawnEnemy()
+        {
+            spawnCount = 7;
+            HandleSpawnEnemy();
         }
 
         private void HandleSpawnEnemy()
         {
             if (mapManager.isEliteOrBoss)
-            {
-                spawnRadiusMin = bossSpawnRadiusMin;
-                spawnRadiusMax = bossSpawnRadiusMax;
                 spawnCount = 1;
-            }
 
             int spawnedEnemies = 0;
 
@@ -50,26 +51,32 @@ namespace KHJ.Core
         private bool TrySpawnEnemy()
         {
             Vector3 spawnPosition;
+            float spawnChance;
             if (!mapManager.isEliteOrBoss)
+            {
                 spawnPosition = GetRandomSpawnPosition();
+                float distanceToPlayer = Vector3.Distance(spawnPosition, player.position);
+
+                float normalizedDistance = (distanceToPlayer - spawnRadiusMin) / (spawnRadiusMax - spawnRadiusMin);
+                normalizedDistance = Mathf.Clamp01(normalizedDistance);
+
+                spawnChance = Mathf.Pow(1f - normalizedDistance, 2);
+            }
             else
-                spawnPosition = new Vector3(mapManager.range / 2, 1, mapManager.range / 2);
-
-            float distanceToPlayer = Vector3.Distance(spawnPosition, player.position);
-
-            float normalizedDistance = (distanceToPlayer - spawnRadiusMin) / (spawnRadiusMax - spawnRadiusMin);
-            normalizedDistance = Mathf.Clamp01(normalizedDistance);
-
-            float spawnChance = Mathf.Pow(1f - normalizedDistance, 2);
+            {
+                spawnChance = 1;
+                spawnPosition = new Vector3((mapManager.range-1) / 2, 1, (mapManager.range-1) / 2);
+            }
 
             if (Random.value <= spawnChance && MapCondition(spawnPosition))
             {
                 if (mapManager.GetPos(new Coord(spawnPosition)) != EntityType.Empty) return false;
 
                 Enemy enemy = Instantiate(EnemyType(), spawnPosition, Quaternion.identity);
-                mapManager.SetPos(new Coord(spawnPosition), EntityType.Enemy);
+                mapManager.SetPos(new Coord(spawnPosition), EntityType.Enemy, mapManager.isEliteOrBoss);
                 mapManager.SetEnemyBoard(new Coord(spawnPosition), enemy);
                 enemyList.Add(enemy);
+                mapManager.isEliteOrBoss = false;
                 return true;
             }
 
@@ -93,21 +100,14 @@ namespace KHJ.Core
             if (mapManager.isEliteOrBoss)
                 return enemyPrefab[3];
 
-            return enemyPrefab[0];
-            //float randomValue = Random.Range(0f, 100f);
+            float randomValue = Random.Range(0f, 100f);
 
-            //if (randomValue < 50f) 
-            //{
-            //    return enemyList[0];
-            //}
-            //else if (randomValue < 80f) 
-            //{
-            //    return enemyList[1];
-            //}
-            //else 
-            //{
-            //    return enemyList[2];
-            //}
+            if (randomValue < 50f)
+                return enemyPrefab[0];
+            else if (randomValue < 80f)
+                return enemyPrefab[1];
+            else
+                return enemyPrefab[2];
         }
 
         private bool MapCondition(Vector3 pos)

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FoodSpiritIdleState
   m_EditorClassIdentifier: 
   stateName: IDLE
-  className: KHJ.Enemies.FoodSpiritIdleState
+  className: BBS.Enemies.FoodSpiritIdleState
   stateParam: {fileID: 11400000, guid: af010110aa2169c4db629c0f41bb246a, type: 2}

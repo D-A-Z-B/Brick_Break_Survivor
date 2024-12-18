@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FoodSpiritEatState
   m_EditorClassIdentifier: 
   stateName: EAT
-  className: KHJ.Enemies.FoodSpiritEatState
-  stateParam: {fileID: 0}
+  className: BBS.Enemies.FoodSpiritEatState
+  stateParam: {fileID: 11400000, guid: 008b66cadf6b7084ba9f647cdabd8be0, type: 2}

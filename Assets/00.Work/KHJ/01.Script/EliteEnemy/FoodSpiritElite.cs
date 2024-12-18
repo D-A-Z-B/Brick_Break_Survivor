@@ -1,22 +1,17 @@
 using BBS.Combat;
-using BBS.Enemies;
 using UnityEngine;
 
-namespace KHJ.Enemies
+namespace BBS.Enemies
 {
     public class FoodSpiritElite : Enemy
     {
-        protected override void Awake()
-        {
-            print(GetCompo<Health>().CurrentHealth);
-        }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            if (collision.gameObject.TryGetComponent(out Enemy enemy))
+            if (other.gameObject.TryGetComponent(out Enemy enemy))
             {
                 Destroy(enemy);
-                print(GetCompo<Health>().CurrentHealth);
+                print(GetCompo<Health>(true).CurrentHealth);
             }
         }
     }

@@ -3,7 +3,7 @@ using BBS.Entities;
 using BBS.FSM;
 using UnityEngine;
 
-namespace KHJ.Enemies
+namespace BBS.Enemies
 {
     public class FoodSpiritAttackState : EntityState
     {

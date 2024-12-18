@@ -5,7 +5,7 @@ using BBS.Entities;
 using BBS.FSM;
 using UnityEngine;
 
-namespace KHJ.Enemies
+namespace BBS.Enemies 
 {
     public class FoodSpiritIdleState : EntityState
     {
@@ -20,6 +20,7 @@ namespace KHJ.Enemies
         {
             base.Enter();
             Test.Instance.OnChangeTurn += HandleChangeTurn;
+            enemy.transform.rotation = Quaternion.identity;
         }
 
         private void HandleChangeTurn()
@@ -33,10 +34,10 @@ namespace KHJ.Enemies
         {
             if (currentTurn >= enemy.data.actionTurn)
             {
-                NormalEnemy normalEnemy = enemy as NormalEnemy;
+                FoodSpiritElite foodSpiritElite = enemy as FoodSpiritElite;
 
                 currentTurn = 0;
-                if (normalEnemy.CanAttack())
+                if (foodSpiritElite.CanAttack())
                     enemy.ChangeState("ATTACK");
                 else
                     enemy.ChangeState("MOVE");

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FoodSpiritMoveStat
   m_EditorClassIdentifier: 
   stateName: MOVE
-  className: KHJ.Enemies.FoodSpiritMoveState
+  className: BBS.Enemies.FoodSpiritMoveState
   stateParam: {fileID: 11400000, guid: 3561672647caa5843917a3092b48966d, type: 2}
