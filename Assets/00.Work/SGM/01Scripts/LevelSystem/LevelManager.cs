@@ -1,0 +1,62 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace BBS
+{
+    public class LevelManager : MonoSingleton<LevelManager>
+    {
+        private List<Exp> expList;
+
+        [SerializeField] private LevelPanelUI levelPanel;
+        [SerializeField] private Transform expPrefab;
+        [SerializeField] private float levelUpExpCalculation = 2;
+        private int level = 0;
+        private float curentExp = 0;
+        private float needExp;
+
+        private void Awake()
+        {
+            expList = new List<Exp>();
+        }
+
+        private void Start()
+        {
+            LevelUp();
+        }
+
+        public void CreateExp(Vector3 pos)
+        {
+            Exp exp = Instantiate(expPrefab, transform).GetComponent<Exp>();
+            exp.transform.position = pos;
+            expList.Add(exp);
+        }
+
+        public void GetExp(Transform playerTrm)
+        {
+            expList.ForEach(exp =>
+            {
+                exp.MoveToPlayer(playerTrm);
+            });
+        }
+
+        public void AddExp(float exp)
+        {
+            curentExp += exp;
+
+            if(curentExp >= needExp)
+                LevelUp();
+            else
+                levelPanel.UpdateExp(curentExp);
+        }
+
+        private void LevelUp()
+        {
+            curentExp = 0;
+            level++;
+            needExp = Mathf.Pow(level * 50 / 49, 2.5f) * levelUpExpCalculation;
+
+            levelPanel.UpdateExpBarLevel(needExp, level);
+        }
+    }
+}
