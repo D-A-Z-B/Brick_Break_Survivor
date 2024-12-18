@@ -152,6 +152,8 @@ MonoBehaviour:
   <range>k__BackingField: 40
   interval: 1
   renderMoveSpeed: 0.5
+  <isEliteOrBoss>k__BackingField: 0
+  bossRange: 0
 --- !u!4 &104431504
 Transform:
   m_ObjectHideFlags: 0
@@ -335,12 +337,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9c2f6fed06df44b9f76280ae8a365c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <enemyList>k__BackingField: []
   player: {fileID: 1635618137}
-  enemyPrefab: {fileID: 5302798148251818856, guid: 9ddf824a5606bec479bf27b764d3c3a4, type: 3}
+  enemyPrefab:
+  - {fileID: 5302798148251818856, guid: 9ddf824a5606bec479bf27b764d3c3a4, type: 3}
   spawnRadiusMin: 6
   spawnRadiusMax: 60
-  spawnCount: 1
+  spawnCount: 20
+  bossSpawnRadiusMin: 1
+  bossSpawnRadiusMax: 40
 --- !u!1 &376224810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,12 +1693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerInput>k__BackingField: {fileID: 11400000, guid: 1186a36bd2ec21e489bc6a18648ea986, type: 2}
   playerArrow: {fileID: 1934998385}
-  bulletType: {fileID: 11400000, guid: 07309664ba8beaa499dd39bf0c44f836, type: 2}
-  TPBulletType: {fileID: 11400000, guid: d6428f29a06c5ca498253fc9bce7043a, type: 2}
   <cineCamCompo>k__BackingField: {fileID: 782273077}
   <PoolManager>k__BackingField: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
-  <ShootAmount>k__BackingField: 20
-  <ShootDelayTime>k__BackingField: 0.1
   states:
   - {fileID: 11400000, guid: ebe88fd13fca018459031411a8dfca8b, type: 2}
   - {fileID: 11400000, guid: 30f27f674d7cadd4cb65317cf04c00cf, type: 2}

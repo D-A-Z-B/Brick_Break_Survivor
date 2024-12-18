@@ -22,8 +22,13 @@ namespace BBS.Enemies
 
         private void HandleChangeTurn()
         {
+            if (enemy.IsStun)
+            {
+                enemy.SetStun(false);
+                return;
+            }
+
             currentTurn++;
-            Debug.Log(currentTurn);
             CheckChangeState();
         }
 
@@ -31,10 +36,8 @@ namespace BBS.Enemies
         {
             if (currentTurn >= enemy.data.actionTurn)
             {
-                AssassinEnemy assassinEnemy = enemy as AssassinEnemy;
-
                 currentTurn = 0;
-                if (assassinEnemy.CanAttack())
+                if (enemy.CanAttack())
                     enemy.ChangeState("ATTACK");
                 else
                     enemy.ChangeState("MOVE");

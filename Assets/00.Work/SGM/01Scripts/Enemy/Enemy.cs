@@ -61,9 +61,9 @@ namespace BBS.Enemies
             stateMachine.ChangeState(newStateName);
         }
 
-        public void SetStun()
+        public void SetStun(bool value)
         {
-            isStun = true;
+            isStun = value;
         }
 
         public void Move()
