@@ -1,6 +1,6 @@
-using BBS.Combat;
 using BBS.Entities;
 using BBS.FSM;
+using DG.Tweening;
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +17,7 @@ namespace BBS.Enemies
         [SerializeField] private LayerMask whatIsPlayer;
         private Vector3 curDir;
 
+        private float jumpPower = 1f;
         private bool isStun = false;
         public bool IsStun => isStun;
 
@@ -79,6 +80,17 @@ namespace BBS.Enemies
             mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy, isElite);
         }
 
+        public void Jump()
+        {
+            if (IsCantMove) return;
+
+            if (NeedRotate())
+                transform.forward = curDir;
+
+            transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear)
+                .OnComplete(() => EnemySpawnManager.Instance.EnemyCount());
+        }
+
         public bool NeedRotate()
         {
             Vector3 dir = EnemyToPlayerDir();
@@ -94,8 +106,8 @@ namespace BBS.Enemies
 
         public bool CanAttack()
         {
-            Collider[] verticalColliders = Physics.OverlapBox(transform.position, new Vector3(1, 1, 3) * 0.4f, transform.rotation, whatIsPlayer);
-            Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(3, 1, 1) * 0.4f, transform.rotation, whatIsPlayer);
+            Collider[] verticalColliders = Physics.OverlapBox(transform.position, new Vector3(0.9f, 1, data.attakRange * 2 + 1) * 0.5f, transform.rotation, whatIsPlayer);
+            Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(data.attakRange * 2 + 1, 1, 0.9f) * 0.5f, transform.rotation, whatIsPlayer);
 
             return verticalColliders.Length > 0 || horizontalColliders.Length > 0;
         }

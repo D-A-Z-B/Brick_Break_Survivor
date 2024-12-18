@@ -1,9 +1,6 @@
 using BBS.Animators;
-using BBS.Enemies;
 using BBS.Entities;
 using BBS.FSM;
-using KHJ.Core;
-using UnityEngine;
 
 namespace BBS.Enemies
 {
@@ -20,7 +17,7 @@ namespace BBS.Enemies
         {
             base.Enter();
 
-            enemy.Move();
+            enemy.Jump();
 
             if (enemy.CanAttack())
                 enemy.ChangeState("ATTACK");

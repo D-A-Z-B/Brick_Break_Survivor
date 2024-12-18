@@ -10,7 +10,12 @@ namespace BBS
         [SerializeField] private CinemachineCamera cam;
         [SerializeField] private float ZoomInYPos = 32;
 
-        Vector3 originCamPos;
+        private float originYPos;
+
+        private void Start()
+        {
+            originYPos = cam.transform.position.y;
+        }
 
         public void StartZoomIn()
         {
@@ -22,7 +27,6 @@ namespace BBS
             float timer = 0;
 
             cam.Follow = null;
-            originCamPos = cam.transform.position;
             while (true)
             {
                 timer += Time.deltaTime;
@@ -50,13 +54,14 @@ namespace BBS
         {
             float timer = 0;
 
+            Transform playerTrm = PlayerManager.Instance.Player.transform;
             while (true)
             {
                 timer += Time.deltaTime;
 
-                float lerpX = Mathf.Lerp(cam.transform.position.x, originCamPos.x, timer);
-                float lerpY = Mathf.Lerp(cam.transform.position.y, originCamPos.y, timer);
-                float lerpZ = Mathf.Lerp(cam.transform.position.z, originCamPos.z, timer);
+                float lerpX = Mathf.Lerp(cam.transform.position.x, playerTrm.position.x, timer);
+                float lerpY = Mathf.Lerp(cam.transform.position.y, originYPos, timer);
+                float lerpZ = Mathf.Lerp(cam.transform.position.z, playerTrm.position.z, timer);
                 cam.transform.position = new Vector3(lerpX, lerpY, lerpZ);
 
                 if (timer >= 1)
@@ -64,7 +69,7 @@ namespace BBS
 
                 yield return null;
             }
-            cam.Follow = PlayerManager.Instance.Player.transform;
+            cam.Follow = playerTrm;
         }
     }
 }
