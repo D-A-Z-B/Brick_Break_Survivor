@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3f380e8d700409f4dbeab34e23a4a06a
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 151733
+  packageName: Jelly Merge | Template + Editor
+  packageVersion: 1.3.3
+  assetPath: Assets/Project Data/Watermelon Core/Shaders/Includes/Shadows.hlsl
+  uploadId: 665943
