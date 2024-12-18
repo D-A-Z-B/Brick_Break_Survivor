@@ -3,7 +3,7 @@ using BBS.FSM;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KHJ
+namespace KHJ.NormalEnemy
 {
     public class NormalEnemy : Entity
     {
