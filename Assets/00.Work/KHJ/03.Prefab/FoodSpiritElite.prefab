@@ -224,7 +224,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.33, z: 0}
 --- !u!54 &8033486884605334029
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -270,6 +270,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d397423caafb3da48862f0afbee4221d, type: 2}
   - {fileID: 11400000, guid: ff1109b246323d94e8abc88fd8f1a216, type: 2}
   data: {fileID: 11400000, guid: 084e6b7173faca6418e945fe15666562, type: 2}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
   IsCantMove: 0
 --- !u!114 &4457282022616300100
 MonoBehaviour:
