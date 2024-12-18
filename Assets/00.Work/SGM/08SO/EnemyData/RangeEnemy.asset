@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RangeEnemy
   m_EditorClassIdentifier: 
   type: 1
-  moveTurn: 0
+  actionTurn: 4
   moveDistance: 0
   damage: 20
   attakRange: 5

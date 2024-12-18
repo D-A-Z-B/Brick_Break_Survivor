@@ -17,7 +17,7 @@ namespace KHJ.Core
                 }
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType(typeof(T)) as T;
+                    _instance = FindAnyObjectByType(typeof(T)) as T;
                     if (_instance == null)
                     {
                         Debug.LogError(typeof(T).Name + " could not be found");

@@ -16,22 +16,35 @@ namespace BBS.Enemies
             this.enemy = entity as Enemy;
         }
 
-        public override void Update()
+        public override void Enter()
         {
-            base.Update();
+            Test.Instance.OnChangeTurn += HandleChangeTurn;
+        }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                enemy.ChangeState("MOVE");
-            }
+        private void HandleChangeTurn()
+        {
+            currentTurn++;
+            Debug.Log(currentTurn);
+            CheckChangeState();
         }
 
         private void CheckChangeState()
         {
-            if (currentTurn == enemy.data.moveTurn)
+            if (currentTurn >= enemy.data.actionTurn)
             {
-                
+                NormalEnemy normalEnemy = enemy as NormalEnemy;
+
+                currentTurn = 0;
+                if (normalEnemy.CanAttack())
+                    enemy.ChangeState("ATTACK");
+                else
+                    enemy.ChangeState("MOVE");
             }
+        }
+
+        public override void Exit()
+        {
+            Test.Instance.OnChangeTurn -= HandleChangeTurn;
         }
     }
 }

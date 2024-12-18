@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: MOVE
   className: BBS.Enemies.NormalEnemyMoveState
-  stateParam: {fileID: 11400000, guid: edcea4c52d2a81447b2d03a37bf2184f, type: 2}
+  stateParam: {fileID: 11400000, guid: 3561672647caa5843917a3092b48966d, type: 2}
