@@ -1,18 +1,19 @@
 using BBS.Animators;
+using BBS.Enemies;
 using BBS.Entities;
 using BBS.FSM;
 using UnityEngine;
 
 namespace BBS.Enemies
 {
-    public class NormalEnemyIdleState : EntityState
+    public class RangeEnemyIdleState : EntityState
     {
         private int currentTurn = 0;
         private Enemy enemy;
 
-        public NormalEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
+        public RangeEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
-            this.enemy = entity as Enemy;
+            enemy = entity as Enemy;
         }
 
         public override void Enter()
@@ -47,4 +48,3 @@ namespace BBS.Enemies
         }
     }
 }
-

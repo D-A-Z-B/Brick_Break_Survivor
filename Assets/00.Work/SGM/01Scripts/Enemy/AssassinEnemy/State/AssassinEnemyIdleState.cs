@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace BBS.Enemies
 {
-    public class NormalEnemyIdleState : EntityState
+    public class AssassinEnemyIdleState : EntityState
     {
         private int currentTurn = 0;
         private Enemy enemy;
 
-        public NormalEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
+        public AssassinEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
-            this.enemy = entity as Enemy;
+            enemy = entity as Enemy;
         }
 
         public override void Enter()
@@ -31,10 +31,10 @@ namespace BBS.Enemies
         {
             if (currentTurn >= enemy.data.actionTurn)
             {
-                NormalEnemy normalEnemy = enemy as NormalEnemy;
+                AssassinEnemy assassinEnemy = enemy as AssassinEnemy;
 
                 currentTurn = 0;
-                if (normalEnemy.CanAttack())
+                if (assassinEnemy.CanAttack())
                     enemy.ChangeState("ATTACK");
                 else
                     enemy.ChangeState("MOVE");
@@ -47,4 +47,3 @@ namespace BBS.Enemies
         }
     }
 }
-

@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace BBS.Enemies
 {
-    public class NormalEnemyAttackState : EntityState
+    public class AssassinEnemyAttackState : EntityState
     {
         private Enemy enemy;
 
-        public NormalEnemyAttackState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
+        public AssassinEnemyAttackState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             enemy = entity as Enemy;
         }

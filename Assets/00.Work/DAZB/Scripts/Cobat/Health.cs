@@ -38,6 +38,7 @@ namespace BBS.Combat {
 
         public virtual void ApplyDamage(ActionData data) { 
             currentHealth -= data.damage;
+            Debug.Log("appply damage");
 
             OnHit?.Invoke();
 
