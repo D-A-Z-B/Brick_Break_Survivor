@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2702586883832172173}
   - component: {fileID: 8572500741067619665}
   - component: {fileID: 4982574302757415070}
-  - component: {fileID: 4465752200955366263}
+  - component: {fileID: 1518334219050814840}
   m_Layer: 11
   m_Name: BowlingBullet
   m_TagString: Untagged
@@ -137,7 +137,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4465752200955366263
+--- !u!114 &1518334219050814840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,4 +151,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <dataSO>k__BackingField: {fileID: 11400000, guid: d38a1aa2b6d93164ba7edb2d3aa680d7, type: 2}
   <maxLevel>k__BackingField: 0
-  speed: 5

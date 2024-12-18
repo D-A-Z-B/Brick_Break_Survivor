@@ -12,6 +12,8 @@ namespace BBS.Bullets {
         public float defaultDamage;
         public float currentScale;
         public float defaultScale;
+        public float currentSpeed;
+        public float defaultSpeed = 10;
         public int currentLevel = 0;
         public int ShootAmount;
         public List<BulletLevelDataSO> levelDataList;
@@ -20,11 +22,13 @@ namespace BBS.Bullets {
         private void OnEnable() {
             currentDamage = defaultDamage;
             currentScale = defaultScale;
+            currentSpeed = defaultSpeed;
         }
 
         private void OnDisable() {
             currentDamage = defaultDamage;
             currentScale = defaultScale;
+            currentSpeed = defaultSpeed;
         }
 
         public BulletLevelDataSO GetEffectByLevel(int level) {

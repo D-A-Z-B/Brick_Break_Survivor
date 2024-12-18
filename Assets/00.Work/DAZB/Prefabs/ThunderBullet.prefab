@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2702586883832172173}
   - component: {fileID: 8572500741067619665}
   - component: {fileID: 4982574302757415070}
-  - component: {fileID: 3678085519701782622}
+  - component: {fileID: 1629431954361602025}
   m_Layer: 11
-  m_Name: Bullet
+  m_Name: ThunderBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 68d9464d0cd4fbf48a81abf378167c7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,7 +137,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3678085519701782622
+--- !u!114 &1629431954361602025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,10 +146,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5705298612502524782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7b8ff4c52414541bd17b60d899e6a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 85fe5513ffeb620409022620f8d603fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <dataSO>k__BackingField: {fileID: 11400000, guid: 1328cda378b39b8408ba01d64ed070da, type: 2}
-  <maxLevel>k__BackingField: 5
+  <dataSO>k__BackingField: {fileID: 11400000, guid: 22578ed769860294895684463ebe7afc, type: 2}
+  <maxLevel>k__BackingField: 0
   speed: 10
-  destroyTime: 0.7

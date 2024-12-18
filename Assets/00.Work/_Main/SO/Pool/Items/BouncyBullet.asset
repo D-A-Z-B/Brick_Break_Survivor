@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 632946fafd7a57b44908bfaafd94e309, type: 3}
-  m_Name: BowlingBullet
+  m_Name: BouncyBullet
   m_EditorClassIdentifier: 
-  poolType: {fileID: 11400000, guid: 9a504e7d906551a46a131bac55674115, type: 2}
-  prefab: {fileID: 5705298612502524782, guid: 431a544d94cba894c8e80ceac2d7c715, type: 3}
+  poolType: {fileID: 11400000, guid: ee89322ef7cdbe44b897f70483146673, type: 2}
+  prefab: {fileID: 5705298612502524782, guid: b8d73c9d5821ab44b86f061c26a03b07, type: 3}
   initCount: 100

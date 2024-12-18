@@ -5,6 +5,7 @@ using BBS.Core.StatSystem;
 using BBS.Entities;
 using BBS.FSM;
 using KHJ;
+using KHJ.Core;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,6 +35,8 @@ namespace BBS.Players {
         }
 
         private void Start() {
+            MapManager.Instance.SetPos(new (MapManager.Instance.range / 2, MapManager.Instance.range / 2), EntityType.Player);
+            transform.position = new (MapManager.Instance.range / 2, 1, MapManager.Instance.range / 2);
             stateMachine.Initialize("IDLE");
         }
 

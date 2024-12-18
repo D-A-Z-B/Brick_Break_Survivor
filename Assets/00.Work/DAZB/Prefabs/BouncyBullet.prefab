@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2702586883832172173}
   - component: {fileID: 8572500741067619665}
   - component: {fileID: 4982574302757415070}
-  - component: {fileID: 3678085519701782622}
+  - component: {fileID: 4217779667370176228}
   m_Layer: 11
-  m_Name: Bullet
+  m_Name: BouncyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d76d5dba59c8a824a8170635648a356c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,7 +137,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3678085519701782622
+--- !u!114 &4217779667370176228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,10 +146,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5705298612502524782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7b8ff4c52414541bd17b60d899e6a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 745e86c8e746672448d562c0364b6d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <dataSO>k__BackingField: {fileID: 11400000, guid: 1328cda378b39b8408ba01d64ed070da, type: 2}
-  <maxLevel>k__BackingField: 5
-  speed: 10
-  destroyTime: 0.7
+  <dataSO>k__BackingField: {fileID: 11400000, guid: ad23dc4677ac2654d936e58bbbfbaec9, type: 2}
+  <maxLevel>k__BackingField: 0

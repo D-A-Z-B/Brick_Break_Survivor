@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc2c71e5acabba34db8622b8eba6cc7f, type: 3}
-  m_Name: BowlingBullet
+  m_Name: ThunderB
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  displayName: "\uBCFC\uB9C1"
-  description: 
+  displayName: 
+  description: "\uBC88\uAC1C"
   currentDamage: 0
-  defaultDamage: 50
+  defaultDamage: 20
   currentScale: 0.3
   defaultScale: 0.3
   currentSpeed: 0
@@ -24,10 +24,10 @@ MonoBehaviour:
   currentLevel: 0
   ShootAmount: 0
   levelDataList:
-  - {fileID: 11400000, guid: 4b86c927241860a458efccbb457748ba, type: 2}
-  - {fileID: 11400000, guid: 50a770bb12def354391260fe072e417d, type: 2}
-  - {fileID: 11400000, guid: c44bf078de73a684687e5a42d75a4e36, type: 2}
-  - {fileID: 11400000, guid: d0b226c6486890d4b97f5ecc38a7532f, type: 2}
-  - {fileID: 11400000, guid: de4813614d09a2042ae46192d0c9a929, type: 2}
-  - {fileID: 11400000, guid: f7f64c08f4b18d341b499b5b2d9287ae, type: 2}
-  type: 0
+  - {fileID: 11400000, guid: eb9497e67d697024a96c82dcfa3dc2f3, type: 2}
+  - {fileID: 11400000, guid: 66802ccf0b828f540a2c9862215b1703, type: 2}
+  - {fileID: 11400000, guid: 3bb81cb6fb4092b48b00719f70f9c00b, type: 2}
+  - {fileID: 11400000, guid: 226c6f3f7c3ad284db555f83ff6cbed4, type: 2}
+  - {fileID: 11400000, guid: 3d19f0c36127d77458eab4ef8f8554bb, type: 2}
+  - {fileID: 11400000, guid: 952af3ca8bb01f44b814918f4ad2abe5, type: 2}
+  type: 2

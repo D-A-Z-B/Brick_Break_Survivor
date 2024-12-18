@@ -10,19 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc2c71e5acabba34db8622b8eba6cc7f, type: 3}
-  m_Name: TPBullet
+  m_Name: BouncyBullet
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  displayName: "\uC774\uB3D9 \uACF5"
+  displayName: "\uD0F1\uD0F1\uBCFC"
   description: 
   currentDamage: 0
-  defaultDamage: 0
+  defaultDamage: 10
   currentScale: 0.3
   defaultScale: 0.3
-  currentSpeed: 10
+  currentSpeed: 0
   defaultSpeed: 10
   currentLevel: 0
   ShootAmount: 0
   levelDataList:
-  - {fileID: 11400000, guid: 2531f473d78bca84a86e4f729805aac8, type: 2}
-  type: 4
+  - {fileID: 11400000, guid: bd91e7629df871d489bf75ec3a49ff27, type: 2}
+  - {fileID: 11400000, guid: 250efe16bcd355e40876a4f7c8d2bd09, type: 2}
+  - {fileID: 11400000, guid: 9797c19d407fabd41a4527e82de7b025, type: 2}
+  - {fileID: 11400000, guid: 6b0e3aa075855674492d4298b8431c87, type: 2}
+  - {fileID: 11400000, guid: 4855034f398cc0e49b7ff09334824c6f, type: 2}
+  - {fileID: 11400000, guid: a3db0288a360f444f9f97a6ae4717702, type: 2}
+  type: 1
