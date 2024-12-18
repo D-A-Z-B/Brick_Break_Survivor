@@ -151,4 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <dataSO>k__BackingField: {fileID: 11400000, guid: 22578ed769860294895684463ebe7afc, type: 2}
   <maxLevel>k__BackingField: 0
-  speed: 10
+  destroyTime: 0.7

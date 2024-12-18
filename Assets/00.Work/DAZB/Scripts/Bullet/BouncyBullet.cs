@@ -2,6 +2,19 @@ using UnityEngine;
 
 namespace BBS.Bullets {
     public class BouncyBullet : Bullet {
+        [SerializeField] protected float destroyTime;
+
+        protected override void Update() {
+            base.Update();
+            if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
+				myPool.Push(this);
+			}
+
+			if (isCollision == false && startTime + 4 < Time.time) {
+				myPool.Push(this);
+			}
+        }
+
         protected override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
 

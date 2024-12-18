@@ -3,13 +3,9 @@ using UnityEngine;
 namespace BBS.Bullets {
     public class BFBullet : Bullet {
 		[SerializeField] protected float destroyTime;
-        protected bool isCollision = false;
-        protected float lastCollisionTime;
-        protected float startTime;
 
         public override void Setup(Vector3 position, Vector3 direction) {
             base.Setup(position, direction);
-            startTime = Time.time;
         }
 
         protected override void Update() {
@@ -25,14 +21,11 @@ namespace BBS.Bullets {
 
         protected override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
-            isCollision = true;
-			lastCollisionTime = Time.time;
         }
 
         public override void ResetItem()
         {
             base.ResetItem();
-            isCollision = false;
         }
     }
 }

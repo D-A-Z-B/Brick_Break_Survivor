@@ -558,6 +558,7 @@ GameObject:
   - component: {fileID: 1110054787}
   - component: {fileID: 1110054791}
   - component: {fileID: 1110054792}
+  - component: {fileID: 1110054793}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -670,6 +671,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 42684959}
+--- !u!114 &1110054793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110054786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4774e0710119b4ea7af8830b7bf6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTurnChangeTime: 3
+  firstBossTurn: 20
+  secondBossTurn: 40
+  lastBossTurn: 60
 --- !u!1 &1334219732
 GameObject:
   m_ObjectHideFlags: 0
