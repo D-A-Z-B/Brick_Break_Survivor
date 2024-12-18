@@ -25,10 +25,7 @@ namespace BBS
             if (enemy.CanAttack())
                 enemy.ChangeState("ATTACK");
             else
-            {
-                EnemySpawnManager.Instance.EnemyCount();
                 enemy.ChangeState("IDLE");
-            }
         }
     }
 }

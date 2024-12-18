@@ -86,7 +86,8 @@ namespace KHJ.Core
         private void MoveRenderEnemy(Coord currentCoord, Coord moveCoord)
         {
             Enemy moveEnemy = enemyBoardArr[currentCoord.x, currentCoord.y];
-            moveEnemy.transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), renderMoveSpeed).SetEase(Ease.Linear);
+            moveEnemy.transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), renderMoveSpeed).SetEase(Ease.Linear)
+                .OnComplete(() => EnemySpawnManager.Instance.EnemyCount());
 
             SetEnemyBoard(currentCoord, null);
             SetEnemyBoard(moveCoord, moveEnemy);
