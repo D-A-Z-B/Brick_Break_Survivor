@@ -5,6 +5,19 @@ using UnityEngine;
 namespace BBS.Bullets {
     public class ThunderBullet : Bullet {
 
+        [SerializeField] protected float destroyTime;
+
+        protected override void Update() {
+            base.Update();
+            if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
+				myPool.Push(this);
+			}
+
+			if (isCollision == false && startTime + 4 < Time.time) {
+				myPool.Push(this);
+			}
+        }
+
         protected override void OnCollisionEnter(Collision collision) {
             base.OnCollisionEnter(collision);
 
@@ -12,7 +25,12 @@ namespace BBS.Bullets {
             float posY = collision.transform.position.y;
 
             if (dataSO.currentLevel >= 5) {
-                // 적 스턴 코드 넣을 거임
+                int rand = Random.Range(1, 10);
+                if (rand == 1) {
+                    if (TryGetComponent<Enemy>(out Enemy enemy)) {
+                        enemy.SetStun(true);
+                    }
+                }
             }
 
             float[] dx = { 0, 0, -1, 1, -1, -1, 1, 1 };

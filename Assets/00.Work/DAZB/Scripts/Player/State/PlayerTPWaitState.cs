@@ -23,6 +23,7 @@ namespace BBS.Players {
 
         public override void Exit()
         {
+            TurnManager.Instance.EndPlayerTurn();
             player.PlayerInput.tpEvent -= HandleTPEvent;
             base.Exit();
         }

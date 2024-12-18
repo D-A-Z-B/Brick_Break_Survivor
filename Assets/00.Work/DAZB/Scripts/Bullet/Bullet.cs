@@ -13,6 +13,10 @@ namespace BBS.Bullets {
 
 		protected Pool myPool;
 
+		protected bool isCollision = false;
+        protected float lastCollisionTime;
+        protected float startTime;
+
 		protected virtual void Awake() {
 			
 		}
@@ -20,6 +24,7 @@ namespace BBS.Bullets {
         public virtual void Setup(Vector3 position, Vector3 direction) {
     		this.direction	= direction;
 			transform.position = position;
+			startTime = Time.time;
 	    }   
 
 	    protected virtual void Update() {
@@ -31,6 +36,8 @@ namespace BBS.Bullets {
 			if (TryGetComponent<Enemy>(out Enemy enemy)) {
 				enemy.GetCompo<EnemyHealth>().ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
 			}
+			isCollision = true;
+			lastCollisionTime = Time.time;
     		direction = Vector3.Reflect(direction, collision.GetContact(0).normal);
 	    }
 
@@ -41,6 +48,7 @@ namespace BBS.Bullets {
 
         public virtual void ResetItem()
         {
+			isCollision = false;
 			transform.localScale = new Vector3(dataSO.currentScale, dataSO.currentScale, dataSO.currentScale);
         }
     }
