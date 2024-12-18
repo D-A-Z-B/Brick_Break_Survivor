@@ -2,6 +2,7 @@ using BBS.Animators;
 using BBS.Combat;
 using BBS.Entities;
 using BBS.FSM;
+using KHJ.Core;
 using UnityEngine;
 
 namespace BBS.Enemies
@@ -23,6 +24,7 @@ namespace BBS.Enemies
             PlayerManager.Instance.Player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
             Debug.Log("attack");
 
+            EnemySpawnManager.Instance.EnemyCount();
             enemy.ChangeState("IDLE");
         }
     }

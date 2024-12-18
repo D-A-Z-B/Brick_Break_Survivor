@@ -29,6 +29,7 @@ namespace BBS
         public void ChangeTurn(TurnType type)
         {
             currentTurnType = type;
+            Debug.Log(currentTurnType);
 
             if (currentTurnType == TurnType.EnemeyTurn && !isBossRound)
             {
@@ -43,8 +44,6 @@ namespace BBS
                 }
                 EnemyTurnStart?.Invoke();
             }
-
-            Debug.Log(currentTurnType);
         }
 
         public void EndBossRound()

@@ -1,6 +1,7 @@
 using BBS.Animators;
 using BBS.Entities;
 using BBS.FSM;
+using KHJ.Core;
 using UnityEngine;
 
 namespace BBS.Enemies
@@ -22,6 +23,7 @@ namespace BBS.Enemies
             foreach (Vector3 dir in spawnDirs)
                 enemy.SpawnProjectile(dir);
 
+            EnemySpawnManager.Instance.EnemyCount();
             enemy.ChangeState("IDLE");
         }
     }

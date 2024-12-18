@@ -1,6 +1,7 @@
 using BBS.Animators;
 using BBS.Entities;
 using BBS.FSM;
+using KHJ.Core;
 
 namespace BBS.Enemies
 {
@@ -40,6 +41,10 @@ namespace BBS.Enemies
                     enemy.ChangeState("ATTACK");
                 else
                     enemy.ChangeState("MOVE");
+            }
+            else
+            {
+                EnemySpawnManager.Instance.EnemyCount();
             }
         }
 
