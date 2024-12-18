@@ -2,6 +2,7 @@ using BBS.Enemies;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.TextCore.Text;
 using UnityEngine;
 
@@ -23,8 +24,22 @@ namespace KHJ.Core
         [SerializeField] private float interval;
         [SerializeField] private float renderMoveSpeed;
 
-        public EntityType[,] mapBoardArr { get; private set; } = new EntityType[40, 40];
-        private Enemy[,] enemyBoardArr = new Enemy[40, 40];
+        [field: SerializeField] public bool isEliteOrBoss { get; private set; } = false;
+
+        [Header("EliteAndBossSet")]
+        [SerializeField] private int bossRange;
+        
+        private EntityType[,] mapBoardArr;
+        private Enemy[,] enemyBoardArr;
+
+        private void Awake()
+        {
+            if (isEliteOrBoss)
+                range = bossRange;
+
+            mapBoardArr = new EntityType[range, range];
+            enemyBoardArr = new Enemy[range, range];
+        }
 
         private void Start()
         {
@@ -33,6 +48,7 @@ namespace KHJ.Core
 
         private void SpawnMap()
         {
+            print(range);
             for (int i = 0; i < range; i++)
             {
                 for (int j = 0; j < range; j++)
@@ -48,10 +64,7 @@ namespace KHJ.Core
 
         public EntityType GetPos(Coord coord) => mapBoardArr[coord.x, coord.y];
 
-        public void SetPos(Coord coord, EntityType entity)
-        {
-            mapBoardArr[coord.x, coord.y] = entity;
-        }
+        public void SetPos(Coord coord, EntityType entity) => mapBoardArr[coord.x, coord.y] = entity;
 
         public void MoveEntity(Coord currentCoord, Coord moveCoord, EntityType entity)
         {
