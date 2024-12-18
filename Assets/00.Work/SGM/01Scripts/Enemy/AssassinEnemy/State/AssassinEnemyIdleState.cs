@@ -1,19 +1,49 @@
+using BBS.Animators;
+using BBS.Entities;
+using BBS.FSM;
 using UnityEngine;
 
-namespace BBS
+namespace BBS.Enemies
 {
-    public class AssassinEnemyIdleState : MonoBehaviour
+    public class AssassinEnemyIdleState : EntityState
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        private int currentTurn = 0;
+        private Enemy enemy;
+
+        public AssassinEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
-        
+            enemy = entity as Enemy;
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void Enter()
         {
-        
+            Test.Instance.OnChangeTurn += HandleChangeTurn;
+        }
+
+        private void HandleChangeTurn()
+        {
+            currentTurn++;
+            Debug.Log(currentTurn);
+            CheckChangeState();
+        }
+
+        private void CheckChangeState()
+        {
+            if (currentTurn >= enemy.data.actionTurn)
+            {
+                AssassinEnemy assassinEnemy = enemy as AssassinEnemy;
+
+                currentTurn = 0;
+                if (assassinEnemy.CanAttack())
+                    enemy.ChangeState("ATTACK");
+                else
+                    enemy.ChangeState("MOVE");
+            }
+        }
+
+        public override void Exit()
+        {
+            Test.Instance.OnChangeTurn -= HandleChangeTurn;
         }
     }
 }

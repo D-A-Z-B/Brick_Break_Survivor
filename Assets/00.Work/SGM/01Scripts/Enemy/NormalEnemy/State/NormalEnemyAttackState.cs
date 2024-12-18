@@ -2,14 +2,13 @@ using BBS.Animators;
 using BBS.Combat;
 using BBS.Entities;
 using BBS.FSM;
-using BBS.Players;
 using UnityEngine;
 
 namespace BBS.Enemies
 {
     public class NormalEnemyAttackState : EntityState
     {
-        Enemy enemy;
+        private Enemy enemy;
 
         public NormalEnemyAttackState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {

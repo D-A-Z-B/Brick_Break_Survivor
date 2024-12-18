@@ -196,7 +196,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca545ea834b545340a5ac71de1497764, type: 2}
   - {fileID: 11400000, guid: b65cc6b717da0604893c97863fc7c162, type: 2}
   - {fileID: 11400000, guid: 6f476a0b4fffaed4086dc4abd66fbf63, type: 2}
-  - {fileID: 11400000, guid: 4289ebdec58f35848a36c510a89c5207, type: 2}
   data: {fileID: 11400000, guid: ed7b4ee588d0f414fbd31b83b5f5a970, type: 2}
   whatIsPlayer:
     serializedVersion: 2

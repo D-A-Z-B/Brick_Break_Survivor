@@ -8,8 +8,7 @@ namespace BBS.Enemies
     public class NormalEnemyIdleState : EntityState
     {
         private int currentTurn = 0;
-
-        Enemy enemy;
+        private Enemy enemy;
 
         public NormalEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
