@@ -1,3 +1,4 @@
+using KHJ.Core;
 using System;
 using UnityEngine;
 
@@ -42,8 +43,15 @@ namespace BBS
                 {
                     LastBossEvent?.Invoke();
                 }
-                EnemyTurnStart?.Invoke();
+
+                CameraManager.Instance.StartZoomIn();
             }
+            else if (type == TurnType.PlayerTurn)
+            {
+                CameraManager.Instance.StartZoomOut();
+            }
+
+            currentTurnType = type;
         }
 
         public void EndBossRound()

@@ -131,6 +131,7 @@ namespace KHJ.Core
             moveEnemy.transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), renderMoveSpeed).SetEase(Ease.Linear).OnComplete(() =>
             {
                 moveEnemy.IsCantMove = false;
+                EnemySpawnManager.Instance.EnemyCount();
             });
 
             SetEnemyBoard(currentCoord, null);
