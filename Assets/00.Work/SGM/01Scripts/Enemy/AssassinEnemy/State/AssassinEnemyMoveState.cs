@@ -20,24 +20,9 @@ namespace BBS
         {
             base.Enter();
 
-            Vector3 dir = (PlayerManager.Instance.Player.transform.position - enemy.transform.position).normalized;
-            if (Mathf.Abs(dir.x) > Mathf.Abs(dir.z))
-            {
-                dir.x = Mathf.Sign(dir.x);
-                dir.z = 0;
-            }
-            else
-            {
-                dir.x = 0;
-                dir.z = Mathf.Sign(dir.z);
-            }
+            enemy.Move();
 
-            AssassinEnemy assassinEnemy = enemy as AssassinEnemy;
-            if (assassinEnemy.NeedRotate(dir))
-                assassinEnemy.transform.forward = dir;
-            enemy.mapManager.MoveEntity(new Coord(enemy.transform.position), new Coord(enemy.transform.position + (dir * enemy.data.moveDistance)), EntityType.Enemy);
-
-            if (assassinEnemy.CanAttack())
+            if (enemy.CanAttack())
                 enemy.ChangeState("ATTACK");
             else
                 enemy.ChangeState("IDLE");
