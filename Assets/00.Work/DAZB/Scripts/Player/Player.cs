@@ -9,9 +9,9 @@ namespace BBS.Players {
     public class Player : Entity {
         [field: SerializeField] public PlayerInputSO PlayerInput {get; private set;}
         [SerializeField] private Arrow playerArrow;
-        [SerializeField] private Bullet bulletPrefab;
-        [field: SerializeField] public int shootAmount {get; private set;}
-        [field: SerializeField] public float shootDelayTime {get; private set;}
+        [field: SerializeField] public PoolManagerSO PoolManager {get; private set;}
+        [field: SerializeField] public int ShootAmount {get; private set;}
+        [field: SerializeField] public float ShootDelayTime {get; private set;}
 
         public List<StateSO> states;
 
