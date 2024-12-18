@@ -335,9 +335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9c2f6fed06df44b9f76280ae8a365c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <enemyList>k__BackingField: []
+  <enemyList>k__BackingField:
+  - {fileID: 5652908620984463989, guid: 10792ff778f7e8142a03aa612032eb1d, type: 3}
   player: {fileID: 1635618137}
-  enemyPrefab: {fileID: 5302798148251818856, guid: 9ddf824a5606bec479bf27b764d3c3a4, type: 3}
+  enemyPrefab: {fileID: 5652908620984463989, guid: 10792ff778f7e8142a03aa612032eb1d, type: 3}
   spawnRadiusMin: 6
   spawnRadiusMax: 60
   spawnCount: 1
