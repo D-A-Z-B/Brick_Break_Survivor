@@ -1,7 +1,7 @@
 using BBS.Animators;
 using BBS.Entities;
 using BBS.FSM;
-using DG.Tweening;
+using KHJ.Core;
 using UnityEngine;
 
 namespace BBS.Enemies
@@ -19,7 +19,7 @@ namespace BBS.Enemies
         {
             base.Enter();
 
-            Vector3 dir = (enemy.playerTrm.position - enemy.transform.position).normalized;
+            Vector3 dir = (enemy.player.transform.position - enemy.transform.position).normalized;
             if (Mathf.Abs(dir.x) > Mathf.Abs(dir.z))
             {
                 dir.x = Mathf.Sign(dir.x);
@@ -31,16 +31,13 @@ namespace BBS.Enemies
                 dir.z = Mathf.Sign(dir.z);
             }
 
-            enemy.transform.DOMove(enemy.transform.position + dir * enemy.data.moveDistance, 0.5f)
-                .OnComplete(() =>
-                {
-                    NormalEnemy normalEnemy = enemy as NormalEnemy;
+            enemy.mapManager.MoveEntity(new Coord(enemy.transform.position), new Coord(enemy.transform.position + (dir * enemy.data.moveDistance)), EntityType.Enemy);
 
-                    if (normalEnemy.CanAttack())
-                        enemy.ChangeState("ATTACK");
-                    else
-                        enemy.ChangeState("IDLE");
-                });
+            NormalEnemy normalEnemy = enemy as NormalEnemy;
+            if (normalEnemy.CanAttack())
+                enemy.ChangeState("ATTACK");
+            else
+                enemy.ChangeState("IDLE");
         }
     }
 }

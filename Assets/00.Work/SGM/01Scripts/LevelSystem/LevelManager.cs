@@ -1,3 +1,4 @@
+using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,9 +19,8 @@ namespace BBS
         private float curentExp = 0;
         private float needExp;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             expList = new List<Exp>();
         }
 

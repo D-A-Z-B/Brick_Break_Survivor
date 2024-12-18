@@ -1,5 +1,6 @@
 using BBS.Entities;
 using BBS.FSM;
+using BBS.Players;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -9,7 +10,7 @@ namespace BBS.Enemies
     public class Enemy : Entity
     {
         //test
-        public Transform playerTrm;
+        public Player player;
 
         public List<StateSO> states;
         public EnemyDataSO data;
@@ -23,6 +24,12 @@ namespace BBS.Enemies
             base.AfterInitialize();
 
             stateMachine = new StateMachine(states, this);
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            player = FindAnyObjectByType<Player>();
         }
 
         protected virtual void Start()

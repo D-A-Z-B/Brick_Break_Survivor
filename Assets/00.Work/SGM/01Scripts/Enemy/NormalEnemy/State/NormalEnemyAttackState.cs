@@ -19,7 +19,7 @@ namespace BBS.Enemies
         {
             base.Enter();
 
-            Player player = enemy.playerTrm.GetComponent<Player>();
+            Player player = enemy.player.GetComponent<Player>();
 
             ActionData actionData = new ActionData(enemy.data.damage, enemy.transform);
             player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
