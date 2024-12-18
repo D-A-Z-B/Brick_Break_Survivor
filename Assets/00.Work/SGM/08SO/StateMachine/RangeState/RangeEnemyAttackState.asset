@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62a62300ad35804698c6d660dc0596e, type: 3}
   m_Name: RangeEnemyAttackState
   m_EditorClassIdentifier: 
-  stateName: Attack
+  stateName: ATTACK
   className: BBS.Enemies.RangeEnemyAttackState
   stateParam: {fileID: 11400000, guid: 9a6161124ed04ac4496fad9ae6b789a6, type: 2}

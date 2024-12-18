@@ -1,8 +1,6 @@
 using BBS.Animators;
-using BBS.Enemies;
 using BBS.Entities;
 using BBS.FSM;
-using UnityEngine;
 
 namespace BBS.Enemies
 {
@@ -18,13 +16,18 @@ namespace BBS.Enemies
 
         public override void Enter()
         {
-            Test.Instance.OnChangeTurn += HandleChangeTurn;
+            TurnManager.Instance.StartEnemyTurnEvent += HandleChangeTurn;
         }
 
         private void HandleChangeTurn()
         {
+            if (enemy.IsStun)
+            {
+                enemy.SetStun(false);
+                return;
+            }
+
             currentTurn++;
-            Debug.Log(currentTurn);
             CheckChangeState();
         }
 
@@ -32,19 +35,14 @@ namespace BBS.Enemies
         {
             if (currentTurn >= enemy.data.actionTurn)
             {
-                NormalEnemy normalEnemy = enemy as NormalEnemy;
-
                 currentTurn = 0;
-                if (normalEnemy.CanAttack())
-                    enemy.ChangeState("ATTACK");
-                else
-                    enemy.ChangeState("MOVE");
+                enemy.ChangeState("ATTACK");
             }
         }
 
         public override void Exit()
         {
-            Test.Instance.OnChangeTurn -= HandleChangeTurn;
+            TurnManager.Instance.StartEnemyTurnEvent -= HandleChangeTurn;
         }
     }
 }

@@ -1,19 +1,28 @@
+using BBS.Animators;
+using BBS.Entities;
+using BBS.FSM;
 using UnityEngine;
 
-namespace BBS
+namespace BBS.Enemies
 {
-    public class RangeEnemyAttackState : MonoBehaviour
+    public class RangeEnemyAttackState : EntityState
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        private RangeEnemy enemy;
+
+        public RangeEnemyAttackState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
-        
+            enemy = entity as RangeEnemy;
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void Enter()
         {
-        
+            base.Enter();
+
+            Vector3[] spawnDirs = { Vector3.right, Vector3.left, Vector3.forward, -Vector3.forward};
+            foreach (Vector3 dir in spawnDirs)
+                enemy.SpawnProjectile(dir);
+
+            enemy.ChangeState("IDLE");
         }
     }
 }

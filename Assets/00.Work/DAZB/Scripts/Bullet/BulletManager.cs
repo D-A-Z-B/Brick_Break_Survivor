@@ -23,13 +23,6 @@ namespace BBS.Bullets {
             }
         }
 
-        private void Update() {
-            // test
-            if (Keyboard.current.tKey.wasPressedThisFrame) {
-                LevelUp(BulletType.BFB, 1);
-            }
-        }
-
         private void OnDestroy() {
             for (int i = 0; i < PlayerBulletList.Count; ++i) {
                 PlayerBulletList[i].ShootAmount = 0;
