@@ -1,6 +1,8 @@
+using BBS;
 using BBS.Enemies;
 using BBS.Players;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
@@ -11,6 +13,7 @@ namespace KHJ.Core
         private MapManager mapManager => MapManager.Instance;
 
         public List<Enemy> enemyList { get; private set; } = new List<Enemy>();
+        private int currentEnemyCount = 0;
 
         [SerializeField] private Transform player;
         [SerializeField] private List<Enemy> enemyPrefab;
@@ -114,6 +117,16 @@ namespace KHJ.Core
         {
             return pos.x >= 0 && pos.x < mapManager.range &&
               pos.z >= 0 && pos.z < mapManager.range;
+        }
+
+        public void EnemyCount()
+        {
+            currentEnemyCount++;
+            if(currentEnemyCount >= enemyList.Count)
+            {
+                TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
+                currentEnemyCount = 0;
+            }
         }
     }
 }

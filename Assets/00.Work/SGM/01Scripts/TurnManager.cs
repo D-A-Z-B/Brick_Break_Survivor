@@ -1,60 +1,55 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace BBS
 {
+    public enum TurnType
+    {
+        PlayerTurn,
+        EnemeyTurn
+    }
+
     public class TurnManager : MonoSingleton<TurnManager>
     {
-        public Action StartPlayerTurnEvent;
-        public Action StartEnemyTurnEvent;
+        public Action EnemyTurnStart;
 
-        public Action FirstEliteBossEvent;
-        public Action SecondEliteBossEvent;
+        public Action EliteBossEvent;
         public Action LastBossEvent;
 
-        [SerializeField] private float enemyTurnChangeTime = 3f;
         [SerializeField] private int firstBossTurn = 20;
-        [SerializeField] private int secondBossTurn = 40;
-        [SerializeField] private int lastBossTurn = 60;
+        [SerializeField] private int lastBossTurn = 40;
+
+        private TurnType currentTurnType = TurnType.PlayerTurn;
 
         private int turnCount = 1;
         public int TurnCount => turnCount;
 
-        private void Start()
+        private bool isBossRound = false;
+
+        public void ChangeTurn(TurnType type)
         {
-            StartPlayerTurnEvent?.Invoke();
+            currentTurnType = type;
+
+            if (currentTurnType == TurnType.EnemeyTurn && !isBossRound)
+            {
+                turnCount++;
+                if (turnCount == firstBossTurn)
+                {
+                    EliteBossEvent?.Invoke();
+                }
+                else if (turnCount == lastBossTurn)
+                {
+                    LastBossEvent?.Invoke();
+                }
+                EnemyTurnStart?.Invoke();
+            }
+
+            Debug.Log(currentTurnType);
         }
 
-        public void EndPlayerTurn()
+        public void EndBossRound()
         {
-            StartEnemyTurnEvent?.Invoke();
-            StartCoroutine(ChangeTurnTimer());
-        }
-
-        private IEnumerator ChangeTurnTimer()
-        {
-            yield return new WaitForSeconds(enemyTurnChangeTime);
-            Debug.Log("enemy turn");
-            EndEnemyTurn();
-        }
-
-        private void EndEnemyTurn()
-        {
-            turnCount++;
-            if (turnCount == firstBossTurn)
-            {
-                FirstEliteBossEvent?.Invoke();
-            }
-            else if (turnCount == secondBossTurn)
-            {
-                SecondEliteBossEvent?.Invoke();
-            }
-            else if (turnCount == lastBossTurn)
-            {
-                LastBossEvent?.Invoke();
-            }
-            StartPlayerTurnEvent?.Invoke();
+            isBossRound = false;
         }
     }
 }

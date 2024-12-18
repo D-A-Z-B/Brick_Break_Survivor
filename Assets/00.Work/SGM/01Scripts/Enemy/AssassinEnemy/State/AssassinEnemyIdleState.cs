@@ -16,10 +16,10 @@ namespace BBS.Enemies
 
         public override void Enter()
         {
-            TurnManager.Instance.StartEnemyTurnEvent += HandleChangeTurn;
+            TurnManager.Instance.EnemyTurnStart += HandleStartEnemyTurn;
         }
 
-        private void HandleChangeTurn()
+        private void HandleStartEnemyTurn()
         {
             if (enemy.IsStun)
             {
@@ -45,7 +45,7 @@ namespace BBS.Enemies
 
         public override void Exit()
         {
-            TurnManager.Instance.StartEnemyTurnEvent -= HandleChangeTurn;
+            TurnManager.Instance.EnemyTurnStart -= HandleStartEnemyTurn;
         }
     }
 }
