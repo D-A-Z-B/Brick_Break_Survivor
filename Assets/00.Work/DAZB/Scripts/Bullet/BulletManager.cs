@@ -1,10 +1,11 @@
+using KHJ.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace BBS.Bullets {
-    public class BulletManager : MonoSingleton<BulletManager> {
+    public class BulletManager : MonoSingleton<BulletManager>{
         [field: SerializeField]  public List<BulletDataSO> PlayerBulletList {get; private set;}
         [field: SerializeField]  public List<PoolTypeSO> PlayerBulletPoolTypeList {get; private set;}
 
