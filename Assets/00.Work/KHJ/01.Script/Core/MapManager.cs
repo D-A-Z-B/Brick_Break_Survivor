@@ -28,7 +28,7 @@ namespace KHJ.Core
 
         [Header("EliteAndBossSet")]
         [SerializeField] private int bossRange;
-        
+
         private EntityType[,] mapBoardArr;
         private Enemy[,] enemyBoardArr;
 
@@ -48,7 +48,8 @@ namespace KHJ.Core
 
         private void SpawnMap()
         {
-            print(range);
+            mapBoardArr[range / 2, range / 2] = EntityType.Player;
+
             for (int i = 0; i < range; i++)
             {
                 for (int j = 0; j < range; j++)
