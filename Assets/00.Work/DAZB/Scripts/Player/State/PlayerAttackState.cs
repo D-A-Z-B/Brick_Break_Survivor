@@ -33,33 +33,11 @@ namespace BBS.Players {
                 }
                 if (temp == null) continue;
                 for (int k = 0; k < temp.ShootAmount; ++k) {
-                    Bullet bullet = null;
-                    switch ((BulletType)i) {
-                        case BulletType.BOWLINGBULLET: {
-                            bullet = player.PoolManager.Pop(BulletManager.Instance.GetPoolType(BulletType.BOWLINGBULLET)) as BowlingBullet;
-                            break;
-                        }
-                        case BulletType.BOUNCYB: {
-                            bullet = player.PoolManager.Pop(BulletManager.Instance.GetPoolType(BulletType.BOUNCYB)) as BouncyBullet;
-                            break;
-                        }
-                        case BulletType.BFB: {
-                            bullet = player.PoolManager.Pop(BulletManager.Instance.GetPoolType(BulletType.BFB)) as BFBullet;
-                            break;
-                        }
-                        case BulletType.THUNDERB: {
-                            bullet = player.PoolManager.Pop(BulletManager.Instance.GetPoolType(BulletType.THUNDERB)) as ThunderBullet;
-                            break;
-                        }
-                        case BulletType.TPB: {
-                            bullet = player.PoolManager.Pop(BulletManager.Instance.GetPoolType(BulletType.TPB)) as TPBullet;
-                            player.SetTPBullet(bullet as TPBullet);
-                            break;
-                        }
+                    Bullet bullet = player.PoolManager.Pop(BulletManager.Instance.GetPoolType((BulletType)i)) as Bullet;
+                    if ((BulletType)i == BulletType.TPB) {
+                        player.SetTPBullet(bullet as TPBullet);
                     }
-
                     Vector3 dir = (player.GetArrow().GetLineEndPoint().position - player.transform.position).normalized;
-                    Debug.Log(temp);
                     bullet.Setup(player.transform.position, dir);
                     yield return new WaitForSeconds(0.1f);
                 }

@@ -19,7 +19,7 @@ MonoBehaviour:
   defaultDamage: 20
   currentScale: 0.3
   defaultScale: 0.3
-  currentSpeed: 0
+  currentSpeed: 10
   defaultSpeed: 10
   currentLevel: 0
   ShootAmount: 0
@@ -30,4 +30,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 226c6f3f7c3ad284db555f83ff6cbed4, type: 2}
   - {fileID: 11400000, guid: 3d19f0c36127d77458eab4ef8f8554bb, type: 2}
   - {fileID: 11400000, guid: 952af3ca8bb01f44b814918f4ad2abe5, type: 2}
-  type: 2
+  type: 3

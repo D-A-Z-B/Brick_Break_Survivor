@@ -1,3 +1,4 @@
+using BBS.Core;
 using BBS.Players;
 using KHJ.Core;
 using UnityEngine;
@@ -18,11 +19,8 @@ namespace BBS.Bullets {
             }
 
 			if (startTime + 2 < Time.time) {
+                if (GameManager.Instance.IsFever == true) return;
                 Player player = PlayerManager.Instance.Player;
-                player.transform.position = player.GetTPBullet().GetTPPoint() + Vector3.up;
-                MapManager.Instance.SetPos(new (player.GetTPBullet().GetTPPoint().x, player.GetTPBullet().GetTPPoint().y), EntityType.Player);
-                player.cineCamCompo.Follow = player.transform;
-                player.SetTPBullet(null);
                 player.ChangeState("IDLE");
 
 				myPool.Push(this);

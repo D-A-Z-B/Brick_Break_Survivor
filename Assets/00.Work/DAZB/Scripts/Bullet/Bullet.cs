@@ -1,3 +1,4 @@
+using BBS.Core;
 using BBS.Enemies;
 using UnityEngine;
 
@@ -25,14 +26,22 @@ namespace BBS.Bullets {
     		this.direction	= direction;
 			transform.position = position;
 			startTime = Time.time;
-	    }   
+	    }
+
+		private void OnEnable() {
+			GameManager.Instance.AddBullet(this);
+		}
+
+		private void OnDisable() {
+			GameManager.Instance.RemoveBullet(this);
+		}
 
 	    protected virtual void Update() {
-    		transform.position += direction * dataSO.currentSpeed * Time.deltaTime;   
-			
+    		transform.position += direction * dataSO.currentSpeed * Time.deltaTime;
 	    }   
 
 	    protected virtual void OnCollisionEnter(Collision collision) {
+			GameManager.Instance.IncreaseHitCount();
 			if (TryGetComponent<Enemy>(out Enemy enemy)) {
 				enemy.GetCompo<EnemyHealth>().ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
 			}
@@ -48,6 +57,7 @@ namespace BBS.Bullets {
 
         public virtual void ResetItem()
         {
+			dataSO.currentSpeed = dataSO.defaultSpeed;
 			isCollision = false;
 			transform.localScale = new Vector3(dataSO.currentScale, dataSO.currentScale, dataSO.currentScale);
         }

@@ -1,3 +1,4 @@
+using BBS.Core;
 using UnityEngine;
 
 namespace BBS.Bullets {
@@ -7,6 +8,9 @@ namespace BBS.Bullets {
 
         protected override void Update() {
             base.Update();
+
+            if (GameManager.Instance.IsFever == true) return;
+
             if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
 				myPool.Push(this);
 			}

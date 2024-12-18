@@ -41,10 +41,6 @@ namespace BBS.Players {
         }
 
         private void Update() {
-            // test
-            if (Keyboard.current.tKey.wasPressedThisFrame) {
-                GetCompo<Health>(true).ApplyDamage(new ActionData(1));
-            }
 
             stateMachine.UpdateFSM();
         }

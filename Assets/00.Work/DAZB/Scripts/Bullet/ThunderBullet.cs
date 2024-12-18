@@ -1,3 +1,5 @@
+using BBS.Combat;
+using BBS.Core;
 using BBS.Enemies;
 using KHJ.Core;
 using UnityEngine;
@@ -9,6 +11,9 @@ namespace BBS.Bullets {
 
         protected override void Update() {
             base.Update();
+
+            if (GameManager.Instance.IsFever == true) return;
+
             if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
 				myPool.Push(this);
 			}
@@ -40,7 +45,7 @@ namespace BBS.Bullets {
                 int ny = (int)(posY + dy[i]);
 
                 Enemy enemy = MapManager.Instance.GetEnemyInArr(nx, ny);
-                enemy.GetCompo<EnemyHealth>().ApplyDamage(new Combat.ActionData((int)(dataSO.currentDamage * ((float)1/2))));
+                enemy?.GetCompo<Health>(true).ApplyDamage(new ActionData((int)(dataSO.currentDamage * ((float)1/2))));
             }
         }
     }

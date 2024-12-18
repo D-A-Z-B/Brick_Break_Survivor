@@ -1,4 +1,5 @@
 using BBS.Animators;
+using BBS.Core;
 using BBS.Entities;
 using BBS.FSM;
 using KHJ.Core;
@@ -24,14 +25,17 @@ namespace BBS.Players {
         public override void Exit()
         {
             player.PlayerInput.tpEvent -= HandleTPEvent;
+            player.transform.position = player.GetTPBullet().GetTPPoint() + Vector3.up;
+            player.cineCamCompo.Follow = player.transform;
+            MapManager.Instance.SetPos(new (player.GetTPBullet().GetTPPoint().x, player.GetTPBullet().GetTPPoint().z), EntityType.Player);
+            TurnManager.Instance.ChangeTurn(TurnType.EnemyTurn);
+
             base.Exit();
         }
 
         private void HandleTPEvent() {
-            player.transform.position = player.GetTPBullet().GetTPPoint() + Vector3.up;
-            MapManager.Instance.SetPos(new (player.GetTPBullet().GetTPPoint().x, player.GetTPBullet().GetTPPoint().y), EntityType.Player);
-            player.cineCamCompo.Follow = player.transform;
-            player.SetTPBullet(null);
+            if (GameManager.Instance.IsFever == true) return;
+
             player.ChangeState("IDLE");
         }
     }

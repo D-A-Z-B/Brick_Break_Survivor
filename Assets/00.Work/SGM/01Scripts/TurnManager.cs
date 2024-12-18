@@ -6,7 +6,7 @@ namespace BBS
     public enum TurnType
     {
         PlayerTurn,
-        EnemeyTurn
+        EnemyTurn
     }
 
     public class TurnManager : MonoSingleton<TurnManager>
@@ -19,7 +19,7 @@ namespace BBS
         [SerializeField] private int firstBossTurn = 20;
         [SerializeField] private int lastBossTurn = 40;
 
-        private TurnType currentTurnType = TurnType.PlayerTurn;
+        public TurnType currentTurnType = TurnType.PlayerTurn;
 
         private int turnCount = 1;
         public int TurnCount => turnCount;
@@ -31,7 +31,7 @@ namespace BBS
             currentTurnType = type;
             Debug.Log(currentTurnType);
 
-            if (currentTurnType == TurnType.EnemeyTurn && !isBossRound)
+            if (currentTurnType == TurnType.EnemyTurn && !isBossRound)
             {
                 turnCount++;
                 if (turnCount == firstBossTurn)
