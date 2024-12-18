@@ -34,10 +34,12 @@ namespace BBS
                 turnCount++;
                 if (turnCount == firstBossTurn)
                 {
+                    isBossRound = true;
                     EliteBossEvent?.Invoke();
                 }
                 else if (turnCount == lastBossTurn)
                 {
+                    isBossRound = true;
                     LastBossEvent?.Invoke();
                 }
 
