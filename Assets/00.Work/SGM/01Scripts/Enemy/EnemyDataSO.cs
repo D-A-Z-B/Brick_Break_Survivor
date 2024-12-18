@@ -13,9 +13,9 @@ namespace BBS
     public class EnemyDataSO : ScriptableObject
     {
         public EnemyType type;
-        public int moveTurn; //몇 턴마다
+        public int actionTurn; //몇 턴마다
         public int moveDistance; //얼마나 움직이냐
-        public float damage;
+        public int damage;
         public int attakRange;
     }
 }

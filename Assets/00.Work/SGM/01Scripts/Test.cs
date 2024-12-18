@@ -1,19 +1,30 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace BBS
 {
-    public class Test : MonoBehaviour
+    public class Test : MonoSingleton<Test>
     {
         public List<Transform> spawnList;
 
-        private void Start()
+        public Action OnChangeTurn;
+
+        //private void Start()
+        //{
+        //    spawnList.ForEach((trm) =>
+        //    {
+        //        LevelManager.Instance.CreateExp(trm.position);
+        //    });
+        //}
+
+        private void Update()
         {
-            spawnList.ForEach((trm) =>
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                LevelManager.Instance.CreateExp(trm.position);
-            });
+                OnChangeTurn?.Invoke();
+            }
         }
     }
 }

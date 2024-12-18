@@ -2,13 +2,19 @@ using BBS.Entities;
 using BBS.FSM;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 namespace BBS.Enemies
 {
     public class Enemy : Entity
     {
+        //test
+        public Transform playerTrm;
+
         public List<StateSO> states;
         public EnemyDataSO data;
+
+        public LayerMask whatIsPlayer; 
 
         protected StateMachine stateMachine;
 
