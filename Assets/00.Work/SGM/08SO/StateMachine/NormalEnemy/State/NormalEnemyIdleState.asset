@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: NormalEnemyIdleState
   m_EditorClassIdentifier: 
   stateName: IDLE
-  className: 
-  stateParam: {fileID: 0}
+  className: BBS.Enemies.NormalEnemyIdleState
+  stateParam: {fileID: 11400000, guid: af010110aa2169c4db629c0f41bb246a, type: 2}

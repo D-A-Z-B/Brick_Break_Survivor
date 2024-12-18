@@ -1,10 +1,9 @@
 using BBS.Animators;
-using BBS.Enemies;
 using BBS.Entities;
 using BBS.FSM;
 using UnityEngine;
 
-namespace KHJ.NormalEnemy
+namespace BBS.Enemies
 {
     public class NormalEnemyIdleState : EntityState
     {
@@ -23,7 +22,7 @@ namespace KHJ.NormalEnemy
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                enemy.transform.position += Vector3.up;
+                enemy.transform.position += Vector3.forward;
             }
         }
 
