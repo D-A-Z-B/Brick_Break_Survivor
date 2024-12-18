@@ -1,3 +1,4 @@
+using BBS.Combat;
 using BBS.Entities;
 using BBS.FSM;
 using KHJ.Core;
@@ -18,6 +19,8 @@ namespace BBS.Enemies
 
         private bool isStun = false;
         public bool IsStun => isStun;
+
+        public bool IsCantMove = false;
 
         protected override void AfterInitialize()
         {
@@ -66,12 +69,14 @@ namespace BBS.Enemies
             isStun = value;
         }
 
-        public void Move()
+        public void Move(bool isElite = false)
         {
+            if (IsCantMove) return;
+
             if (NeedRotate())
                 transform.forward = curDir;
 
-            mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy);
+            mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy, isElite);
         }
 
         public bool NeedRotate()
