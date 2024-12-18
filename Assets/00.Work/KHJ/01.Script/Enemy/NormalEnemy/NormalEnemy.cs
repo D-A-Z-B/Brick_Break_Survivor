@@ -5,11 +5,15 @@ using UnityEngine;
 
 namespace KHJ.NormalEnemy
 {
-    public class NormalEnemy : Entity
+    public class NormalEnemy : Entity, IPoolable
     {
         public List<StateSO> states;
 
         private StateMachine stateMachine;
+
+        public PoolTypeSO PoolType { get; set; }
+
+        public GameObject GameObject => gameObject;
 
         protected override void AfterInitialize()
         {
@@ -31,6 +35,14 @@ namespace KHJ.NormalEnemy
         public void ChangeState(string newStateName)
         {
             stateMachine.ChangeState(newStateName);
+        }
+
+        public void SetUpPool(Pool pool)
+        {
+        }
+
+        public void ResetItem()
+        {
         }
     }
 }
