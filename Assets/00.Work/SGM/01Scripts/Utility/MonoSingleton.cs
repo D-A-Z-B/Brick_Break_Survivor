@@ -2,59 +2,38 @@ using UnityEngine;
 
 namespace BBS
 {
-    public class MonoSingleton<T> : MonoBehaviour where T : Component
+    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T _instance;
-
+        private static T _instance = null;
+        private static bool IsDestroyed = false;
+    
         public static T Instance
         {
             get
             {
+                if (IsDestroyed == true)
+                {
+                    _instance = null;
+                }
                 if (_instance == null)
                 {
-                    _instance = (T)FindObjectOfType(typeof(T));
+                    _instance = FindObjectOfType(typeof(T)) as T;
                     if (_instance == null)
                     {
-                        SetupInstnace();
+                        Debug.LogError(typeof(T).Name + " could not be found");
+                    }
+                    else
+                    {
+                        IsDestroyed = false;
                     }
                 }
                 return _instance;
             }
         }
-
-        protected virtual void Awake()
+    
+        private void OnDestroy()
         {
-            RemoveDuplicates();
-        }
-
-        private void OnDisable()
-        {
-            _instance = null;
-        }
-
-        private static void SetupInstnace()
-        {
-            _instance = (T)FindObjectOfType(typeof(T));
-            if (_instance == null)
-            {
-                GameObject obj = new GameObject();
-                obj.name = typeof(T).Name;
-                _instance = obj.AddComponent<T>();
-                DontDestroyOnLoad(obj);
-            }
-        }
-
-        private void RemoveDuplicates()
-        {
-            if (_instance == null)
-            {
-                _instance = this as T;
-                DontDestroyOnLoad(this.gameObject);
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+            IsDestroyed = true;
         }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace BBS.Bullets {
-    public class NormalBullet : Bullet {
+    public class BFBullet : Bullet {
 		[SerializeField] protected float destroyTime;
         protected bool isCollision = false;
         protected float lastCollisionTime;
