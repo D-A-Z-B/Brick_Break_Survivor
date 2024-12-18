@@ -14,12 +14,8 @@ namespace BBS.Players {
     public class Player : Entity {
         [field: SerializeField] public PlayerInputSO PlayerInput {get; private set;}
         [SerializeField] private Arrow playerArrow;
-        [field: SerializeField] public PoolTypeSO bulletType;
-        [field: SerializeField] public PoolTypeSO TPBulletType;
         [field: SerializeField] public CinemachineVirtualCameraBase cineCamCompo {get; private set;}
         [field: SerializeField] public PoolManagerSO PoolManager {get; private set;}
-        [field: SerializeField] public int ShootAmount {get; private set;}
-        [field: SerializeField] public float ShootDelayTime {get; private set;}
 
         private TPBullet tPBullet;
 

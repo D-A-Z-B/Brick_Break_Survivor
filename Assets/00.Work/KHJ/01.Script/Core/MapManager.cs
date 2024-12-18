@@ -83,5 +83,9 @@ namespace KHJ.Core
             return pos.x >= 0 && pos.x < 40 &&
               pos.y >= 0 && pos.y < 40;
         }
+
+        public Enemy GetEnemyInArr(int x, int y) {
+            return enemyBoardArr[x, y];
+        }
     }
 }
