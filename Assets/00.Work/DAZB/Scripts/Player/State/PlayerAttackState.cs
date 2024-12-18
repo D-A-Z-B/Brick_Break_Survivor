@@ -20,9 +20,9 @@ namespace BBS.Players {
         }
 
         private IEnumerator AttackRoutine() {
-            for (int i = 0; i < player.shootAmount; ++i) {
-
-                yield return new WaitForSeconds(player.shootDelayTime);
+            for (int i = 0; i < player.ShootAmount; ++i) {
+                
+                yield return new WaitForSeconds(player.ShootDelayTime);
             }
             player.ChangeState("IDLE");
         }
