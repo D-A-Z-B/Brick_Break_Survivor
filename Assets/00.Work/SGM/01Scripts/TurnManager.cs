@@ -35,6 +35,7 @@ namespace BBS
         private IEnumerator ChangeTurnTimer()
         {
             yield return new WaitForSeconds(enemyTurnChangeTime);
+            Debug.Log("enemy turn");
             EndEnemyTurn();
         }
 

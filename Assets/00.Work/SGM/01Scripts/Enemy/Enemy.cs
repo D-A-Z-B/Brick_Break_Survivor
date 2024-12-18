@@ -13,7 +13,7 @@ namespace BBS.Enemies
 
         private StateMachine stateMachine;
 
-        private LayerMask whatIsPlayer;
+        [SerializeField] private LayerMask whatIsPlayer;
         private Vector3 curDir;
 
         private bool isStun = false;
@@ -89,9 +89,10 @@ namespace BBS.Enemies
 
         public bool CanAttack()
         {
-            Collider[] verticalColliders = Physics.OverlapBox(transform.position, new Vector3(1, 1, 3) * 0.5f, transform.rotation, whatIsPlayer);
-            Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(3, 1, 1) * 0.5f, transform.rotation, whatIsPlayer);
+            Collider[] verticalColliders = Physics.OverlapBox(transform.position, new Vector3(1, 1, 3) * 0.4f, transform.rotation, whatIsPlayer);
+            Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(3, 1, 1) * 0.4f, transform.rotation, whatIsPlayer);
 
+            Debug.Log($"ver: {verticalColliders.Length}, hor: {horizontalColliders.Length}");
             return verticalColliders.Length > 0 || horizontalColliders.Length > 0;
         }
     }

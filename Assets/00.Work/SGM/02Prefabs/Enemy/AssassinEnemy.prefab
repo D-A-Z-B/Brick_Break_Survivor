@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5865621703747213301}
   - component: {fileID: 5642145264215970260}
   - component: {fileID: 1423551586906424850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AssassinEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

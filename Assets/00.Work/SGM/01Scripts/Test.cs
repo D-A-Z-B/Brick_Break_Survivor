@@ -24,7 +24,7 @@ namespace BBS
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
-                OnChangeTurn?.Invoke();
+                TurnManager.Instance.EndPlayerTurn();
             }
         }
     }

@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 9172364465832950991}
   - component: {fileID: 5105973289207460784}
   - component: {fileID: 5652908620984463989}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RangeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,6 +240,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da79c0da70c3ad544ac3c716d99e96b4, type: 2}
   - {fileID: 11400000, guid: c9882bcb538c22a49a26cee4759d83d5, type: 2}
   data: {fileID: 11400000, guid: 994f80ad2b0e57d41af6cbe39ab6928b, type: 2}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  projectilePrefab: {fileID: 2720967370053624649, guid: 7febde94dab5f054fb9fd9820f6973ea, type: 3}
 --- !u!1 &8943380249649462225
 GameObject:
   m_ObjectHideFlags: 0

@@ -342,7 +342,7 @@ MonoBehaviour:
   - {fileID: 5302798148251818856, guid: 9ddf824a5606bec479bf27b764d3c3a4, type: 3}
   spawnRadiusMin: 6
   spawnRadiusMax: 60
-  spawnCount: 20
+  spawnCount: 1
   bossSpawnRadiusMin: 1
   bossSpawnRadiusMax: 40
 --- !u!1 &376224810
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 916343801}
   m_Layer: 6
   m_Name: Visual
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4774e0710119b4ea7af8830b7bf6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTurnChangeTime: 3
+  enemyTurnChangeTime: 0
   firstBossTurn: 20
   secondBossTurn: 40
   lastBossTurn: 60
@@ -1709,7 +1709,7 @@ GameObject:
   - component: {fileID: 1635618135}
   m_Layer: 6
   m_Name: Test_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1758,7 +1758,7 @@ Transform:
   m_GameObject: {fileID: 1635618134}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.39, y: 1, z: 4.06}
+  m_LocalPosition: {x: 11, y: 1, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
