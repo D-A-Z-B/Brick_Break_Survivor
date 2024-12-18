@@ -1,3 +1,4 @@
+using BBS.Combat;
 using BBS.Core;
 using BBS.Enemies;
 using UnityEngine;
@@ -46,11 +47,12 @@ namespace BBS.Bullets {
 
 	    protected virtual void OnCollisionEnter(Collision collision) {
 			if (((1 << collision.gameObject.layer) & LayerMask.GetMask("Enemy")) != 0) {
-			    GameManager.Instance.IncreaseHitCount();
-			}
+				Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
-			if (TryGetComponent<Enemy>(out Enemy enemy)) {
-				enemy.GetCompo<EnemyHealth>().ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
+				Debug.Log(enemy.GetCompo<Health>(true).CurrentHealth);
+				enemy.GetCompo<Health>(true).ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
+
+			    GameManager.Instance.IncreaseHitCount();
 			}
 			isCollision = true;
 			lastCollisionTime = Time.time;
