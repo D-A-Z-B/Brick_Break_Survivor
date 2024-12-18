@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca322df2e1817e4aaa92f7a19f6076c, type: 3}
-  m_Name: Bullet
+  m_Script: {fileID: 11500000, guid: 64639306c8171c149988a1e588374352, type: 3}
+  m_Name: IBD_50%
   m_EditorClassIdentifier: 
-  typeName: Bullet
+  increaseDamage: 50
+  isPercent: 1

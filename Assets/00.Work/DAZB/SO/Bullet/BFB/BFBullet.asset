@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2c71e5acabba34db8622b8eba6cc7f, type: 3}
+  m_Name: BFBullet
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  displayName: "\uB300\uAC00\uC871"
+  description: 
+  currentDamage: 0
+  defaultDamage: 10
+  currentScale: 0
+  defaultScale: 0.3
+  currentLevel: 0
+  ShootAmount: 0
+  levelDataList:
+  - {fileID: 11400000, guid: 272196cced265d24f858a69f64c5876a, type: 2}
+  - {fileID: 11400000, guid: 6926a5ed69ced424988573d6a64b5204, type: 2}
+  - {fileID: 11400000, guid: 5c0961c34c469324f9fb3cd5d56912d4, type: 2}
+  - {fileID: 11400000, guid: e23fed59d142d1c4b8a93e2609e1812c, type: 2}
+  - {fileID: 11400000, guid: f3e0ae6d793aeb344bdf4c11d433a879, type: 2}
+  - {fileID: 11400000, guid: b3b396f9df1e605459fb0225e5343996, type: 2}
+  type: 0
