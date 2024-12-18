@@ -18,6 +18,8 @@ namespace BBS.Bullets {
         protected float lastCollisionTime;
         protected float startTime;
 
+		private bool isForcePush;
+
 		protected virtual void Awake() {
 			
 		}
@@ -29,10 +31,12 @@ namespace BBS.Bullets {
 	    }
 
 		private void OnEnable() {
+			isForcePush = false;
 			GameManager.Instance.AddBullet(this);
 		}
 
 		private void OnDisable() {
+			if (isForcePush) return;
 			GameManager.Instance.RemoveBullet(this);
 		}
 
@@ -41,7 +45,10 @@ namespace BBS.Bullets {
 	    }   
 
 	    protected virtual void OnCollisionEnter(Collision collision) {
-			GameManager.Instance.IncreaseHitCount();
+			if (((1 << collision.gameObject.layer) & LayerMask.GetMask("Enemy")) != 0) {
+			    GameManager.Instance.IncreaseHitCount();
+			}
+
 			if (TryGetComponent<Enemy>(out Enemy enemy)) {
 				enemy.GetCompo<EnemyHealth>().ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
 			}
@@ -54,6 +61,11 @@ namespace BBS.Bullets {
         {
 			myPool = pool;
         }
+
+		public void ForcePush() {
+			isForcePush = true;
+			myPool.Push(this);
+		}
 
         public virtual void ResetItem()
         {

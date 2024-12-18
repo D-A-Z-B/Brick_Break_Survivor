@@ -40,13 +40,21 @@ namespace BBS.Bullets {
 
             float[] dx = { 0, 0, -1, 1, -1, -1, 1, 1 };
             float[] dy = { 1, -1, 0, 0, 1, -1, 1, -1 };
+
             for (int i = 0; i < 8; ++i) {
                 int nx = (int)(posX + dx[i]);
                 int ny = (int)(posY + dy[i]);
 
-                Enemy enemy = MapManager.Instance.GetEnemyInArr(nx, ny);
-                enemy?.GetCompo<Health>(true).ApplyDamage(new ActionData((int)(dataSO.currentDamage * ((float)1/2))));
+                if (IsWithinRange(nx, ny)) {
+                    Enemy enemy = MapManager.Instance.GetEnemyInArr(nx, ny);
+                    enemy?.GetCompo<Health>(true).ApplyDamage(new ActionData((int)(dataSO.currentDamage * 0.5f)));
+                }
             }
         }
+        private bool IsWithinRange(int x, int y) {
+            int range = MapManager.Instance.range;
+            return x >= 0 && x < range && y >= 0 && y < range;
+        }
+
     }
 }

@@ -27,12 +27,17 @@ namespace BBS.Core {
             if (isFever) {
                 if (feverStartTime + feverDuration < Time.time) {
                     currentHitCount = 0;
+
+                    foreach(Bullet iter in spawnedBullet) {
+                        iter.ForcePush();
+                    }
+                    spawnedBullet.Clear();
                     isFever = false;
                     Debug.Log("Fever End");
                     return;
                 }
 
-                if (currentHitCount % 100 == 0 && !isCloning) {
+                if (currentHitCount % startFeverHitCount == 0 && !isCloning) {
                     StartCoroutine(CloneBullets());
                     isCloning = true;
                 }
