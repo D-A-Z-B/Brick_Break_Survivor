@@ -17,10 +17,10 @@ MonoBehaviour:
   description: 
   currentDamage: 0
   defaultDamage: 0
-  currentScale: 0
+  currentScale: 0.3
   defaultScale: 0.3
   currentLevel: 0
   ShootAmount: 0
   levelDataList:
   - {fileID: 11400000, guid: 2531f473d78bca84a86e4f729805aac8, type: 2}
-  type: 2
+  type: 3

@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 namespace BBS.Bullets {
     public class BulletManager : MonoSingleton<BulletManager> {
         [field: SerializeField]  public List<BulletDataSO> PlayerBulletList {get; private set;}
+        [field: SerializeField]  public List<PoolTypeSO> PlayerBulletPoolTypeList {get; private set;}
+
 /*         [SerializeField] private PoolManagerSO poolManager;
         [SerializeField] private List<PoolTypeSO> poolTypeList;  */
 
@@ -34,6 +36,10 @@ namespace BBS.Bullets {
                 PlayerBulletList[i].currentDamage = 0;
                 PlayerBulletList[i].currentLevel = 0;
             }
+        }
+
+        public PoolTypeSO GetPoolType(BulletType type) {
+            return PlayerBulletPoolTypeList[(int)type];
         }
 
         public void LevelUp(BulletType type, int amount) {
