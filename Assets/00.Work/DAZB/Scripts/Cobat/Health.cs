@@ -13,8 +13,6 @@ namespace BBS.Combat
         public event Action OnDead;
         public event Action OnHit;
 
-        protected Player player;
-
         public virtual int CurrentHealth
         {
             get => currentHealth;
@@ -35,10 +33,7 @@ namespace BBS.Combat
 
         public int MaxHealth => maxHealth;
 
-        public void Initialize(Entity entity)
-        {
-            player = entity as Player;
-        }
+        public abstract void Initialize(Entity entity);
 
         private void Start()
         {
@@ -48,13 +43,12 @@ namespace BBS.Combat
         public virtual void ApplyDamage(ActionData data)
         {
             currentHealth -= data.damage;
-            Debug.Log("appply damage");
+            Debug.Log("apply damage");
 
             OnHit?.Invoke();
 
-            if (currentHealth <= 0 && player.IsDead == false)
+            if (currentHealth <= 0)
             {
-                Debug.Log("주금");
                 OnDead?.Invoke();
             }
         }

@@ -4,6 +4,7 @@ using DG.Tweening;
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
+using StateMachine = BBS.FSM.StateMachine;
 
 namespace BBS.Enemies
 {
@@ -88,17 +89,20 @@ namespace BBS.Enemies
             mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy, isElite);
         }
 
-        public void Jump()
+        public void DoMoveEnemy(Coord moveCoord, float speed, bool isJump = false)
         {
-            if (IsCantMove) return;
-
-            if (NeedRotate())
-                transform.forward = curDir;
-
-            transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear)
-                .OnComplete(() => EnemySpawnManager.Instance.EnemyCount());
-
-            mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy);
+            if (!isJump)
+            {
+                transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), speed).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    EnemySpawnManager.Instance.EnemyCount();
+                });
+            }
+            else
+            {
+                transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear)
+             .OnComplete(() => EnemySpawnManager.Instance.EnemyCount());
+            }
         }
 
         public bool NeedRotate()
