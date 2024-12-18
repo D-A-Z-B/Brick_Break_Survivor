@@ -31,6 +31,14 @@ namespace BBS.Enemies
 
             curDir = EnemyToPlayerDir();
             transform.forward = curDir;
+
+            GetCompo<EnemyHealth>().OnDead += HandleOnDead;
+        }
+
+        private void HandleOnDead()
+        {
+            mapManager.DestroyEntity(new Coord(transform.position));
+            Destroy(gameObject);
         }
 
         private Vector3 EnemyToPlayerDir()
@@ -89,6 +97,8 @@ namespace BBS.Enemies
 
             transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear)
                 .OnComplete(() => EnemySpawnManager.Instance.EnemyCount());
+
+            mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy);
         }
 
         public bool NeedRotate()
@@ -110,6 +120,11 @@ namespace BBS.Enemies
             Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(data.attakRange * 2 + 1, 1, 0.9f) * 0.5f, transform.rotation, whatIsPlayer);
 
             return verticalColliders.Length > 0 || horizontalColliders.Length > 0;
+        }
+
+        private void OnDestroy()
+        {
+            GetCompo<EnemyHealth>().OnDead -= HandleOnDead;
         }
     }
 }
