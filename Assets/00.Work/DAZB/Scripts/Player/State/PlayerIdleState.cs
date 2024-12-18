@@ -26,6 +26,8 @@ namespace BBS.Players {
         }
 
          private void HandleAttackDragEvent() {
+            /* 턴 시스템 만들어지면 내 턴일때만 공격할 수 있게 수정할 거임 */
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Player"))) {

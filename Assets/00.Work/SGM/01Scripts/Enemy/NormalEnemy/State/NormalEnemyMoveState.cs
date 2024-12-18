@@ -19,7 +19,7 @@ namespace BBS.Enemies
         {
             base.Enter();
 
-            Vector3 dir = (enemy.player.transform.position - enemy.transform.position).normalized;
+            Vector3 dir = (PlayerManager.Instance.Player.transform.position - enemy.transform.position).normalized;
             if (Mathf.Abs(dir.x) > Mathf.Abs(dir.z))
             {
                 dir.x = Mathf.Sign(dir.x);
@@ -31,9 +31,12 @@ namespace BBS.Enemies
                 dir.z = Mathf.Sign(dir.z);
             }
 
+            NormalEnemy normalEnemy = enemy as NormalEnemy;
+            if(normalEnemy.NeedRotate(dir))
+                normalEnemy.transform.forward = dir;
+
             enemy.mapManager.MoveEntity(new Coord(enemy.transform.position), new Coord(enemy.transform.position + (dir * enemy.data.moveDistance)), EntityType.Enemy);
 
-            NormalEnemy normalEnemy = enemy as NormalEnemy;
             if (normalEnemy.CanAttack())
                 enemy.ChangeState("ATTACK");
             else

@@ -1,16 +1,41 @@
-using BBS.Entities;
-using BBS.FSM;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace BBS.Enemies
 {
     public class NormalEnemy : Enemy
     {
-        protected override void Update()
+        private Vector3 curDir;
+        public Vector3 CurDir => curDir;
+
+        protected override void AfterInitialize()
         {
-            base.Update();
+            base.AfterInitialize();
+
+            Vector3 dir = (PlayerManager.Instance.Player.transform.position - transform.position).normalized;
+            if (Mathf.Abs(dir.x) > Mathf.Abs(dir.z))
+            {
+                dir.x = Mathf.Sign(dir.x);
+                dir.z = 0;
+            }
+            else
+            {
+                dir.x = 0;
+                dir.z = Mathf.Sign(dir.z);
+            }
+
+            curDir = dir;
+            transform.forward = curDir;
+        }
+
+        public bool NeedRotate(Vector3 dir)
+        {
+            if (curDir == dir)
+                return false;
+            else
+            {
+                curDir = dir;
+                return true;
+            }
         }
 
         public bool CanAttack()

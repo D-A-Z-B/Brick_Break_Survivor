@@ -1,7 +1,6 @@
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace BBS
 {
@@ -10,7 +9,7 @@ namespace BBS
         private List<Exp> expList;
 
         //test
-        [SerializeField] private Transform playerTrm; 
+        [SerializeField] private Transform playerTrm;
 
         [SerializeField] private LevelPanelUI levelPanel;
         [SerializeField] private Transform expPrefab;

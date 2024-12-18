@@ -149,5 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7b8ff4c52414541bd17b60d899e6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <dataSO>k__BackingField: {fileID: 11400000, guid: 1328cda378b39b8408ba01d64ed070da, type: 2}
+  <maxLevel>k__BackingField: 5
+  <currentLevel>k__BackingField: 0
   speed: 5
   destroyTime: 0.7

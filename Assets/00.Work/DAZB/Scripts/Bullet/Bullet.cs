@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace BBS.Bullets {
     public abstract class Bullet : MonoBehaviour, IPoolable {
+		[field: SerializeField] public BulletDataSO dataSO {get; private set;}
+		[field: SerializeField] public int maxLevel {get; private set;}
         [SerializeField] protected float speed = 5;
 	    protected Vector3 direction;
 
@@ -10,6 +12,10 @@ namespace BBS.Bullets {
         public GameObject GameObject => gameObject;
 
 		protected Pool myPool;
+
+		protected virtual void Awake() {
+			
+		}
 
         public virtual void Setup(Vector3 position, Vector3 direction) {
     		this.direction	= direction;
@@ -32,7 +38,7 @@ namespace BBS.Bullets {
 
         public virtual void ResetItem()
         {
-			
+			transform.localScale = new Vector3(dataSO.currentScale, dataSO.currentScale, dataSO.currentScale);
         }
     }
 }
