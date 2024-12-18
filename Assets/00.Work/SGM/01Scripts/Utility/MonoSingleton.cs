@@ -14,6 +14,7 @@ namespace BBS
                 {
                     _instance = (T)FindAnyObjectByType(typeof(T));
                     if (_instance == null)
+
                     {
                         SetupInstnace();
                     }
