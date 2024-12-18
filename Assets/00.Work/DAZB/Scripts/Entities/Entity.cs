@@ -1,3 +1,4 @@
+using KHJ.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ namespace BBS.Entities
 {
     public abstract class Entity : MonoBehaviour
     {
+        public MapManager mapManager => MapManager.Instance;
+
         protected Dictionary<Type, IEntityComponent> _components;
 
         protected virtual void Awake()

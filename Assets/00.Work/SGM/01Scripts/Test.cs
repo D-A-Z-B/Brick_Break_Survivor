@@ -1,16 +1,30 @@
+using KHJ.Core;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BBS
 {
-    public class Test : MonoBehaviour
+    public class Test : MonoSingleton<Test>
     {
+        public List<Transform> spawnList;
+
+        public Action OnChangeTurn;
+
+        //private void Start()
+        //{
+        //    spawnList.ForEach((trm) =>
+        //    {
+        //        LevelManager.Instance.CreateExp(trm.position);
+        //    });
+        //}
+
         private void Update()
         {
-            if(Input.GetMouseButton(0))
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                Vector3 mousePos = Input.mousePosition;
-                mousePos.z = Camera.main.farClipPlane;
-                LevelManager.Instance.CreateExp(Camera.main.ScreenToWorldPoint(mousePos));
+                OnChangeTurn?.Invoke();
             }
         }
     }

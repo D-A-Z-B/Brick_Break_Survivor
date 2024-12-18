@@ -22,6 +22,8 @@ namespace BBS
 
         private void Floating()
         {
+            if (isMove) return;
+
             transform.DOMoveY(initalY + 1f, 2f).SetEase(easeCurve)
             .OnComplete(() => transform.DOMoveY(initalY, 2f).SetEase(easeCurve)
             .OnComplete(() => Floating()));
@@ -35,13 +37,15 @@ namespace BBS
 
         public void MoveToPlayer(Transform playerTrm)
         {
+            transform.DOKill();
+
             dir = (playerTrm.position - transform.position).normalized;
             isMove = true;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.layer == whatIsPlayer)
+            if(other.CompareTag("Player"))
             {
                 LevelManager.Instance.AddExp(exp);
                 Destroy(gameObject);
