@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7194940080938964eae07254bc0cfa54
+guid: 440aeb17b70382c459e4f4688a64b25c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,8 +37,8 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,56 +95,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: pngwing.com (1)_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 990
-        height: 520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6cae9bb1355fa79488b0f9f07686d3aa
-      internalID: 1001011482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pngwing.com (1)_1
-      rect:
-        serializedVersion: 2
-        x: 990
-        y: 0
-        width: 990
-        height: 520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e25c486661ddfef4bbcf1b8eede87e18
-      internalID: 1029923809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -153,9 +109,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pngwing.com (1)_0: 1001011482
-      pngwing.com (1)_1: 1029923809
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
