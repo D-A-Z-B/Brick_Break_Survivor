@@ -148,5 +148,5 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  moveSpeed: 10
+  moveSpeed: 30
   exp: 1

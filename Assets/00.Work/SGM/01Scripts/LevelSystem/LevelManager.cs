@@ -51,6 +51,7 @@ namespace BBS
             {
                 exp.MoveToPlayer(playerTrm);
             });
+            expList.Clear();
         }
 
         public void AddExp(float exp)

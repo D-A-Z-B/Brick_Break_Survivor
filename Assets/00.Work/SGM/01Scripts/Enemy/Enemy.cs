@@ -3,13 +3,14 @@ using BBS.FSM;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KHJ.NormalEnemy
+namespace BBS.Enemies
 {
-    public class NormalEnemy : Entity
+    public class Enemy : Entity
     {
         public List<StateSO> states;
+        public EnemyDataSO data;
 
-        private StateMachine stateMachine;
+        protected StateMachine stateMachine;
 
         protected override void AfterInitialize()
         {
@@ -18,12 +19,12 @@ namespace KHJ.NormalEnemy
             stateMachine = new StateMachine(states, this);
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             stateMachine.Initialize("IDLE");
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             stateMachine.UpdateFSM();
         }
