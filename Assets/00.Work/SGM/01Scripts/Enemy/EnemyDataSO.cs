@@ -13,6 +13,7 @@ namespace BBS
     public class EnemyDataSO : ScriptableObject
     {
         public EnemyType type;
+        public int maxHealth;
         public int actionTurn; //몇 턴마다
         public int moveDistance; //얼마나 움직이냐
         public int damage;
