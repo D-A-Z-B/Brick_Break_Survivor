@@ -1,9 +1,6 @@
 using BBS.Enemies;
 using DG.Tweening;
 using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.TextCore.Text;
 using UnityEngine;
 
 namespace KHJ.Core
@@ -17,17 +14,20 @@ namespace KHJ.Core
 
     public class MapManager : MonoSingleton<MapManager>
     {
-        public event Action OnCompleteSpawnMapEvent;
+        public event Action OnSpawnEnemiesEvent;
 
-        [SerializeField] private GameObject groundMapObj;
+        [SerializeField] private GameObject groundMapObj, wallObj;
         [field: SerializeField] public int range { get; private set; }
         [SerializeField] private float interval;
         [SerializeField] private float renderMoveSpeed;
 
-        [field: SerializeField] public bool isEliteOrBoss { get; private set; } = false;
+        [field: SerializeField] public bool isEliteOrBoss { get; set; } = false;
 
         [Header("EliteAndBossSet")]
         [SerializeField] private int bossRange;
+
+        private int[] dirX = new int[] { 0, 0, 1, -1, 1, 1, -1, -1 };
+        private int[] dirY = new int[] { -1, 1, 0, 0, -1, 1, -1, 1 };
 
         private EntityType[,] mapBoardArr;
         private Enemy[,] enemyBoardArr;
@@ -48,7 +48,6 @@ namespace KHJ.Core
 
         private void SpawnMap()
         {
-            mapBoardArr[range / 2, range / 2] = EntityType.Player;
 
             for (int i = 0; i < range; i++)
             {
@@ -60,20 +59,61 @@ namespace KHJ.Core
                 }
             }
 
-            OnCompleteSpawnMapEvent?.Invoke();
+            SetWall();
+
+            if (!isEliteOrBoss)
+                mapBoardArr[(range - 1) / 1, (range - 1) / 2] = EntityType.Player;
+            else
+                mapBoardArr[(range - 1) / 1, (range - 1) / 2 - 6] = EntityType.Player;
+
+            OnSpawnEnemiesEvent?.Invoke();
+        }
+
+        private void SetWall()
+        {
+            int half = range / 2 + 1;
+            Vector3 centerPoint = new Vector3((range - 1) / 2, 1f, (range - 1) / 2);
+
+            Vector3[] directions = {
+            new Vector3(0, 0, half),
+            new Vector3(0, 0, -half),
+            new Vector3(-half, 0, 0),
+            new Vector3(half, 0, 0)
+            };
+
+            for (int i = 0; i < directions.Length; i++)
+            {
+                Vector3 spawnPosition = centerPoint + directions[i];
+                Transform wall = Instantiate(wallObj, transform).transform;
+                wall.DOScaleX(range, 0);
+                wall.SetPositionAndRotation(spawnPosition, Quaternion.LookRotation(directions[i]));
+            }
         }
 
         public EntityType GetPos(Coord coord) => mapBoardArr[coord.x, coord.y];
 
-        public void SetPos(Coord coord, EntityType entity) => mapBoardArr[coord.x, coord.y] = entity;
-
-        public void MoveEntity(Coord currentCoord, Coord moveCoord, EntityType entity)
+        public void SetPos(Coord coord, EntityType entity, bool isElite = false)
         {
-            if (!MapCondition(currentCoord) || !MapCondition(moveCoord)) return;
-            if (mapBoardArr[moveCoord.x, moveCoord.y] != EntityType.Empty) return;
+            mapBoardArr[coord.x, coord.y] = entity;
+            if (isElite)
+                SetEliteType(coord, entity);
+        }
 
-            mapBoardArr[currentCoord.x, currentCoord.y] = EntityType.Empty;
-            mapBoardArr[moveCoord.x, moveCoord.y] = entity;
+        public void MoveEntity(Coord currentCoord, Coord moveCoord, EntityType entity, bool isElite = false)
+        {
+            if (isElite)
+            {
+                if (!MapCondition(currentCoord, true) || !MapCondition(moveCoord, true)) return;
+                SetPos(currentCoord, EntityType.Empty, true);
+                SetPos(moveCoord, entity, true);
+            }
+            else
+            {
+                if (!MapCondition(currentCoord) || !MapCondition(moveCoord)) return;
+                if (mapBoardArr[moveCoord.x, moveCoord.y] != EntityType.Empty) return;
+                SetPos(currentCoord, EntityType.Empty);
+                SetPos(moveCoord, entity);
+            }
 
             MoveRenderEnemy(currentCoord, moveCoord);
         }
@@ -86,20 +126,44 @@ namespace KHJ.Core
         private void MoveRenderEnemy(Coord currentCoord, Coord moveCoord)
         {
             Enemy moveEnemy = enemyBoardArr[currentCoord.x, currentCoord.y];
-            moveEnemy.transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), renderMoveSpeed).SetEase(Ease.Linear);
+            moveEnemy.IsCantMove = true;
+            moveEnemy.transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), renderMoveSpeed).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                moveEnemy.IsCantMove = false;
+            });
 
             SetEnemyBoard(currentCoord, null);
             SetEnemyBoard(moveCoord, moveEnemy);
         }
 
-        private bool MapCondition(Coord pos)
+        private bool MapCondition(Coord pos, bool isElite = false)
         {
-            return pos.x >= 0 && pos.x < 40 &&
-              pos.y >= 0 && pos.y < 40;
+            return !isElite ? pos.x >= 0 && pos.x < 40 &&
+              pos.y >= 0 && pos.y < 40 : pos.x >= 1 && pos.x < 39 &&
+              pos.y >= 1 && pos.y < 39;
         }
 
-        public Enemy GetEnemyInArr(int x, int y) {
+        public Enemy GetEnemyInArr(int x, int y)
+        {
             return enemyBoardArr[x, y];
+        }
+
+        private void SetEliteType(Coord coord, EntityType entity)
+        {
+            for (int i = 0; i < dirX.Length; i++)
+            {
+                mapBoardArr[coord.x + dirX[i], coord.y + dirY[i]] = entity;
+            }
+        }
+
+        private bool GetEliteType(Coord coord)
+        {
+            for (int i = 0; i < dirX.Length; i++)
+            {
+                if (mapBoardArr[coord.x + dirX[i], coord.y + dirY[i]] == EntityType.Enemy) continue;
+                else return false;
+            }
+            return true;
         }
     }
 }
