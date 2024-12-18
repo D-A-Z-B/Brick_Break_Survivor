@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c62a62300ad35804698c6d660dc0596e, type: 3}
-  m_Name: NormalEnemyIdleState
+  m_Name: PlayerTPWaitState
   m_EditorClassIdentifier: 
-  stateName: IDLE
-  className: KHJ.NormalEnemy.NormalEnemyIdleState
-  stateParam: {fileID: 11400000, guid: ce47422557c29a14e92d24852260f4e5, type: 2}
+  stateName: TPWAIT
+  className: BBS.Players.PlayerTPWaitState
+  stateParam: {fileID: 11400000, guid: 24fb8c13274243c4e9106e0f60c754fc, type: 2}

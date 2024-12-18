@@ -12,7 +12,7 @@ namespace BBS
             {
                 if (_instance == null)
                 {
-                    _instance = (T)FindObjectOfType(typeof(T));
+                    _instance = (T)FindAnyObjectByType(typeof(T));
                     if (_instance == null)
 
                     {
@@ -35,7 +35,7 @@ namespace BBS
 
         private static void SetupInstnace()
         {
-            _instance = (T)FindObjectOfType(typeof(T));
+            _instance = (T)FindAnyObjectByType(typeof(T));
             if (_instance == null)
             {
                 GameObject obj = new GameObject();

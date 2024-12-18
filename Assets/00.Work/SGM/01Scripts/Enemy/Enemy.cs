@@ -3,17 +3,14 @@ using BBS.FSM;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KHJ.NormalEnemy
+namespace BBS.Enemies
 {
-    public class NormalEnemy : Entity, IPoolable
+    public class Enemy : Entity
     {
         public List<StateSO> states;
+        public EnemyDataSO data;
 
-        private StateMachine stateMachine;
-
-        public PoolTypeSO PoolType { get; set; }
-
-        public GameObject GameObject => gameObject;
+        protected StateMachine stateMachine;
 
         protected override void AfterInitialize()
         {
@@ -22,12 +19,12 @@ namespace KHJ.NormalEnemy
             stateMachine = new StateMachine(states, this);
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             stateMachine.Initialize("IDLE");
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             stateMachine.UpdateFSM();
         }
@@ -35,14 +32,6 @@ namespace KHJ.NormalEnemy
         public void ChangeState(string newStateName)
         {
             stateMachine.ChangeState(newStateName);
-        }
-
-        public void SetUpPool(Pool pool)
-        {
-        }
-
-        public void ResetItem()
-        {
         }
     }
 }

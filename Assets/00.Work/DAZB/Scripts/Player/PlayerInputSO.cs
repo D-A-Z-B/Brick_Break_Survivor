@@ -7,6 +7,7 @@ namespace BBS.Players {
     public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions {
         public event Action attackDragEvent;
         public event Action attackEvent;
+        public event Action tpEvent;
         
         private Controls controls;
 
@@ -28,6 +29,13 @@ namespace BBS.Players {
             }
             else if (context.canceled) {
                 attackEvent?.Invoke();
+            }
+        }
+
+        public void OnTP(InputAction.CallbackContext context)
+        {
+            if (context.performed) {
+                tpEvent?.Invoke();
             }
         }
     }
