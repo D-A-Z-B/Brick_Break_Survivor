@@ -18,6 +18,7 @@ namespace BBS.Bullets {
                 int ny = (int)(posY + dy[i]);
 
                 Enemy enemy = MapManager.Instance.GetEnemyInArr(nx, ny);
+                enemy.GetCompo<EnemyHealth>().ApplyDamage(new Combat.ActionData((int)(dataSO.currentDamage * ((float)1/2))));
             }
         }
     }

@@ -1,3 +1,4 @@
+using BBS.Enemies;
 using UnityEngine;
 
 namespace BBS.Bullets {
@@ -28,6 +29,9 @@ namespace BBS.Bullets {
 	    }   
 
 	    protected virtual void OnCollisionEnter(Collision collision) {
+			if (TryGetComponent<Enemy>(out Enemy enemy)) {
+				enemy.GetCompo<EnemyHealth>().ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
+			}
     		direction = Vector3.Reflect(direction, collision.GetContact(0).normal);
 	    }
 
