@@ -8,21 +8,34 @@ namespace BBS
     {
         private List<Exp> expList;
 
+        //test
+        [SerializeField] private Transform playerTrm; 
+
         [SerializeField] private LevelPanelUI levelPanel;
         [SerializeField] private Transform expPrefab;
-        [SerializeField] private float levelUpExpCalculation = 2;
+        [SerializeField] private float levelUpExpCalculation = 1;
         private int level = 0;
         private float curentExp = 0;
         private float needExp;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             expList = new List<Exp>();
         }
 
         private void Start()
         {
             LevelUp();
+        }
+
+        private void Update()
+        {
+            //test
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                GetExp(playerTrm);
+            }
         }
 
         public void CreateExp(Vector3 pos)
@@ -44,7 +57,7 @@ namespace BBS
         {
             curentExp += exp;
 
-            if(curentExp >= needExp)
+            if (curentExp >= needExp)
                 LevelUp();
             else
                 levelPanel.UpdateExp(curentExp);

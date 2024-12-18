@@ -41,7 +41,8 @@ namespace BBS
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.layer == whatIsPlayer)
+            Debug.Log(other.gameObject.name);
+            if(other.CompareTag("Player"))
             {
                 LevelManager.Instance.AddExp(exp);
                 Destroy(gameObject);

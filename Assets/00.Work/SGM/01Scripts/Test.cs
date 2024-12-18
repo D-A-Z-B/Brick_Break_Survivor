@@ -1,17 +1,19 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BBS
 {
     public class Test : MonoBehaviour
     {
-        private void Update()
+        public List<Transform> spawnList;
+
+        private void Start()
         {
-            if(Input.GetMouseButton(0))
+            spawnList.ForEach((trm) =>
             {
-                Vector3 mousePos = Input.mousePosition;
-                mousePos.z = Camera.main.farClipPlane;
-                LevelManager.Instance.CreateExp(Camera.main.ScreenToWorldPoint(mousePos));
-            }
+                LevelManager.Instance.CreateExp(trm.position);
+            });
         }
     }
 }
