@@ -560,6 +560,7 @@ GameObject:
   - component: {fileID: 1110054792}
   - component: {fileID: 1110054793}
   - component: {fileID: 1110054794}
+  - component: {fileID: 1110054795}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -701,8 +702,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolManager: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
-  startFeverHitCount: 5
+  startFeverHitCount: 100
   feverDuration: 5
+--- !u!114 &1110054795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110054786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5d5feb7d919e2498905609d5f2b09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1985101688}
+  ZoomInYPos: 32
 --- !u!1 &1334219732
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using BBS.Bullets;
-using Unity.VisualScripting;
+using BBS.Players;
+using KHJ.Core;
 using UnityEngine;
 
 namespace BBS.Core {
@@ -23,26 +24,37 @@ namespace BBS.Core {
 
         private bool isCloning = false;
 
-        private void Update() {
-            if (isFever) {
-                if (feverStartTime + feverDuration < Time.time) {
-                    currentHitCount = 0;
-
-                    foreach(Bullet iter in spawnedBullet) {
-                        iter.ForcePush();
-                    }
-                    spawnedBullet.Clear();
-                    isFever = false;
-                    Debug.Log("Fever End");
-                    return;
-                }
-
-                if (currentHitCount % startFeverHitCount == 0 && !isCloning) {
-                    StartCoroutine(CloneBullets());
-                    isCloning = true;
-                }
+private void Update() {
+    if (isFever) {
+        if (feverStartTime + feverDuration < Time.time) {
+            // spawnedBullet 복사본 사용 후 순회
+            isFever = false;
+            List<Bullet> temp = new List<Bullet>(spawnedBullet);
+            spawnedBullet.Clear();
+            foreach (Bullet iter in temp) {
+                iter.ForcePush();
             }
+
+            // 모든 Bullet 정리
+            currentHitCount = 0;
+
+            // 플레이어 상태 변경
+            if (PlayerManager.Instance.Player != null) {
+                PlayerManager.Instance.Player.ChangeState("IDLE");
+            }
+
+            Debug.Log("Fever End");
+            return;
         }
+
+        // CloneBullets 호출 조건 개선
+        if (currentHitCount > 0 && currentHitCount % startFeverHitCount == 0 && !isCloning) {
+            StartCoroutine(CloneBullets());
+            isCloning = true;
+        }
+    }
+}
+
 
         public void IncreaseHitCount() {
             currentHitCount++;
@@ -62,6 +74,7 @@ namespace BBS.Core {
             List<Bullet> temp = new List<Bullet>(spawnedBullet);
 
             for (int i = 0; i < temp.Count; ++i) {
+                if (isFever == false) break;
                 if (temp[i].dataSO.type == BulletType.TPB) continue;
                 Debug.Log("Clone : " + temp[i].dataSO.type);
                 Bullet bullet = poolManager.Pop(BulletManager.Instance.GetPoolType(temp[i].dataSO.type)) as Bullet;

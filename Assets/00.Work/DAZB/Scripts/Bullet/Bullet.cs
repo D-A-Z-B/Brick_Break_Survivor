@@ -30,12 +30,12 @@ namespace BBS.Bullets {
 			startTime = Time.time;
 	    }
 
-		private void OnEnable() {
+		protected virtual void OnEnable() {
 			isForcePush = false;
 			GameManager.Instance.AddBullet(this);
 		}
 
-		private void OnDisable() {
+		protected virtual void OnDisable() {
 			if (isForcePush) return;
 			GameManager.Instance.RemoveBullet(this);
 		}
