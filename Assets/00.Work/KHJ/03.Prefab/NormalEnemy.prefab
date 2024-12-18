@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - {fileID: 11400000, guid: ca545ea834b545340a5ac71de1497764, type: 2}
+  - {fileID: 11400000, guid: f90e73ca9b006b748ae65624ed1b07d2, type: 2}
+  data: {fileID: 0}
 --- !u!135 &2277918590836032097
 SphereCollider:
   m_ObjectHideFlags: 0

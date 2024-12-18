@@ -22,7 +22,7 @@ namespace BBS.Enemies
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                enemy.transform.position += Vector3.forward;
+                enemy.ChangeState("MOVE");
             }
         }
 

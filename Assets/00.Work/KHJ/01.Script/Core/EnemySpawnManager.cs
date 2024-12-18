@@ -1,3 +1,4 @@
+using BBS.Enemies;
 using BBS.Players;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,10 @@ namespace KHJ.Core
     {
         private MapManager mapManager => MapManager.Instance;
 
-        [field:SerializeField] public List<GameObject> enemyList { get; private set; } = new List<GameObject>();    
+        [field:SerializeField] public List<Enemy> enemyList { get; private set; } = new List<Enemy>();    
 
         [SerializeField] private Transform player;
-        [SerializeField] private GameObject enemyPrefab;
+        [SerializeField] private Enemy enemyPrefab;
         [SerializeField] private float spawnRadiusMin;
         [SerializeField] private float spawnRadiusMax;
 
@@ -51,8 +52,9 @@ namespace KHJ.Core
             {
                 if (mapManager.GetPos(new Coord(spawnPosition)) != EntityType.Empty) return false;
 
-                GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                Enemy enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 mapManager.SetPos(new Coord(spawnPosition), EntityType.Enemy);
+                mapManager.SetEnemyBoard(new Coord(spawnPosition), enemy);
                 enemyList.Add(enemy);
                 return true;
             }

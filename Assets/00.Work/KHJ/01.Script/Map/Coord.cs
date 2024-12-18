@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KHJ
+namespace KHJ.Core
 {
     public class Coord
     {
