@@ -1,5 +1,6 @@
 using BBS.Entities;
 using BBS.FSM;
+using DG.Tweening;
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace BBS.Enemies
         [SerializeField] private LayerMask whatIsPlayer;
         private Vector3 curDir;
 
+        private float jumpPower = 1f;
         private bool isStun = false;
         public bool IsStun => isStun;
 
@@ -76,6 +78,17 @@ namespace BBS.Enemies
                 transform.forward = curDir;
 
             mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy, isElite);
+        }
+
+        public void Jump()
+        {
+            if (IsCantMove) return;
+
+            if (NeedRotate())
+                transform.forward = curDir;
+
+            transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear)
+                .OnComplete(() => EnemySpawnManager.Instance.EnemyCount());
         }
 
         public bool NeedRotate()
