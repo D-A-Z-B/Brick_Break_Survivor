@@ -1,0 +1,16 @@
+{
+    "name": "KHJ",
+    "rootNamespace": "KHJ",
+    "references": [
+        "GUID:5228abf8a78a8a142b7eb25679fb5a3b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
