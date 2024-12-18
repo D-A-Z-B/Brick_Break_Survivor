@@ -1,14 +1,18 @@
+using BBS;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace KHJ.Core
 {
-    public class MapManager : MonoBehaviour
+    public class MapManager : MonoSingleton<MapManager>
     {
-        public List<Vector3> mapBoard = new List<Vector3>();
+        public List<Vector3> mapBoard = new();
+        public event Action OnCompleteSpawnMapEvent;
+
         [SerializeField] private GameObject groundMapObj;
         [field: SerializeField] public int range { get; private set; }
-        [SerializeField] private float interval; 
+        [SerializeField] private float interval;
 
         private void Start()
         {
@@ -26,6 +30,8 @@ namespace KHJ.Core
                     mapBoard.Add(ground.transform.position);
                 }
             }
+
+            OnCompleteSpawnMapEvent?.Invoke();
         }
     }
 }
