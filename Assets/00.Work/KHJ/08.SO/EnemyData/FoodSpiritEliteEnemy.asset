@@ -14,7 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   maxHealth: 100
-  actionTurn: 2
+  actionTurn: 1
   moveDistance: 3
   damage: 5
   attakRange: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.9875398
+      outSlope: 3.9875398
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.21866193
+      value: 0.87192315
+      inSlope: 0.22199115
+      outSlope: 0.22199115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.06920848
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.16391988
+      outSlope: 0.16391988
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

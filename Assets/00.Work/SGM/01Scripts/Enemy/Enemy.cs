@@ -22,7 +22,7 @@ namespace BBS.Enemies
         private bool isStun = false;
         public bool IsStun => isStun;
 
-        public bool IsCantMove = false;
+        public bool IsMoving = false;
 
         protected override void AfterInitialize()
         {
@@ -73,27 +73,32 @@ namespace BBS.Enemies
 
         public void Move(bool isElite = false)
         {
-            if (IsCantMove) return;
+            if (IsMoving) return;
 
             if (NeedRotate())
                 transform.forward = curDir;
 
-            mapManager.MoveEntity(new Coord(transform.position), new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy, isElite);
+            mapManager.MoveEntity(this, new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy, isElite);
         }
 
-        public void DoMoveEnemy(Coord moveCoord, float speed, bool isJump = false)
+        public void DoMoveEnemy(Coord moveCoord, float speed, AnimationCurve ease, bool isJump = false)
         {
+            IsMoving = true;
             if (!isJump)
             {
-                transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), speed).SetEase(Ease.Linear).OnComplete(() =>
+                transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), speed).SetEase(ease).OnComplete(() =>
                 {
                     EnemySpawnManager.Instance.EnemyCount();
+                    IsMoving = false;
                 });
             }
             else
             {
-                transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear)
-             .OnComplete(() => EnemySpawnManager.Instance.EnemyCount());
+                transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    EnemySpawnManager.Instance.EnemyCount();
+                    IsMoving = false;
+                });
             }
         }
 

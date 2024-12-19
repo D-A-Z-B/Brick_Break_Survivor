@@ -3,9 +3,10 @@ using BBS.Animators;
 using BBS.Enemies;
 using BBS.Entities;
 using BBS.FSM;
+using KHJ.Core;
 using UnityEngine;
 
-namespace BBS.Enemies 
+namespace BBS.Enemies
 {
     public class FoodSpiritIdleState : EntityState
     {
@@ -13,20 +14,24 @@ namespace BBS.Enemies
         private Enemy enemy;
         public FoodSpiritIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
-            enemy = entity as Enemy; 
+            enemy = entity as Enemy;
+            TurnManager.Instance.EnemyTurnStart += HandleStartEnemyTurn;
         }
 
         public override void Enter()
         {
             base.Enter();
-            Test.Instance.OnChangeTurn += HandleChangeTurn;
-            enemy.transform.rotation = Quaternion.identity;
         }
 
-        private void HandleChangeTurn()
+        private void HandleStartEnemyTurn()
         {
+            if (enemy.IsStun)
+            {
+                enemy.SetStun(false);
+                return;
+            }
+
             currentTurn++;
-            Debug.Log(currentTurn);
             CheckChangeState();
         }
 
@@ -34,13 +39,12 @@ namespace BBS.Enemies
         {
             if (currentTurn >= enemy.data.actionTurn)
             {
-                FoodSpiritElite foodSpiritElite = enemy as FoodSpiritElite;
-
                 currentTurn = 0;
-                if (foodSpiritElite.CanAttack())
-                    enemy.ChangeState("ATTACK");
-                else
-                    enemy.ChangeState("MOVE");
+                enemy.ChangeState("MOVE");
+            }
+            else
+            {
+                EnemySpawnManager.Instance.EnemyCount();
             }
         }
 
@@ -52,7 +56,7 @@ namespace BBS.Enemies
 
         public override void Exit()
         {
-            Test.Instance.OnChangeTurn -= HandleChangeTurn;
+            Test.Instance.OnChangeTurn -= HandleStartEnemyTurn;
             base.Exit();
         }
     }
