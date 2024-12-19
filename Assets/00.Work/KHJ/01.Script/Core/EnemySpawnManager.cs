@@ -27,12 +27,25 @@ namespace KHJ.Core
         private void Awake()
         {
             mapManager.OnSpawnEnemiesEvent += HandleSpawnEnemy;
+            TurnManager.Instance.EnemyTurnStart += ReSpawnEnemy;
         }
 
         public void ReSpawnEnemy()
         {
-            spawnCount = 7;
-            HandleSpawnEnemy();
+            if (TurnManager.Instance.TurnCount % 2 == 0)
+            {
+                int rand = Random.Range(1, 11);
+                if (rand >= 8)
+                    HandleSpawnEnemy();
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                HandleSpawnEnemy();
+            }
         }
 
         private void HandleSpawnEnemy()
@@ -68,7 +81,7 @@ namespace KHJ.Core
             else
             {
                 spawnChance = 1;
-                spawnPosition = new Vector3((mapManager.range-1) / 2, 1, (mapManager.range-1) / 2);
+                spawnPosition = new Vector3((mapManager.range - 1) / 2, 1, (mapManager.range - 1) / 2);
             }
 
             if (Random.value <= spawnChance && MapCondition(spawnPosition))
@@ -122,7 +135,7 @@ namespace KHJ.Core
         public void EnemyCount()
         {
             currentEnemyCount++;
-            if(currentEnemyCount >= enemyList.Count)
+            if (currentEnemyCount >= enemyList.Count)
             {
                 TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
                 currentEnemyCount = 0;

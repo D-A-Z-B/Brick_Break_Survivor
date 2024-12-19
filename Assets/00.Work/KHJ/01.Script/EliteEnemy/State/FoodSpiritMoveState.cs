@@ -10,7 +10,6 @@ namespace BBS.Enemies
     public class FoodSpiritMoveState : EntityState
     {
         private FoodSpiritElite enemy;
-        private int moveCount = 0;
         public FoodSpiritMoveState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             enemy = entity as FoodSpiritElite;
@@ -20,14 +19,6 @@ namespace BBS.Enemies
         {
             base.Enter();
             enemy.Move(true);
-            //moveCount++;
-            //if (moveCount >= 2)
-            //{
-            //    moveCount = 0;
-            //    int rand = Random.Range(1, 11);
-            //    if (rand >= 8)
-            //        EnemySpawnManager.Instance.ReSpawnEnemy();
-            //}
         }
 
         public override void Update()
@@ -41,8 +32,10 @@ namespace BBS.Enemies
             {
                 if (enemy.eatPlayer != null)
                     enemy.ChangeState("ATTACK");
-
-                enemy.ChangeState("IDLE");
+                else
+                {
+                    enemy.ChangeState("IDLE");
+                }
             }
         }
     }
