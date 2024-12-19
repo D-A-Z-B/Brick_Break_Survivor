@@ -1,6 +1,7 @@
 using BBS.Entities;
 using BBS.FSM;
 using DG.Tweening;
+using KHJ.Camera;
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace BBS.Enemies
 
         public bool IsMoving = false;
 
+        private int modifyCount = 1;
+
         protected override void AfterInitialize()
         {
             base.AfterInitialize();
@@ -36,6 +39,7 @@ namespace BBS.Enemies
             GetCompo<EnemyHealth>().OnDead += HandleOnDead;
 
             SpawnAnim();
+            ModifyEnemyDataSO();
         }
 
         private void HandleOnDead()
@@ -47,7 +51,7 @@ namespace BBS.Enemies
 
         private void SpawnAnim()
         {
-            transform.DOMoveY(transform.position.y, 0.5f).ChangeStartValue(transform.position + Vector3.up * 5);
+            transform.DOMoveY(transform.position.y, 0.5f).ChangeStartValue(transform.position + Vector3.up * 30).OnComplete(() => CameraShake.Instance.Shake(0.5f));
         }
 
         private Vector3 EnemyToPlayerDir()
@@ -142,6 +146,15 @@ namespace BBS.Enemies
         private void OnDestroy()
         {
             GetCompo<EnemyHealth>().OnDead -= HandleOnDead;
+        }
+
+        private void ModifyEnemyDataSO()
+        {
+            int count = TurnManager.Instance.modifyStatCount;
+            EnemyDataSO newEnem = ScriptableObject.CreateInstance<EnemyDataSO>();
+            newEnem.maxHealth = data.maxHealth + Mathf.RoundToInt(data.maxHealth * 0.05f * count);
+            newEnem.damage = data.maxHealth + Mathf.RoundToInt(data.damage * 0.05f * count);
+            data = newEnem;
         }
     }
 }

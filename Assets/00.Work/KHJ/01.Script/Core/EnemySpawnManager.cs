@@ -67,6 +67,8 @@ namespace KHJ.Core
                     spawnedEnemies++;
                 }
             }
+
+            TurnManager.Instance.modifyStatCount++;
         }
 
         private bool TrySpawnEnemy()

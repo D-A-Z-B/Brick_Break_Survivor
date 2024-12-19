@@ -1,4 +1,5 @@
 using BBS.Core;
+using BBS.Enemies;
 using KHJ.Core;
 using System;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace BBS
         private int turnCount = 1;
         public int TurnCount => turnCount;
 
+        public int modifyStatCount { get; set; } = 1;
+
         public void ChangeTurn(TurnType type)
         {
             currentTurnType = type;
@@ -31,7 +34,7 @@ namespace BBS
             if (currentTurnType == TurnType.EnemyTurn)
             {
                 turnCount++;
-                    TurnStartEvent?.Invoke();
+                TurnStartEvent?.Invoke();
 
                 if (turnCount == BossTurn)
                     BossEvent?.Invoke();

@@ -3,6 +3,7 @@ using BBS.Enemies;
 using BBS.Entities;
 using BBS.Players;
 using DG.Tweening;
+using KHJ.Camera;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace KHJ.Core
     {
         public event Action OnSpawnEnemiesEvent;
 
-        [SerializeField] private GameObject groundMapObj, wallObj;
+        [SerializeField] private GameObject groundMapObj, wallObj, groundTextureObj;
         [field: SerializeField] public int range { get; private set; }
         [SerializeField] private float interval;
         [SerializeField] private float renderMoveSpeed;
@@ -40,7 +41,7 @@ namespace KHJ.Core
 
         private void Awake()
         {
-            TurnManager.Instance.EliteBossEvent += HandleEliteSpawn;
+            TurnManager.Instance.BossEvent += HandleEliteSpawn;
 
             SetRange();
         }
@@ -67,6 +68,12 @@ namespace KHJ.Core
             enemyBoardArr = new Enemy[range, range];
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+                CameraShake.Instance.Shake(30);
+        }
+
         private void SpawnMap()
         {
             for (int i = 0; i < range; i++)
@@ -77,6 +84,14 @@ namespace KHJ.Core
                     ground.transform.position = new Vector3(i, 0, j) * interval;
                     groundList.Add(ground);
                     mapBoardArr[i, j] = EntityType.Empty;
+                }
+            }
+            for (int i = 0; i < range; i += 2) 
+            {
+                for (int j = 0; j < range; j += 2) 
+                {
+                    GameObject groundTex = Instantiate(groundTextureObj, transform);
+                    groundTex.transform.position = new Vector3(i, 0.5f, j) * interval;
                 }
             }
 
