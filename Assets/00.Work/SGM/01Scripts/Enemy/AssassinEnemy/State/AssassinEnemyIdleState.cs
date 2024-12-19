@@ -17,7 +17,7 @@ namespace BBS.Enemies
 
         public override void Enter()
         {
-            TurnManager.Instance.EnemyTurnStart += HandleStartEnemyTurn;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
         }
 
         private void HandleStartEnemyTurn()
@@ -50,7 +50,7 @@ namespace BBS.Enemies
 
         public override void Exit()
         {
-            TurnManager.Instance.EnemyTurnStart -= HandleStartEnemyTurn;
+            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
         }
     }
 }
