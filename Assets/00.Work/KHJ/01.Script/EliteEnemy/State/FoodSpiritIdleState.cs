@@ -44,6 +44,10 @@ namespace BBS.Enemies
             }
             else
             {
+                //int rand = Random.Range(1, 11);
+                //if (rand >= 8)
+                //    EnemySpawnManager.Instance.ReSpawnEnemy();
+
                 EnemySpawnManager.Instance.EnemyCount();
             }
         }
