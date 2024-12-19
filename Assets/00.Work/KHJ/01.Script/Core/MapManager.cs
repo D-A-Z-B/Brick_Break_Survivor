@@ -1,5 +1,7 @@
 using BBS;
 using BBS.Enemies;
+using BBS.Entities;
+using BBS.Players;
 using DG.Tweening;
 using System;
 using UnityEngine;
@@ -100,8 +102,9 @@ namespace KHJ.Core
                 SetEliteType(coord, entity);
         }
 
-        public void MoveEntity(Coord currentCoord, Coord moveCoord, EntityType entity, bool isElite = false)
+        public void MoveEntity(Enemy enemy, Coord moveCoord, EntityType entity, bool isElite = false)
         {
+            Coord currentCoord = new Coord(enemy.transform.position);
             if (isElite)
             {
                 if (!MapCondition(currentCoord, true) || !MapCondition(moveCoord, true))
@@ -124,7 +127,7 @@ namespace KHJ.Core
                 SetPos(moveCoord, entity);
             }
 
-            MoveRenderEnemy(currentCoord, moveCoord);
+            MoveRenderEnemy(enemy, moveCoord);
         }
 
         public void SetEnemyBoard(Coord coord, Enemy enemy)
@@ -132,21 +135,21 @@ namespace KHJ.Core
             enemyBoardArr[coord.x, coord.y] = enemy;
         }
 
-        private void MoveRenderEnemy(Coord currentCoord, Coord moveCoord)
+        private void MoveRenderEnemy(Enemy enemy, Coord moveCoord)
         {
-            Enemy moveEnemy = enemyBoardArr[currentCoord.x, currentCoord.y];
+            Enemy moveEnemy = FindEnemy(enemy);
+            print(moveEnemy);
+            moveEnemy.DoMoveEnemy(moveCoord, renderMoveSpeed, moveEnemy.data.ease, moveEnemy is AssassinEnemy);
 
-            moveEnemy.DoMoveEnemy(moveCoord, renderMoveSpeed, moveEnemy is AssassinEnemy);
-
-            SetEnemyBoard(currentCoord, null);
+            SetEnemyBoard(new Coord(moveEnemy.transform.position), null);
             SetEnemyBoard(moveCoord, moveEnemy);
         }
 
         private bool MapCondition(Coord pos, bool isElite = false)
         {
-            return !isElite ? pos.x >= 0 && pos.x < 40 &&
-              pos.y >= 0 && pos.y < 40 : pos.x >= 1 && pos.x < 39 &&
-              pos.y >= 1 && pos.y < 39;
+            return !isElite ? pos.x >= 0 && pos.x < range &&
+              pos.y >= 0 && pos.y < range : pos.x >= 1 && pos.x < range - 1 &&
+              pos.y >= 1 && pos.y < range - 1;
         }
 
         public Enemy GetEnemyInArr(int x, int y)
@@ -162,12 +165,28 @@ namespace KHJ.Core
             }
         }
 
-        public void DestroyEntity(Coord coord, Enemy enemy)
+        public void DestroyEntity(Coord coord, Entity entity, bool isDestroyObj = false)
         {
             mapBoardArr[coord.x, coord.y] = EntityType.Empty;
             enemyBoardArr[coord.x, coord.y] = null;
-            EnemySpawnManager.Instance.enemyList.Remove(enemy);
-            Destroy(enemy.gameObject);
+
+            if (!isDestroyObj && entity is Player) return;
+
+            EnemySpawnManager.Instance.enemyList.Remove(entity as Enemy);
+            Destroy(entity.gameObject);
+        }
+
+        private Enemy FindEnemy(Enemy enemy)
+        {
+            for (int i = 0; i < range; i++)
+            {
+                for (int j = 0; j < range; j++)
+                {
+                    if (enemy == enemyBoardArr[i, j])
+                        return enemy;
+                }
+            }
+            return null;
         }
     }
 }
