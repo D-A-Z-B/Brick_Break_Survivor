@@ -17,7 +17,7 @@ namespace BBS.Enemies
         {
             base.Enter();
 
-            enemy.Jump();
+            enemy.Move();
 
             if (enemy.CanAttack())
                 enemy.ChangeState("ATTACK");

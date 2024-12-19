@@ -104,14 +104,22 @@ namespace KHJ.Core
         {
             if (isElite)
             {
-                if (!MapCondition(currentCoord, true) || !MapCondition(moveCoord, true)) return;
+                if (!MapCondition(currentCoord, true) || !MapCondition(moveCoord, true))
+                {
+                    EnemySpawnManager.Instance.EnemyCount();
+                    return;
+                }
+
                 SetPos(currentCoord, EntityType.Empty, true);
                 SetPos(moveCoord, entity, true);
             }
             else
             {
-                if (!MapCondition(currentCoord) || !MapCondition(moveCoord)) return;
-                if (mapBoardArr[moveCoord.x, moveCoord.y] != EntityType.Empty) return;
+                if ((!MapCondition(currentCoord) || !MapCondition(moveCoord)) || (mapBoardArr[moveCoord.x, moveCoord.y] != EntityType.Empty))
+                {
+                    EnemySpawnManager.Instance.EnemyCount();
+                    return;
+                }
                 SetPos(currentCoord, EntityType.Empty);
                 SetPos(moveCoord, entity);
             }
@@ -127,12 +135,8 @@ namespace KHJ.Core
         private void MoveRenderEnemy(Coord currentCoord, Coord moveCoord)
         {
             Enemy moveEnemy = enemyBoardArr[currentCoord.x, currentCoord.y];
-            moveEnemy.IsCantMove = true;
-            moveEnemy.transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), renderMoveSpeed).SetEase(Ease.Linear).OnComplete(() =>
-            {
-                moveEnemy.IsCantMove = false;
-                EnemySpawnManager.Instance.EnemyCount();
-            });
+
+            moveEnemy.DoMoveEnemy(moveCoord, renderMoveSpeed, moveEnemy is AssassinEnemy);
 
             SetEnemyBoard(currentCoord, null);
             SetEnemyBoard(moveCoord, moveEnemy);

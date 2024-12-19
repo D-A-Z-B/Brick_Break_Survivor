@@ -28,8 +28,8 @@ namespace BBS.Players {
             player.transform.position = player.GetTPBullet().GetTPPoint() + Vector3.up;
             player.cineCamCompo.Follow = player.transform;
             MapManager.Instance.SetPos(new (player.GetTPBullet().GetTPPoint().x, player.GetTPBullet().GetTPPoint().z), EntityType.Player);
-            TurnManager.Instance.ChangeTurn(TurnType.EnemyTurn);
 
+            TurnManager.Instance.ChangeTurn(TurnType.EnemyTurn);
             base.Exit();
         }
 

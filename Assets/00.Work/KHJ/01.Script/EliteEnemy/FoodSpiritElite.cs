@@ -7,13 +7,16 @@ namespace BBS.Enemies
 {
     public class FoodSpiritElite : Enemy
     {
+        public Player eatPlayer;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
-                
+                eatPlayer = player;
             }
-            else if (other.gameObject.TryGetComponent(out Enemy enemy))
+
+            if (other.gameObject.TryGetComponent(out Enemy enemy))
             {
                 mapManager.DestroyEntity(new Coord(enemy.transform.position));
                 Destroy(enemy);
