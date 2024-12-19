@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2c71e5acabba34db8622b8eba6cc7f, type: 3}
   m_Name: ThunderB
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: -152192575, guid: 661ef66918587a64eb31deab993fc4ef, type: 3}
   displayName: "\uBC88\uAC1C"
   description: dddd
   currentDamage: 0

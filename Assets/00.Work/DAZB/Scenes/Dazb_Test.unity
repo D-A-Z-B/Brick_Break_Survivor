@@ -396,7 +396,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad23dc4677ac2654d936e58bbbfbaec9, type: 2}
   - {fileID: 11400000, guid: 1328cda378b39b8408ba01d64ed070da, type: 2}
   - {fileID: 11400000, guid: 43732fc1e50f3ab4a803ac39d8b397df, type: 2}
-  - {fileID: 11400000, guid: 22578ed769860294895684463ebe7afc, type: 2}
   background: {fileID: 1366721506}
 --- !u!1 &638847992
 GameObject:
@@ -861,10 +860,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerBulletList>k__BackingField:
-  - {fileID: 11400000, guid: d38a1aa2b6d93164ba7edb2d3aa680d7, type: 2}
-  - {fileID: 11400000, guid: ad23dc4677ac2654d936e58bbbfbaec9, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 1328cda378b39b8408ba01d64ed070da, type: 2}
-  - {fileID: 11400000, guid: 43732fc1e50f3ab4a803ac39d8b397df, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 22578ed769860294895684463ebe7afc, type: 2}
   <PlayerBulletPoolTypeList>k__BackingField:
   - {fileID: 11400000, guid: 9a504e7d906551a46a131bac55674115, type: 2}

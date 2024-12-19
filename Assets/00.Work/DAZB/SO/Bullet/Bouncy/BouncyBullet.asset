@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2c71e5acabba34db8622b8eba6cc7f, type: 3}
   m_Name: BouncyBullet
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: -901135659, guid: a8065d5db04f5af41a4324cb1315addb, type: 3}
   displayName: "\uD0F1\uD0F1\uBCFC"
   description: dddd
   currentDamage: 0

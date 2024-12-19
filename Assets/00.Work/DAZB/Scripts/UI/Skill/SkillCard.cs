@@ -8,7 +8,7 @@ namespace BBS.UI.Skills {
         [SerializeField] private Image skillIcon;
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private TextMeshProUGUI descriptionText;
-        [SerializeField] private int cardIndex;
+        public int cardIndex;
         private BulletDataSO currentBullet;
 
         public RectTransform RectTrm => transform as RectTransform;
@@ -16,8 +16,8 @@ namespace BBS.UI.Skills {
         public void SetCard(BulletDataSO data) {
             currentBullet = data;
 
-            skillIcon = data.icon;
-            titleText.text = data.displayName + "+ " + data.currentLevel + 1;
+            skillIcon.sprite = data.icon;
+            titleText.text = data.displayName + "+ " + (data.currentLevel + 1);
             descriptionText.text = data.description;
         }
 

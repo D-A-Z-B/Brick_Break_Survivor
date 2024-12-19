@@ -26,6 +26,7 @@ namespace BBS.Players {
                 List<BulletDataSO> PlayerBulletList = BulletManager.Instance.PlayerBulletList;
                 BulletDataSO temp = null;
                 for (int j = 0; j < PlayerBulletList.Count; ++j) {
+                    if (PlayerBulletList[j] == null) continue;
                     if (PlayerBulletList[j].type == (BulletType)i) {
                         temp = PlayerBulletList[j];
                         break;

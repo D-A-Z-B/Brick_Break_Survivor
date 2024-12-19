@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2c71e5acabba34db8622b8eba6cc7f, type: 3}
   m_Name: BFBullet
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: -1830541344, guid: 8a87297f4d1f65e42960e2929d22fdaf, type: 3}
   displayName: "\uB300\uAC00\uC871"
   description: dddd
-  currentDamage: 0
+  currentDamage: 10
   defaultDamage: 10
   currentScale: 0.3
   defaultScale: 0.3
