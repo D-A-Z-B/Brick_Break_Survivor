@@ -127,7 +127,7 @@ namespace BBS.Enemies
         {
             Collider[] verticalColliders = Physics.OverlapBox(transform.position, new Vector3(0.9f, 1, data.attakRange * 2 + 1) * 0.5f, transform.rotation, whatIsPlayer);
             Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(data.attakRange * 2 + 1, 1, 0.9f) * 0.5f, transform.rotation, whatIsPlayer);
-
+         
             return verticalColliders.Length > 0 || horizontalColliders.Length > 0;
         }
 

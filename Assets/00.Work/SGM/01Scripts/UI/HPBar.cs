@@ -15,8 +15,7 @@ namespace BBS
 
         private void Update()
         {
-            float curHealth = health.CurrentHealth / health.MaxHealth;
-            Debug.Log(curHealth);
+            float curHealth = (float)health.CurrentHealth / (float)health.MaxHealth;
             transform.localScale = new Vector3(curHealth, 1, 1);
         }
     }
