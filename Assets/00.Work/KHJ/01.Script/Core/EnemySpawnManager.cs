@@ -142,7 +142,7 @@ namespace KHJ.Core
             currentEnemyCount++;
             if (currentEnemyCount >= enemyList.Count)
             {
-                TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
+                CameraManager.Instance.StartZoomIn();
                 currentEnemyCount = 0;
             }
         }

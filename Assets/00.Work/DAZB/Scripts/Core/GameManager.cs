@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using BBS.Bullets;
 using BBS.Players;
+using BBS.UI;
+using DG.Tweening;
 using KHJ.Core;
 using UnityEngine;
 
@@ -10,6 +12,8 @@ namespace BBS.Core
     public class GameManager : MonoSingleton<GameManager>
     {
         [SerializeField] private PoolManagerSO poolManager;
+        [SerializeField] private PoolTypeSO hitCountText;
+        [SerializeField] private GameObject feverTextObject;
         public int startFeverHitCount;
         public float feverDuration;
         private List<Bullet> spawnedBullet = new List<Bullet>();
@@ -27,6 +31,8 @@ namespace BBS.Core
         }
 
         private bool isCloning = false;
+
+        private int feverCount = 1;
 
         private void Update()
         {
@@ -57,7 +63,7 @@ namespace BBS.Core
                 }
 
                 // CloneBullets 호출 조건 개선
-                if (currentHitCount > 0 && currentHitCount % startFeverHitCount == 0 && !isCloning)
+                if (currentHitCount > 0 && currentHitCount % (startFeverHitCount * feverCount) == 0 && !isCloning)
                 {
                     StartCoroutine(CloneBullets());
                     isCloning = true;
@@ -70,11 +76,24 @@ namespace BBS.Core
         {
             currentHitCount++;
             isCloning = false;
+            HitCountUI text = poolManager.Pop(hitCountText) as HitCountUI;
+            if (isFever == false) {
+                if (currentHitCount >= 50) {
+                    text.SetText("<#FF6347>hit* " + currentHitCount + "</color>");
+                }
+                else {
+                    text.SetText("hit* " + currentHitCount);
+                }
+            }
+            else {
+                text.SetText("<#FF6347>fever* " + feverCount + "</color>");
+            }
             if (currentHitCount >= startFeverHitCount && isFever == false)
             {
                 isFever = true;
                 feverStartTime = Time.time;
                 StartCoroutine(CloneBullets());
+                FeverAnimation();
                 Debug.Log("Fever Start");
             }
 
@@ -85,6 +104,7 @@ namespace BBS.Core
         {
             isCloning = true;
             List<Bullet> temp = new List<Bullet>(spawnedBullet);
+            feverCount++;
 
             for (int i = 0; i < temp.Count; ++i)
             {
@@ -119,6 +139,18 @@ namespace BBS.Core
         public void RemoveBullet(Bullet bullet)
         {
             spawnedBullet.Remove(bullet);
+        }
+
+        private void FeverAnimation() {
+            Time.timeScale = 0;
+
+            Sequence sq = DOTween.Sequence();
+            sq.SetUpdate(true);
+            ((RectTransform)feverTextObject.transform).anchoredPosition = new Vector2(-1500, 800);
+            sq.Append(((RectTransform)feverTextObject.transform).DOAnchorPos(new Vector2(0, 0), 0.2f));
+            sq.AppendInterval(0.5f); 
+            sq.Append(((RectTransform)feverTextObject.transform).DOAnchorPos(new Vector2(1500, -800), 0.2f));
+            sq.OnComplete(() => Time.timeScale = 1);
         }
     }
 }

@@ -83,9 +83,9 @@ namespace KHJ.Core
             SetWall();
 
             if (!isEliteOrBoss)
-                mapBoardArr[(range - 1) / 1, (range - 1) / 2] = EntityType.Player;
+                mapBoardArr[(range - 1) / 2, (range - 1) / 2] = EntityType.Player;
             else
-                mapBoardArr[(range - 1) / 1, (range - 1) / 2 - 6] = EntityType.Player;
+                mapBoardArr[(range - 1) / 2, (range - 1) / 2 - 6] = EntityType.Player;
 
             OnSpawnEnemiesEvent?.Invoke();
         }
