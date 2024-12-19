@@ -187,7 +187,7 @@ MonoBehaviour:
   interval: 1
   renderMoveSpeed: 1
   <isEliteOrBoss>k__BackingField: 0
-  bossRange: 21
+  bossRange: 27
 --- !u!1001 &314019456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1790,7 +1790,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1926,9 +1926,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 870562172741724679, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 1862744844790127548, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981964874501041274, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
+      propertyPath: maxHealth
+      value: 3739
       objectReference: {fileID: 0}
     - target: {fileID: 8463641346683235295, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
       propertyPath: <cineCamCompo>k__BackingField
