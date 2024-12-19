@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   displayName: "\uB380\uAC10"
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c9edc810ef924e543bfd1fb6c109cec1, type: 3}
   increaseHp: 0
   increaseDR: 2
   healHp: 0

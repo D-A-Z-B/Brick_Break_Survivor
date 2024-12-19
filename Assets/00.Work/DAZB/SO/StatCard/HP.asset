@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   displayName: "\uCCB4\uC99D"
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9b582b8cd58a5c444a1572c698fc293c, type: 3}
   increaseHp: 20
   increaseDR: 0
   healHp: 0
