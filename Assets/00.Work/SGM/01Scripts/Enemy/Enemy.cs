@@ -1,3 +1,4 @@
+using BBS.Combat;
 using BBS.Entities;
 using BBS.FSM;
 using DG.Tweening;
@@ -28,6 +29,8 @@ namespace BBS.Enemies
 
         public bool IsMoving = false;
 
+        public bool IsDead = false;
+
         protected override void AfterInitialize()
         {
             base.AfterInitialize();
@@ -46,8 +49,7 @@ namespace BBS.Enemies
         private void HandleOnDead()
         {
             ChangeState("DEAD");
-            LevelManager.Instance.CreateExp(transform.position);
-            mapManager.DestroyEntity(new Coord(transform.position), this);
+            IsDead = true;
         }
 
         private void SpawnAnim()

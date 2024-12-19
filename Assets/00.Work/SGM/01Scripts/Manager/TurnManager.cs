@@ -37,8 +37,10 @@ namespace BBS
                 turnCount++;
                 TurnStartEvent?.Invoke();
 
-                if (turnCount == BossTurn)
+                if (turnCount == BossTurn) {
+                    SoundManager.Instance.PlayBGM("Boss_BackGround");
                     BossEvent?.Invoke();
+                }
 
                 GameManager.Instance.ResetHitCount();
                 CameraManager.Instance.StartZoomOut();

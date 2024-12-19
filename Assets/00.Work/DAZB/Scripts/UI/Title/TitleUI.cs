@@ -24,7 +24,7 @@ namespace BBS
             text.color = new Color(1f, 1f, 1f, alpha);
 
             if (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame) {
-                SceneManager.LoadScene("Dazb_Test");
+                SceneManager.LoadScene("GameScene");
             }
         }
 

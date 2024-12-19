@@ -41,6 +41,7 @@ namespace BBS.Core
                 if (feverStartTime + feverDuration < Time.time)
                 {
                     // spawnedBullet 복사본 사용 후 순회
+                    SoundManager.Instance.PlayBGM("Default_BackGround");
                     isFever = false;
                     List<Bullet> temp = new List<Bullet>(spawnedBullet);
                     spawnedBullet.Clear();
@@ -90,6 +91,7 @@ namespace BBS.Core
             }
             if (currentHitCount >= startFeverHitCount && isFever == false)
             {
+                SoundManager.Instance.PlayBGM("FeverTime_SecoundBackGround");
                 isFever = true;
                 feverStartTime = Time.time;
                 StartCoroutine(CloneBullets());

@@ -35,6 +35,7 @@ namespace BBS.UI.Skills {
         }
 
         public void Selection() {
+            SoundManager.Instance.PlaySFX("clickSound");
             if (currentBullet != null)
                 BulletManager.Instance.AddBullet(currentBullet);
             else if (currentStatCard != null) {

@@ -18,6 +18,7 @@ namespace BBS.Enemies
         public override void Enter()
         {
             base.Enter();
+            SoundManager.Instance.PlaySFX("Boss_Move");
             enemy.Move(true);
         }
 
