@@ -1209,6 +1209,7 @@ MonoBehaviour:
   spawnRadiusMin: 6
   spawnRadiusMax: 60
   spawnCount: 10
+  spawnPointWithoutPlyer: {fileID: 0}
   howTurn: 1
   prob: 5
 --- !u!114 &1110054792
@@ -1801,6 +1802,10 @@ PrefabInstance:
     - target: {fileID: 1862744844790127548, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981964874501041274, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8463641346683235295, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
       propertyPath: <cineCamCompo>k__BackingField
