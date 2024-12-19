@@ -15,27 +15,13 @@ namespace BBS.UI.Skills {
         [SerializeField] private List<BulletDataSO> bulletDataList;
         [SerializeField] private List<StatCardDataSO> statCardDataList;
         [SerializeField] private Image background;
-        private int currentSelectedIndex = -1;
-        private const int minIndex = 0;
-        private const int maxIndex = 2;
+        public int currentSelectedIndex = -1;
+
+        private bool isSelect = true;
 
         private void Update() {
             if (Keyboard.current.oKey.wasPressedThisFrame) {
                 Open();
-            }
-
-            if (Keyboard.current.rightArrowKey.wasPressedThisFrame) {
-    
-                currentSelectedIndex = (currentSelectedIndex == -1) ? maxIndex : (currentSelectedIndex - 1 + maxIndex + 1) % (maxIndex + 1);
-                UpdateCardUI();
-            }
-            else if (Keyboard.current.leftArrowKey.wasPressedThisFrame) {
-                currentSelectedIndex = (currentSelectedIndex + 1) % (maxIndex + 1);
-                UpdateCardUI();
-            }
-
-            if (Keyboard.current.enterKey.wasPressedThisFrame) {
-                Selection();
             }
         }
 
@@ -73,6 +59,7 @@ namespace BBS.UI.Skills {
             sq.Join(skillCards[(int)CardType.right].RectTrm.DOAnchorPos(new Vector2(280, 70), 1));
             sq.Join(skillCards[(int)CardType.left].RectTrm.DORotate(new Vector3(0, 0, 8), 1));
             sq.Join(skillCards[(int)CardType.right].RectTrm.DORotate(new Vector3(0, 0, -8), 1));
+            sq.OnComplete(() => isSelect = false);
         }
 
         public void Close() {
@@ -106,6 +93,8 @@ namespace BBS.UI.Skills {
         }
 
         public void Selection() {
+            if (isSelect) return;
+            isSelect = true;
             skillCards[currentSelectedIndex].Selection();
             Close();
         }
@@ -126,8 +115,15 @@ namespace BBS.UI.Skills {
             skillCards[(int)CardType.middle].RectTrm.DORotate(new Vector3(0, 0, 0), 0);
         }
 
-        private void UpdateCardUI() {
+        public void UpdateCardUI() {
+            if (isSelect) return;
+
             float time = 0.2f;
+
+            if (currentSelectedIndex == -1) {
+                AllNotHover();
+                return;
+            }
 
             Sequence sq = DOTween.Sequence();
             sq.SetUpdate(true);
@@ -148,6 +144,32 @@ namespace BBS.UI.Skills {
                     continue;
                 }
 
+                sq.Join(skillCards[i].transform.DOScale(new Vector3(1, 1, 1), time));
+                switch ((CardType)i) {
+                    case CardType.left: {
+                        sq.Join(skillCards[i].transform.DORotate(new Vector3(0, 0, 8), time));
+                        sq.Join(skillCards[i].RectTrm.DOAnchorPos(new Vector2(-280, 70), time));
+                        break;
+                    }
+                    case CardType.right: {
+                        sq.Join(skillCards[i].transform.DORotate(new Vector3(0, 0, -8), time));
+                        sq.Join(skillCards[i].RectTrm.DOAnchorPos(new Vector2(280, 70), time));
+                        break;
+                    }
+                    case CardType.middle: {
+                        sq.Join(skillCards[i].RectTrm.DOAnchorPos(new Vector2(0, 100), time));
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void AllNotHover() {
+            float time = 0.2f;
+
+            Sequence sq = DOTween.Sequence();
+            sq.SetUpdate(true);
+            for (int i = 0; i < skillCards.Count; ++i) {
                 sq.Join(skillCards[i].transform.DOScale(new Vector3(1, 1, 1), time));
                 switch ((CardType)i) {
                     case CardType.left: {

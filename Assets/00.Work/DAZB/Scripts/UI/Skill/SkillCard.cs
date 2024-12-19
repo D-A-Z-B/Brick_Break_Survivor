@@ -1,13 +1,17 @@
 using BBS.Bullets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace BBS.UI.Skills {
-    public class SkillCard : MonoBehaviour {
+    public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler {
         [SerializeField] private Image skillIcon;
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private TextMeshProUGUI descriptionText;
+        [SerializeField] private SkillSelectionUI skillSelectionUI;
+
         public int cardIndex;
         private BulletDataSO currentBullet;
         private StatCardDataSO currentStatCard;
@@ -38,6 +42,24 @@ namespace BBS.UI.Skills {
             }
             currentBullet = null;
             currentStatCard = null;
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            
+            skillSelectionUI.currentSelectedIndex = cardIndex;
+            skillSelectionUI.UpdateCardUI();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            skillSelectionUI.Selection();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            skillSelectionUI.currentSelectedIndex = -1;
+            skillSelectionUI.UpdateCardUI();
         }
     }
 }
