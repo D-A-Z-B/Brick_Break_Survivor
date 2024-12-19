@@ -7,6 +7,7 @@ namespace BBS.Bullets {
     public class BulletDataSO : ScriptableObject {
         public Sprite icon;
         public string displayName;
+        [TextArea]
         public string description;
         public float currentDamage;
         public float defaultDamage;

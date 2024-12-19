@@ -14,14 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: -901135659, guid: a8065d5db04f5af41a4324cb1315addb, type: 3}
   displayName: "\uD0F1\uD0F1\uBCFC"
-  description: dddd
-  currentDamage: 0
+  description: "\uC5B4\uB514\uB85C \uD288\uC9C0 \uBAA8\uB974\uB294 \uBA85\uB7C9\uD568\uC744
+    \uAC00\uC9C4 \uACF5\uC785\uB2C8\uB2E4.\n\uD295\uAE38\uB54C\uB9C8\uB2E4 \uC18D\uB3C4\uAC00
+    \uC99D\uAC00\uD569\uB2C8\uB2E4.\n\nLv.1  \uC18D\uB3C4 \uC99D\uAC00\nLv.2  \uB300\uBBF8\uC9C0
+    \uC99D\uAC00\nLv.3  \uAC1C\uC218 \uCD94\uAC00 \uBC0F \uC18D\uB3C4 \uC99D\uAC00\nLv.4 
+    \uD295\uAE38 \uB54C\uB9C8\uB2E4 \uB300\uBBF8\uC9C0 \uC99D\uAC00\nLv.5  \uD295\uAE38
+    \uB54C\uC758 \uC18D\uB3C4 \uC0C1\uC2B9"
+  currentDamage: 10
   defaultDamage: 10
   currentScale: 0.3
   defaultScale: 0.3
   currentSpeed: 10
   defaultSpeed: 10
-  currentLevel: 0
+  currentLevel: -1
   ShootAmount: 0
   levelDataList:
   - {fileID: 11400000, guid: bd91e7629df871d489bf75ec3a49ff27, type: 2}
