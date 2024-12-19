@@ -1440,12 +1440,9 @@ MonoBehaviour:
   _bgmSource: {fileID: 1951761987}
   _sfxSource: {fileID: 1951761987}
   _clips:
-  - {fileID: 8300000, guid: e25a91306a9c8c449a4262174b2145f3, type: 3}
-  - {fileID: 8300000, guid: 0017dbb9645f0da42b10468899d4694e, type: 3}
   - {fileID: 8300000, guid: 4bcd8d016bd70dc45a436d13579fbf82, type: 3}
   - {fileID: 8300000, guid: 5abcb7e96a8a4cf4eba8cdcefc4ffd40, type: 3}
   - {fileID: 8300000, guid: 21241a2fe71612f4aa0f2a3ee8d16f64, type: 3}
-  - {fileID: 8300000, guid: e7f79a8170fc08246aafd3f364f43cec, type: 3}
   - {fileID: 8300000, guid: 29301a2cbedc76749a0065bada7ba581, type: 3}
   - {fileID: 8300000, guid: 0e4b8bd825cd64e4db64cc2a42cda713, type: 3}
   - {fileID: 8300000, guid: 75fa035ca883c714a92c0a871ee72766, type: 3}
