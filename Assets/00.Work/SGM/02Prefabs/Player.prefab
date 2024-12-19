@@ -55,6 +55,8 @@ MonoBehaviour:
   playerArrow: {fileID: 6341872032777417462}
   <cineCamCompo>k__BackingField: {fileID: 0}
   <PoolManager>k__BackingField: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
+  hitEffect: {fileID: 5238538877814813142, guid: 47096eff328e11a418ace7db2d72aa97, type: 3}
+  gayz: {fileID: 0}
   states:
   - {fileID: 11400000, guid: ebe88fd13fca018459031411a8dfca8b, type: 2}
   - {fileID: 11400000, guid: 30f27f674d7cadd4cb65317cf04c00cf, type: 2}

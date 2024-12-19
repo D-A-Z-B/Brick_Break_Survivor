@@ -13,6 +13,7 @@ namespace BBS.Players {
         [SerializeField] private Arrow playerArrow;
         [field: SerializeField] public CinemachineVirtualCameraBase cineCamCompo {get; private set;}
         [field: SerializeField] public PoolManagerSO PoolManager {get; private set;}
+        [SerializeField] private GameObject hitEffect;
 
         public TPBallGayz gayz;
 

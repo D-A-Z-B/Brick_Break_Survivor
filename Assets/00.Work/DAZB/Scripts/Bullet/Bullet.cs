@@ -1,12 +1,14 @@
 using BBS.Combat;
 using BBS.Core;
 using BBS.Enemies;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace BBS.Bullets {
     public abstract class Bullet : MonoBehaviour, IPoolable {
 		[field: SerializeField] public BulletDataSO dataSO {get; private set;}
 		[field: SerializeField] public int maxLevel {get; private set;}
+		[SerializeField] private GameObject hitEffect;
 	    protected Vector3 direction;
 
         public PoolTypeSO PoolType {get; set;}
@@ -57,6 +59,8 @@ namespace BBS.Bullets {
 
 				enemy.GetCompo<Health>(true).ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
 
+				Instantiate(hitEffect, transform.position, quaternion.identity);
+
 			    GameManager.Instance.IncreaseHitCount();
 			}
 			isCollision = true;
@@ -77,6 +81,7 @@ namespace BBS.Bullets {
         public virtual void ResetItem()
         {
 			dataSO.currentSpeed = dataSO.defaultSpeed;
+			collisionCount = 0;
 			isCollision = false;
 			transform.localScale = new Vector3(dataSO.currentScale, dataSO.currentScale, dataSO.currentScale);
         }

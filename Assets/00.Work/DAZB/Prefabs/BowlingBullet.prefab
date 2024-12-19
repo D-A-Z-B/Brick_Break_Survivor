@@ -151,4 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <dataSO>k__BackingField: {fileID: 11400000, guid: d38a1aa2b6d93164ba7edb2d3aa680d7, type: 2}
   <maxLevel>k__BackingField: 0
+  hitEffect: {fileID: 5238538877814813142, guid: 47096eff328e11a418ace7db2d72aa97, type: 3}
+  isCollision: 0
+  lastCollisionTime: 0
+  startTime: 0
+  collisionCount: 0
   destroyTime: 1
