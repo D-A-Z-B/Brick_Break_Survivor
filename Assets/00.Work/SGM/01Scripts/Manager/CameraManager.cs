@@ -43,6 +43,7 @@ namespace BBS
             if (EnemySpawnManager.Instance.enemyList.Count == 0)
             {
                 yield return new WaitForSeconds(0.5f);
+                TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
                 StartZoomIn();
             }
 
