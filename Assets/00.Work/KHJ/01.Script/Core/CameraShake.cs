@@ -1,9 +1,16 @@
+using KHJ.Core;
+using Unity.Cinemachine;
 using UnityEngine;
 
-namespace BBS
+namespace KHJ.Camera
 {
-    public class CameraShake : MonoBehaviour
+    public class CameraShake : MonoSingleton<CameraShake>
     {
-   
+        [SerializeField] private CinemachineImpulseSource _impulseSource;
+
+        public void Shake(float strength)
+        {
+            _impulseSource.GenerateImpulse(strength);
+        }
     }
 }

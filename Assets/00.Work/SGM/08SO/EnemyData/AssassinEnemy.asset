@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssassinEnemy
   m_EditorClassIdentifier: 
   type: 2
-  maxHealth: 25
+  maxHealth: 15
   actionTurn: 1
   moveDistance: 2
   damage: 5
