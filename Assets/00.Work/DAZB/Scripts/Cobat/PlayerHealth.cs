@@ -10,5 +10,12 @@ namespace BBS.Combat {
         {
             player = entity as Player;
         }
+
+        public override void ApplyDamage(ActionData data)
+        {
+            base.ApplyDamage(data);
+
+            Debug.Log($"player apply damage: {data.damage}");
+        }
     }
 }

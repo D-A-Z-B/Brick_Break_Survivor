@@ -106,19 +106,11 @@ namespace BBS.Enemies
             IsMoving = true;
             if (!isJump)
             {
-                transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), speed).SetEase(ease).OnComplete(() =>
-                {
-                    EnemySpawnManager.Instance.EnemyCount();
-                    IsMoving = false;
-                });
+                transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), speed).SetEase(ease).OnComplete(() => IsMoving = false );
             }
             else
             {
-                transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
-                {
-                    EnemySpawnManager.Instance.EnemyCount();
-                    IsMoving = false;
-                });
+                transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear).OnComplete(() => IsMoving = false );
             }
         }
 
@@ -139,7 +131,7 @@ namespace BBS.Enemies
         {
             Collider[] verticalColliders = Physics.OverlapBox(transform.position, new Vector3(0.9f, 1, data.attakRange * 2 + 1) * 0.5f, transform.rotation, whatIsPlayer);
             Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(data.attakRange * 2 + 1, 1, 0.9f) * 0.5f, transform.rotation, whatIsPlayer);
-
+         
             return verticalColliders.Length > 0 || horizontalColliders.Length > 0;
         }
 

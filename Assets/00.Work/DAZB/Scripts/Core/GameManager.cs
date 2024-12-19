@@ -96,8 +96,6 @@ namespace BBS.Core
                 FeverAnimation();
                 Debug.Log("Fever Start");
             }
-
-            Debug.Log("Hit: " + currentHitCount);
         }
 
         private IEnumerator CloneBullets()
@@ -110,7 +108,6 @@ namespace BBS.Core
             {
                 if (isFever == false) break;
                 if (temp[i].dataSO.type == BulletType.TPB) continue;
-                Debug.Log("Clone : " + temp[i].dataSO.type);
                 Bullet bullet = poolManager.Pop(BulletManager.Instance.GetPoolType(temp[i].dataSO.type)) as Bullet;
                 if (bullet == null) continue;
 

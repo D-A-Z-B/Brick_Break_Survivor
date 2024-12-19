@@ -1172,7 +1172,7 @@ MonoBehaviour:
   <range>k__BackingField: 41
   interval: 1
   renderMoveSpeed: 1
-  <isEliteOrBoss>k__BackingField: 1
+  <isEliteOrBoss>k__BackingField: 0
   bossRange: 21
 --- !u!4 &1110054790
 Transform:
@@ -1209,7 +1209,6 @@ MonoBehaviour:
   spawnRadiusMin: 6
   spawnRadiusMax: 60
   spawnCount: 10
-  spawnPointWithoutPlyer: {fileID: 0}
   howTurn: 1
   prob: 5
 --- !u!114 &1110054792

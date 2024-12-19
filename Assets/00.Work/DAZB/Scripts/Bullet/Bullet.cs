@@ -50,8 +50,6 @@ namespace BBS.Bullets {
 			if (((1 << collision.gameObject.layer) & LayerMask.GetMask("Enemy")) != 0) {
 				Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
-                Debug.Log("hp: "+ enemy.GetCompo<Health>(true).CurrentHealth);
-				Debug.Log("Damage" + dataSO.currentDamage);
 				enemy.GetCompo<Health>(true).ApplyDamage(new Combat.ActionData((int)dataSO.currentDamage));
 
 			    GameManager.Instance.IncreaseHitCount();
