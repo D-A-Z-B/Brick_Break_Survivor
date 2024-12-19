@@ -17,6 +17,7 @@ namespace BBS.UI.Skills {
             Player player = PlayerManager.Instance.Player;
             player.GetCompo<Health>(true).CurrentHealth += (int)(player.GetCompo<Health>(true).MaxHealth * ((float)healHp / 100));
             player.GetCompo<Health>(true).MaxHealth += increaseHp;
+            player.GetCompo<Health>(true).CurrentHealth += increaseHp;
             player.GetCompo<Health>(true).Dr += increaseDR;
         }
     }
