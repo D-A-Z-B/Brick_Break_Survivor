@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHealth: 15
   actionTurn: 1
   moveDistance: 2
-  damage: 5
+  damage: 2
   attakRange: 1
   ease:
     serializedVersion: 2
