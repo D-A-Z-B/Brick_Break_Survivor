@@ -66,7 +66,7 @@ namespace BBS
             
             isZoomOut = true;
             zoomTimer = Time.time;
-            TurnManager.Instance.EnemyTurnStart?.Invoke();
+            TurnManager.Instance.EnemyTurnStartEvent?.Invoke();
         }
 
         public void StartZoomIn()

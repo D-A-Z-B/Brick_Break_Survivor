@@ -13,7 +13,8 @@ namespace BBS
 
     public class TurnManager : MonoSingleton<TurnManager>
     {
-        public Action EnemyTurnStart;
+        public Action TurnStartEvent;
+        public Action EnemyTurnStartEvent;
 
         public Action EliteBossEvent;
         public Action LastBossEvent;
@@ -35,6 +36,8 @@ namespace BBS
             if (currentTurnType == TurnType.EnemyTurn && !isBossRound)
             {
                 turnCount++;
+                TurnStartEvent?.Invoke();
+
                 if (turnCount == firstBossTurn)
                 {
                     isBossRound = true;

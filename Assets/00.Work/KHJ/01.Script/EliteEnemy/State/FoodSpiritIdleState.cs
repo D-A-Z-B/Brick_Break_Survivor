@@ -15,7 +15,7 @@ namespace BBS.Enemies
         public FoodSpiritIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             enemy = entity as Enemy;
-            TurnManager.Instance.EnemyTurnStart += HandleStartEnemyTurn;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
         }
 
         public override void Enter()
