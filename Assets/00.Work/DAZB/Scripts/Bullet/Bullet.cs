@@ -15,9 +15,9 @@ namespace BBS.Bullets {
 
 		protected Pool myPool;
 
-		protected bool isCollision = false;
-        protected float lastCollisionTime;
-        protected float startTime;
+		public bool isCollision = false;
+        public float lastCollisionTime;
+        public float startTime;
 
 		private bool isForcePush;
 

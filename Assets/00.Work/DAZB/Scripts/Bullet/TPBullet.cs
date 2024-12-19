@@ -8,7 +8,7 @@ namespace BBS.Bullets {
         [SerializeField] private LayerMask groundLayer;
         private bool completeTp = false;
 
-        [SerializeField] protected float destroyTime;
+        public float destroyTime;
 
         protected override void Update()
         {
