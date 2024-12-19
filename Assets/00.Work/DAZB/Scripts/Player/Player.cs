@@ -50,7 +50,6 @@ namespace BBS.Players {
         }
 
         private void Update() {
-
             stateMachine.UpdateFSM();
         }
 

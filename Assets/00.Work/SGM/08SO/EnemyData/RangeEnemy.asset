@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   maxHealth: 20
-  actionTurn: 1
+  actionTurn: 4
   moveDistance: 0
   damage: 20
   attakRange: 0
