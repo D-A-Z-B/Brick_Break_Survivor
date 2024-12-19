@@ -28,5 +28,9 @@ namespace BBS
             }
         }
 
+
+        public void Quit() {
+            Application.Quit();
+        }
     }
 }

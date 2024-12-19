@@ -42,7 +42,8 @@ namespace BBS.Bullets {
 		}
 
 	    protected virtual void Update() {
-    		transform.position += direction * dataSO.currentSpeed * Time.deltaTime;
+			float speed = dataSO.currentSpeed * (GameManager.Instance.IsFever ? 2 : 1);
+    		transform.position += direction * speed * Time.deltaTime;
 	    }   
 
 	    protected virtual void OnCollisionEnter(Collision collision) {
