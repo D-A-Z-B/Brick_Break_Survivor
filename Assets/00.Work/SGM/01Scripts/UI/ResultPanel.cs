@@ -52,8 +52,6 @@ namespace BBS
 
         public void ResultText()
         {
-            Debug.Log("A");
-
             titleText.color = Color.white; 
             titleText.transform.DOScale(Vector3.one, 1f).SetUpdate(true).SetEase(Ease.InSine)
                 .OnComplete(() =>
