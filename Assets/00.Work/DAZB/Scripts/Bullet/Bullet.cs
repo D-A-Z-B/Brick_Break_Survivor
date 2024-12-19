@@ -19,10 +19,12 @@ namespace BBS.Bullets {
         public float lastCollisionTime;
         public float startTime;
 
+		public int collisionCount = 0;
+
 		private bool isForcePush;
 
 		protected virtual void Awake() {
-			
+
 		}
 
         public virtual void Setup(Vector3 position, Vector3 direction) {
@@ -33,6 +35,7 @@ namespace BBS.Bullets {
 
 		protected virtual void OnEnable() {
 			isForcePush = false;
+			
 			GameManager.Instance.AddBullet(this);
 		}
 
@@ -47,6 +50,7 @@ namespace BBS.Bullets {
 	    }   
 
 	    protected virtual void OnCollisionEnter(Collision collision) {
+			collisionCount++;
 			SoundManager.Instance.PlaySFX("BounceSound");
 			if (((1 << collision.gameObject.layer) & LayerMask.GetMask("Enemy")) != 0) {
 				Enemy enemy = collision.gameObject.GetComponent<Enemy>();

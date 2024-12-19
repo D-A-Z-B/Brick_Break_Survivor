@@ -34,7 +34,7 @@ namespace BBS
 
             if (bullet.isCollision)
             {
-                slider.maxValue = bullet.destroyTime;
+                slider.maxValue = bullet.destroyTime - bullet.collisionCount * 0.05f;
                 slider.value = Time.time - bullet.lastCollisionTime;
             }
             else
