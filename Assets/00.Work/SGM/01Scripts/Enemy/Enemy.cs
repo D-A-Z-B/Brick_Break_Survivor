@@ -48,6 +48,7 @@ namespace BBS.Enemies
 
         private void HandleOnDead()
         {
+            Debug.Log("dead");
             ChangeState("DEAD");
             IsDead = true;
         }
