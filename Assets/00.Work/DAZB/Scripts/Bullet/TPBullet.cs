@@ -10,6 +10,7 @@ namespace BBS.Bullets {
 
         public float destroyTime;
 
+
         protected override void Update()
         {
             base.Update();
@@ -20,7 +21,7 @@ namespace BBS.Bullets {
 
             if (GameManager.Instance.IsFever) return;
 
-            if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
+            if (isCollision == true && lastCollisionTime + (destroyTime - collisionCount * 0.05f) < Time.time) {
                 Player player = PlayerManager.Instance.Player;
                 player.ChangeState("IDLE");
 				myPool.Push(this);

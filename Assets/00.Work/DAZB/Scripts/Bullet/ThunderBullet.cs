@@ -14,7 +14,7 @@ namespace BBS.Bullets {
 
             if (GameManager.Instance.IsFever == true) return;
 
-            if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
+            if (isCollision == true && lastCollisionTime + (destroyTime - collisionCount * 0.05f) < Time.time) {
 				myPool.Push(this);
 			}
 

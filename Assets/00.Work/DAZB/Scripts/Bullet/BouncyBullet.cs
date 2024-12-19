@@ -10,7 +10,7 @@ namespace BBS.Bullets {
 
             if (GameManager.Instance.IsFever == true) return;
 
-            if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
+            if (isCollision == true && lastCollisionTime + (destroyTime - collisionCount * 0.05f) < Time.time) {
 				myPool.Push(this);
 			}
 
@@ -32,6 +32,16 @@ namespace BBS.Bullets {
             if (dataSO.currentLevel >= 4) {
                 dataSO.currentDamage += dataSO.currentDamage * (float)((float)10 / 100); 
             }
+
+            if (dataSO.currentSpeed >= 50) {
+                dataSO.currentSpeed = 50;
+            }
+        }
+
+        public override void ResetItem()
+        {
+            base.ResetItem();
+            dataSO.currentSpeed = dataSO.defaultSpeed;
         }
     }
 }
