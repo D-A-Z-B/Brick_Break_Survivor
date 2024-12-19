@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   displayName: "\uB300\uAC00\uC871"
-  description: 
+  description: dddd
   currentDamage: 0
   defaultDamage: 10
   currentScale: 0.3
   defaultScale: 0.3
-  currentSpeed: 0
+  currentSpeed: 10
   defaultSpeed: 10
   currentLevel: 0
   ShootAmount: 0

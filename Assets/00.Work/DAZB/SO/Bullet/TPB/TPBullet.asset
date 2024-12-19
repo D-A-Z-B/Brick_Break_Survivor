@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   displayName: "\uC774\uB3D9 \uACF5"
-  description: 
+  description: dddd
   currentDamage: 0
   defaultDamage: 0
   currentScale: 0.3

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ThunderB
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  displayName: 
-  description: "\uBC88\uAC1C"
+  displayName: "\uBC88\uAC1C"
+  description: dddd
   currentDamage: 0
   defaultDamage: 20
   currentScale: 0.3

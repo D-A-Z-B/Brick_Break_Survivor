@@ -11,6 +11,8 @@ namespace BBS.UI.Skills {
         [SerializeField] private int cardIndex;
         private BulletDataSO currentBullet;
 
+        public RectTransform RectTrm => transform as RectTransform;
+
         public void SetCard(BulletDataSO data) {
             currentBullet = data;
 
