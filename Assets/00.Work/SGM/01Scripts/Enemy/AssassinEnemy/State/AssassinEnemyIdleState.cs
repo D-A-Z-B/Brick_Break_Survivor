@@ -13,6 +13,7 @@ namespace BBS.Enemies
         public AssassinEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             enemy = entity as Enemy;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
             enemy.OnDestroyEvent += HandleDieEvent;
         }
 
