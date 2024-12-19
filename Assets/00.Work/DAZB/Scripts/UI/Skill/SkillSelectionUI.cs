@@ -5,14 +5,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public enum CardType : short {
-    left = 0, right, middle
-}
 
 namespace BBS.UI.Skills {
+    public enum CardType : short {
+        left = 0, right, middle
+    }
     public class SkillSelectionUI : MonoBehaviour {
         [SerializeField] private List<SkillCard> skillCards;
         [SerializeField] private List<BulletDataSO> bulletDataList;
+        [SerializeField] private List<StatCardDataSO> statCardDataList;
         [SerializeField] private Image background;
         private int currentSelectedIndex = -1;
         private const int minIndex = 0;
@@ -42,16 +43,24 @@ namespace BBS.UI.Skills {
             Time.timeScale = 0;
 
             List<BulletDataSO> shuffledBulletDataList = new List<BulletDataSO>(bulletDataList);
+            List<StatCardDataSO> shuffledStatCardDataList = new List<StatCardDataSO>(statCardDataList);
+
             for (int i = 0; i < shuffledBulletDataList.Count; ++i) {
                 int rand = Random.Range(0, shuffledBulletDataList.Count);
                 (shuffledBulletDataList[i], shuffledBulletDataList[rand]) = (shuffledBulletDataList[rand], shuffledBulletDataList[i]);
             }
 
+            for (int i = 0; i < shuffledStatCardDataList.Count; ++i) {
+                int rand = Random.Range(0, shuffledStatCardDataList.Count);
+                (shuffledStatCardDataList[i], shuffledStatCardDataList[rand]) = (shuffledStatCardDataList[rand], shuffledStatCardDataList[i]);
+            }
+
             for (int i = 0; i < skillCards.Count; ++i) {
-                if (i < shuffledBulletDataList.Count) {
+                if (shuffledBulletDataList[i].currentLevel >= 5) {
+                    skillCards[i].SetCard(shuffledStatCardDataList[i]);
+                }
+                else {
                     skillCards[i].SetCard(shuffledBulletDataList[i]);
-                } else {
-                    Debug.LogWarning("skillCards의 수가 bulletDataList보다 많습니다.");
                 }
             }
 

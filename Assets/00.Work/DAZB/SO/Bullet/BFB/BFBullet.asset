@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: -1830541344, guid: 8a87297f4d1f65e42960e2929d22fdaf, type: 3}
   displayName: "\uB300\uAC00\uC871"
-  description: dddd
-  currentDamage: 10
+  description: "\uBB34\uC5C7\uBCF4\uB2E4 \uAC00\uC7A5 \uC21C\uC218\uD55C \uACF5\uC785\uB2C8\uB2E4.\n\uADF8\uB4E4\uC740
+    \uB204\uAD6C\uB4E0\uC9C0 \uC218\uB85C \uC555\uB3C4\uD569\uB2C8\uB2E4.\n\nLv.1 
+    \uAC1C\uC218 \uCD94\uAC00 \uBC0F \uB300\uBBF8\uC9C0 \uC99D\uAC00\nLv.2  \uAC1C\uC218
+    \uCD94\uAC00\nLv.3  \uB300\uBBF8\uC9C0 \uC99D\uAC00\nLv.4  \uAC1C\uC218 \uCD94\uAC00\nLv.5 
+    \uAC1C\uC218 \uCD94\uAC00 \uBC0F \uC0AC\uC774\uC988 \uC99D\uAC00"
+  currentDamage: 0
   defaultDamage: 10
   currentScale: 0.3
   defaultScale: 0.3
   currentSpeed: 10
   defaultSpeed: 10
-  currentLevel: 0
+  currentLevel: -1
   ShootAmount: 0
   levelDataList:
   - {fileID: 11400000, guid: 272196cced265d24f858a69f64c5876a, type: 2}

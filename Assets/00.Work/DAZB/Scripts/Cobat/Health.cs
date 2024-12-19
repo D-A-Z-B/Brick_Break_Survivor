@@ -31,7 +31,19 @@ namespace BBS.Combat
             }
         }
 
-        public int MaxHealth => maxHealth;
+        public virtual int MaxHealth {
+            get => maxHealth;
+            set => maxHealth = value;
+        }
+
+        private int dr = 0;
+        public int Dr {
+            get => dr;
+            set {
+                dr = value;
+                if (dr < 0) dr = 0;
+            }
+        }
 
         public abstract void Initialize(Entity entity);
 
@@ -42,7 +54,7 @@ namespace BBS.Combat
 
         public virtual void ApplyDamage(ActionData data)
         {
-            currentHealth -= data.damage;
+            currentHealth -= data.damage + (data.damage * (dr / 100));
             Debug.Log("apply damage");
 
             OnHit?.Invoke();

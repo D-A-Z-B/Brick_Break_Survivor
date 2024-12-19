@@ -532,6 +532,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad23dc4677ac2654d936e58bbbfbaec9, type: 2}
   - {fileID: 11400000, guid: 1328cda378b39b8408ba01d64ed070da, type: 2}
   - {fileID: 11400000, guid: 43732fc1e50f3ab4a803ac39d8b397df, type: 2}
+  statCardDataList:
+  - {fileID: 11400000, guid: 9416d6a4153c65c468837f6553d4fffc, type: 2}
+  - {fileID: 11400000, guid: 575734694aa45a64389accd19db00b36, type: 2}
+  - {fileID: 11400000, guid: 0b5cbe4c626032748b9a4854053b4584, type: 2}
   background: {fileID: 1366721506}
 --- !u!1 &595180742
 GameObject:
@@ -2303,6 +2307,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1857069543}
     m_Modifications:
+    - target: {fileID: 4384352711406062257, guid: 3ff62782a95e6b64a825885d4b3db038, type: 3}
+      propertyPath: m_lineSpacing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5485190561602238712, guid: 3ff62782a95e6b64a825885d4b3db038, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

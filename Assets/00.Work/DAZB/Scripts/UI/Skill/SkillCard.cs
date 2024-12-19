@@ -10,6 +10,7 @@ namespace BBS.UI.Skills {
         [SerializeField] private TextMeshProUGUI descriptionText;
         public int cardIndex;
         private BulletDataSO currentBullet;
+        private StatCardDataSO currentStatCard;
 
         public RectTransform RectTrm => transform as RectTransform;
 
@@ -21,8 +22,22 @@ namespace BBS.UI.Skills {
             descriptionText.text = data.description;
         }
 
+        public void SetCard(StatCardDataSO data) {
+            currentStatCard = data;
+
+            skillIcon.sprite = data.icon;
+            titleText.text = data.displayName;
+            descriptionText.text = data.description;
+        }
+
         public void Selection() {
-            BulletManager.Instance.AddBullet(currentBullet);
+            if (currentBullet != null)
+                BulletManager.Instance.AddBullet(currentBullet);
+            else if (currentStatCard != null) {
+                currentStatCard.ApplyEffect();
+            }
+            currentBullet = null;
+            currentStatCard = null;
         }
     }
 }
