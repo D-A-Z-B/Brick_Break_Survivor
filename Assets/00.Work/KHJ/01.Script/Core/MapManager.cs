@@ -40,7 +40,7 @@ namespace KHJ.Core
 
         private void Awake()
         {
-            TurnManager.Instance.EliteBossEvent += HandleEliteSpawn;
+            TurnManager.Instance.BossEvent += HandleEliteSpawn;
 
             SetRange();
         }
