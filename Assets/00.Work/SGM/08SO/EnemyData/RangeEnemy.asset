@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: RangeEnemy
   m_EditorClassIdentifier: 
   type: 1
-  maxHealth: 10
-  actionTurn: 4
+  maxHealth: 20
+  actionTurn: 1
   moveDistance: 0
   damage: 20
-  attakRange: 5
+  attakRange: 0
   ease:
     serializedVersion: 2
     m_Curve:
