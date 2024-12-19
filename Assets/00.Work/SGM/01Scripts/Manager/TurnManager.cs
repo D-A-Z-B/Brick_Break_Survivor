@@ -49,6 +49,7 @@ namespace BBS
             }
             else if (type == TurnType.PlayerTurn)
             {
+                LevelManager.Instance.GetExp();
                 CameraManager.Instance.StartZoomIn();
             }
 

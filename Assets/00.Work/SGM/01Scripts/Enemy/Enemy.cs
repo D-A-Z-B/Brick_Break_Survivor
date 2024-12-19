@@ -39,6 +39,7 @@ namespace BBS.Enemies
         private void HandleOnDead()
         {
             ChangeState("DEAD");
+            LevelManager.Instance.CreateExp(transform.position);
             mapManager.DestroyEntity(new Coord(transform.position), this);
         }
 
