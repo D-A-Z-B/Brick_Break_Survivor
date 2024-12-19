@@ -3692,6 +3692,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 870562172741724679, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 870562172741724679, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 870562172741724679, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1862744844790127548, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
       propertyPath: m_Name
       value: Player
