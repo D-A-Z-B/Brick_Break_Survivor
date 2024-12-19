@@ -788,7 +788,7 @@ MonoBehaviour:
   poolManager: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
   hitCountText: {fileID: 11400000, guid: 9a51f95a5ae17cf48bb5d4bcc96c872d, type: 2}
   feverTextObject: {fileID: 470119299}
-  startFeverHitCount: 100
+  startFeverHitCount: 40
   feverDuration: 5
 --- !u!114 &362111057
 MonoBehaviour:
