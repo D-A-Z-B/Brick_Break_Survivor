@@ -43,6 +43,7 @@ namespace BBS
             if (EnemySpawnManager.Instance.enemyList.Count == 0)
             {
                 yield return new WaitForSeconds(0.5f);
+                TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
                 StartZoomIn();
             }
 
@@ -66,7 +67,7 @@ namespace BBS
             
             isZoomOut = true;
             zoomTimer = Time.time;
-            TurnManager.Instance.EnemyTurnStart?.Invoke();
+            TurnManager.Instance.EnemyTurnStartEvent?.Invoke();
         }
 
         public void StartZoomIn()
