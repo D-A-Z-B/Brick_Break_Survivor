@@ -14,6 +14,7 @@ namespace BBS.Enemies
         {
             enemy = entity as Enemy;
             enemy.OnDestroyEvent += HandleDieEvent;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
         }
 
         private void HandleDieEvent()
@@ -48,11 +49,6 @@ namespace BBS.Enemies
             {
                 EnemySpawnManager.Instance.EnemyCount();
             }
-        }
-
-        public override void Exit()
-        {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
         }
     }
 }

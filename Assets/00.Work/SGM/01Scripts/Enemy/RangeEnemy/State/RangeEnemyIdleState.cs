@@ -47,10 +47,5 @@ namespace BBS.Enemies
                 EnemySpawnManager.Instance.EnemyCount();
             }
         }
-
-        public override void Exit()
-        {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
-        }
     }
 }
