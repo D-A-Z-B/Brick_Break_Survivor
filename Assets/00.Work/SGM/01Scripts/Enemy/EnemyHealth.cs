@@ -41,7 +41,6 @@ namespace BBS.Enemies
         {
             float hp = (float)currentHealth / maxHealth;
             Color color = meshRender.material.color;
-            print(hp);
             color.a = ConvertIntToRange(hp);
             meshRender.material.color = color;
         }
