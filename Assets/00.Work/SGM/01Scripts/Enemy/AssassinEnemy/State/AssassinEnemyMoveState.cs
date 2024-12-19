@@ -17,15 +17,21 @@ namespace BBS.Enemies
         public override void Enter()
         {
             base.Enter();
-
             enemy.Move();
+        }
 
-            if (enemy.CanAttack())
-                enemy.ChangeState("ATTACK");
-            else
+        public override void Update()
+        {
+            base.Update();
+            if(!enemy.IsMoving)
             {
-                EnemySpawnManager.Instance.EnemyCount();
-                enemy.ChangeState("IDLE");
+                if (enemy.CanAttack())
+                    enemy.ChangeState("ATTACK");
+                else
+                {
+                    EnemySpawnManager.Instance.EnemyCount();
+                    enemy.ChangeState("IDLE");
+                }
             }
         }
     }

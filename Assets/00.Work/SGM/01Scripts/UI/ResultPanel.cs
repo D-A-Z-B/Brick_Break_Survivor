@@ -21,20 +21,22 @@ namespace BBS
 
         private void Start()
         {
-            //retryBtn.onClick.AddListener(() => SceneManager.LoadScene("GameScene"));
-            //retryBtn.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
+            retryBtn.onClick.AddListener(() => SceneManager.LoadScene("Dazb_Test"));
+            titleBtn.onClick.AddListener(() => SceneManager.LoadScene("Title"));
         }
 
         private void Update()
         {
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                OnResultPanel();
+                OnResultPanel(true);
             }
         }
 
-        public void OnResultPanel()
+        public void OnResultPanel(bool isDie)
         {
+
+
             killCountText.text = LevelManager.Instance.GetKillCount().ToString();
             maxHitText.text = GameManager.Instance.GetMaxHitCount().ToString();
 
@@ -44,9 +46,9 @@ namespace BBS
 
         private void GetResultSkillCard()
         {
-            foreach(BulletDataSO skill in BulletManager.Instance.PlayerBulletList)
+            foreach (BulletDataSO skill in BulletManager.Instance.PlayerBulletList)
             {
-                if(skill != null && skill.icon != null)
+                if (skill != null && skill.icon != null)
                 {
                     ResultSkillCard card = Instantiate(cardPrefab, cardContainer).GetComponent<ResultSkillCard>();
                     card.Init(skill.currentLevel, skill.icon);
