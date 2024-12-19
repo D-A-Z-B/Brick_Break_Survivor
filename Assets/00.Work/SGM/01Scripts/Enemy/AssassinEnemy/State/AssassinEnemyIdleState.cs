@@ -26,6 +26,12 @@ namespace BBS.Enemies
 
         private void HandleStartEnemyTurn()
         {
+            if(enemy == null)
+            {
+                HandleDieEvent();
+                return;
+            }
+
             if (enemy.IsStun)
             {
                 enemy.SetStun(false);

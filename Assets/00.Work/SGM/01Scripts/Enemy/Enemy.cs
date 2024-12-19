@@ -29,6 +29,8 @@ namespace BBS.Enemies
 
         public bool IsMoving = false;
 
+        public bool IsDead = false;
+
         protected override void AfterInitialize()
         {
             base.AfterInitialize();
@@ -47,9 +49,7 @@ namespace BBS.Enemies
         private void HandleOnDead()
         {
             ChangeState("DEAD");
-            SoundManager.Instance.PlaySFX("Enemy_dead");
-            LevelManager.Instance.CreateExp(transform.position);
-            mapManager.DestroyEntity(new Coord(transform.position), this);
+            IsDead = true;
         }
 
         private void SpawnAnim()
