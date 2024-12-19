@@ -1,3 +1,4 @@
+using BBS.UI.Skills;
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,8 @@ namespace BBS
     {
         private List<Exp> expList;
 
-        //test
-        [SerializeField] private Transform playerTrm;
-
         [SerializeField] private LevelPanelUI levelPanel;
+        [SerializeField] private SkillSelectionUI skillSelectionUI;
         [SerializeField] private Transform expPrefab;
         [SerializeField] private float levelUpExpCalculation = 1;
         private int level = 0;
@@ -28,15 +27,6 @@ namespace BBS
             LevelUp();
         }
 
-        private void Update()
-        {
-            //test
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                GetExp(playerTrm);
-            }
-        }
-
         public void CreateExp(Vector3 pos)
         {
             Exp exp = Instantiate(expPrefab, transform).GetComponent<Exp>();
@@ -44,16 +34,16 @@ namespace BBS
             expList.Add(exp);
         }
 
-        public void GetExp(Transform playerTrm)
+        public void GetExp()
         {
             expList.ForEach(exp =>
             {
-                exp.MoveToPlayer(playerTrm);
+                exp.MoveToPlayer();
             });
             expList.Clear();
         }
 
-        public void AddExp(float exp)
+        public void PlusExp(float exp)
         {
             curentExp += exp;
 
@@ -68,7 +58,7 @@ namespace BBS
             curentExp = 0;
             level++;
             needExp = Mathf.Pow(level * 50 / 49, 2.5f) * levelUpExpCalculation;
-
+            skillSelectionUI.Open();
             levelPanel.UpdateExpBarLevel(needExp, level);
         }
     }

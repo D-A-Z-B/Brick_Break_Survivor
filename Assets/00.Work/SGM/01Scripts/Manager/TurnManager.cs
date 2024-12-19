@@ -30,7 +30,6 @@ namespace BBS
         public void ChangeTurn(TurnType type)
         {
             currentTurnType = type;
-            Debug.Log(currentTurnType);
 
             if (currentTurnType == TurnType.EnemyTurn && !isBossRound)
             {
@@ -46,11 +45,12 @@ namespace BBS
                     LastBossEvent?.Invoke();
                 }
 
-                CameraManager.Instance.StartZoomIn();
+                CameraManager.Instance.StartZoomOut();
             }
             else if (type == TurnType.PlayerTurn)
             {
-                CameraManager.Instance.StartZoomOut();
+                LevelManager.Instance.GetExp();
+                CameraManager.Instance.StartZoomIn();
             }
 
             currentTurnType = type;

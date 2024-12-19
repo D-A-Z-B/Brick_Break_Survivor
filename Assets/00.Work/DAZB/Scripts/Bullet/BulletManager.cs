@@ -9,26 +9,31 @@ namespace BBS.Bullets {
         [field: SerializeField]  public List<BulletDataSO> PlayerBulletList {get; private set;}
         [field: SerializeField]  public List<PoolTypeSO> PlayerBulletPoolTypeList {get; private set;}
 
-/*         [SerializeField] private PoolManagerSO poolManager;
-        [SerializeField] private List<PoolTypeSO> poolTypeList;  */
-
-        /* private bool isExecuteShootRoutine = false; */
 
         private void Start() {
 
             for (int i = 0; i < PlayerBulletList.Count; ++i) {
-                foreach (var iter in PlayerBulletList[i].GetEffectByLevel(0).effectList) {
-                    iter.SetOwner(PlayerBulletList[i]);
-                    iter.ApplyEffect();
-                }
+                if (PlayerBulletList[i] == null) continue;
+                LevelUp(PlayerBulletList[i].type, 1);
             }
         }
 
         private void OnDestroy() {
             for (int i = 0; i < PlayerBulletList.Count; ++i) {
+                if (PlayerBulletList[i] == null) continue;
                 PlayerBulletList[i].ShootAmount = 0;
                 PlayerBulletList[i].currentDamage = 0;
-                PlayerBulletList[i].currentLevel = 0;
+                PlayerBulletList[i].currentLevel = -1;
+            }
+        }
+
+        public void AddBullet(BulletDataSO data) {
+            if (PlayerBulletList.Contains(data)) {
+                LevelUp(data.type, 1);
+            }
+            else {
+                PlayerBulletList[(int)data.type] = data;
+                LevelUp(data.type, 1);
             }
         }
 
@@ -38,6 +43,7 @@ namespace BBS.Bullets {
 
         public void LevelUp(BulletType type, int amount) {
             foreach (var iter in PlayerBulletList) {
+                if (iter == null) continue;
                 if (iter.type == type) {
                     if (iter.currentLevel >= 5) return;
 
