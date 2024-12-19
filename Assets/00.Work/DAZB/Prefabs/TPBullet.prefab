@@ -154,4 +154,4 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  destroyTime: 0.7
+  destroyTime: 1
