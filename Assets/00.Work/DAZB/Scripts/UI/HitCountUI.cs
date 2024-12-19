@@ -35,6 +35,7 @@ namespace BBS.UI {
 
         private void Routine() {
             Sequence sq = DOTween.Sequence();
+            sq.SetUpdate(true);
             sq.Append(text.rectTransform.DOAnchorPosY(text.rectTransform.anchoredPosition.y + 100, 1.5f));
             sq.Join(text.DOFade(0, 1.5f));
             sq.OnComplete(() => myPool.Push(this));
