@@ -3,6 +3,7 @@ using BBS.FSM;
 using DG.Tweening;
 using KHJ.Camera;
 using KHJ.Core;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using StateMachine = BBS.FSM.StateMachine;
@@ -11,6 +12,8 @@ namespace BBS.Enemies
 {
     public class Enemy : Entity
     {
+        public event Action OnDestroyEvent;
+
         public List<StateSO> states;
         public EnemyDataSO data;
 
@@ -137,6 +140,7 @@ namespace BBS.Enemies
 
         private void OnDestroy()
         {
+            OnDestroyEvent?.Invoke();
             GetCompo<EnemyHealth>().OnDead -= HandleOnDead;
         }
 
@@ -146,6 +150,11 @@ namespace BBS.Enemies
             EnemyDataSO newEnem = ScriptableObject.CreateInstance<EnemyDataSO>();
             newEnem.maxHealth = data.maxHealth + Mathf.RoundToInt(data.maxHealth * 0.05f * count);
             newEnem.damage = data.maxHealth + Mathf.RoundToInt(data.damage * 0.05f * count);
+            newEnem.actionTurn = data.actionTurn;
+            newEnem.moveDistance = data.moveDistance;
+            newEnem.type = data.type;
+            newEnem.ease = data.ease;
+            newEnem.attakRange = data.attakRange;   
             data = newEnem;
         }
     }
