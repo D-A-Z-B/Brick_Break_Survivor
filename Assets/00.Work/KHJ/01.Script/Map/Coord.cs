@@ -20,8 +20,8 @@ namespace KHJ.Core
 
         public Coord(Vector3 vec)
         {
-            this.x = (int)vec.x;
-            this.y = (int)vec.z;
+            this.x = Mathf.RoundToInt(vec.x);
+            this.y = Mathf.RoundToInt(vec.z);
         }
     }
 }
