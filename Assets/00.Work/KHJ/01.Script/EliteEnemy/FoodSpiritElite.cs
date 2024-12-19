@@ -11,6 +11,12 @@ namespace BBS.Enemies
       public float forceDuration;
        public AnimationCurve forceEase;
 
+        protected override void AfterInitialize()
+        {
+            base.AfterInitialize();
+            GetComponent<EnemyHealth>().OnDead += () => ResultPanel.Instance.OnResultPanel(true);
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out Player player))
