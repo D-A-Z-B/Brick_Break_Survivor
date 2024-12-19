@@ -46,7 +46,7 @@ namespace BBS
         {
             foreach(BulletDataSO skill in BulletManager.Instance.PlayerBulletList)
             {
-                if(skill != null)
+                if(skill != null && skill.icon != null)
                 {
                     ResultSkillCard card = Instantiate(cardPrefab, cardContainer).GetComponent<ResultSkillCard>();
                     card.Init(skill.currentLevel, skill.icon);
