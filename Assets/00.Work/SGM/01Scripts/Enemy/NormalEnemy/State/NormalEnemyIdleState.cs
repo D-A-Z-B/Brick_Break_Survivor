@@ -2,6 +2,7 @@ using BBS.Animators;
 using BBS.Entities;
 using BBS.FSM;
 using KHJ.Core;
+using System;
 
 namespace BBS.Enemies
 {
@@ -13,17 +14,23 @@ namespace BBS.Enemies
         public NormalEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             this.enemy = entity as Enemy;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
+            enemy.OnDestroyEvent += HandleDieEvent;
+        }
+
+        private void HandleDieEvent()
+        {
+            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
+            enemy.OnDestroyEvent -= HandleStartEnemyTurn;
         }
 
         public override void Enter()
         {
-            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
+            base.Enter();
         }
 
         private void HandleStartEnemyTurn()
         {
-            if (TurnManager.Instance.TurnCount >= 20) return;   
-
             if (enemy.IsStun)
             {
                 enemy.SetStun(false);
@@ -46,14 +53,8 @@ namespace BBS.Enemies
             }
             else
             {
-                EnemySpawnManager.Instance.ReSpawnElite();
                 EnemySpawnManager.Instance.EnemyCount();
             }
-        }
-
-        public override void Exit()
-        {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
         }
     }
 }

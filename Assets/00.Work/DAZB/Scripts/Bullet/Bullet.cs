@@ -47,6 +47,7 @@ namespace BBS.Bullets {
 	    }   
 
 	    protected virtual void OnCollisionEnter(Collision collision) {
+			SoundManager.Instance.PlaySFX("BounceSound");
 			if (((1 << collision.gameObject.layer) & LayerMask.GetMask("Enemy")) != 0) {
 				Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 

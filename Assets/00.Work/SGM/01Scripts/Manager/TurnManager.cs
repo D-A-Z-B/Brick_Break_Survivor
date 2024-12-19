@@ -22,7 +22,7 @@ namespace BBS
 
         public TurnType currentTurnType = TurnType.PlayerTurn;
 
-        private int turnCount = 19;
+        private int turnCount = 1;
         public int TurnCount => turnCount;
 
         public int modifyStatCount { get; set; } = 1;
@@ -33,11 +33,14 @@ namespace BBS
 
             if (currentTurnType == TurnType.EnemyTurn)
             {
+                Debug.Log($"turn: {turnCount}");
                 turnCount++;
                 TurnStartEvent?.Invoke();
 
-                if (turnCount == BossTurn)
+                if (turnCount == BossTurn) {
+                    SoundManager.Instance.PlayBGM("Boss_BackGround");
                     BossEvent?.Invoke();
+                }
 
                 GameManager.Instance.ResetHitCount();
                 CameraManager.Instance.StartZoomOut();

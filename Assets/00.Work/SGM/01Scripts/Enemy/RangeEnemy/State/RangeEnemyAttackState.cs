@@ -18,7 +18,7 @@ namespace BBS.Enemies
         public override void Enter()
         {
             base.Enter();
-
+            SoundManager.Instance.PlaySFX("RangeEnemy_Attack");
             Vector3[] spawnDirs = { Vector3.right, Vector3.left, Vector3.forward, -Vector3.forward};
             foreach (Vector3 dir in spawnDirs)
                 enemy.SpawnProjectile(dir);

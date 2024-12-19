@@ -47,7 +47,10 @@ namespace BBS.Bullets {
 
                 if (IsWithinRange(nx, ny)) {
                     Enemy enemy = MapManager.Instance.GetEnemyInArr(nx, ny);
-                    enemy?.GetCompo<Health>(true).ApplyDamage(new ActionData((int)(dataSO.currentDamage * 0.5f)));
+                    if (enemy != null) {
+                        SoundManager.Instance.PlaySFX("Thunder_Ball_Spark");
+                        enemy?.GetCompo<Health>(true).ApplyDamage(new ActionData((int)(dataSO.currentDamage * 0.5f)));
+                    }
                 }
             }
         }

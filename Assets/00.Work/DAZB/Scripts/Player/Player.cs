@@ -1,15 +1,11 @@
 using System.Collections.Generic;
 using BBS.Bullets;
 using BBS.Combat;
-using BBS.Core.StatSystem;
 using BBS.Entities;
 using BBS.FSM;
-using KHJ;
 using KHJ.Core;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace BBS.Players {
     public class Player : Entity {
@@ -50,7 +46,6 @@ namespace BBS.Players {
         }
 
         private void Update() {
-
             stateMachine.UpdateFSM();
         }
 

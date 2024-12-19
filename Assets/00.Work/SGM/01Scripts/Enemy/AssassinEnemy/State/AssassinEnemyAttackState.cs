@@ -19,7 +19,7 @@ namespace BBS.Enemies
         public override void Enter()
         {
             base.Enter();
-
+            SoundManager.Instance.PlaySFX("AssassinEnemy_Attack");
             ActionData actionData = new ActionData(enemy.data.damage, enemy.transform);
             PlayerManager.Instance.Player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
 

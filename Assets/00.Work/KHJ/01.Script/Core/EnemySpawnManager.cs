@@ -12,7 +12,7 @@ namespace KHJ.Core
     {
         private MapManager mapManager => MapManager.Instance;
 
-        public List<Enemy> enemyList { get; private set; } = new List<Enemy>();
+        [HideInInspector] public List<Enemy> enemyList = new List<Enemy>();
         private int currentEnemyCount = 0;
 
         private Player player
@@ -72,6 +72,7 @@ namespace KHJ.Core
 
         private void HandleSpawnEnemy()
         {
+            Debug.Log("SPawnEemnymtrgth¤¦¤±¤¡µ®¤Ç¤Ð´ô¤Ç¤§ ");
             if (mapManager.isEliteOrBoss)
                 spawnCount = 1;
 

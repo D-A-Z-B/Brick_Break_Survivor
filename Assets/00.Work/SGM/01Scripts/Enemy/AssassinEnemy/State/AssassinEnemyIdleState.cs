@@ -13,11 +13,15 @@ namespace BBS.Enemies
         public AssassinEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             enemy = entity as Enemy;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
+            enemy.OnDestroyEvent += HandleDieEvent;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
         }
 
-        public override void Enter()
+        private void HandleDieEvent()
         {
-            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
+            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
+            enemy.OnDestroyEvent -= HandleStartEnemyTurn;
         }
 
         private void HandleStartEnemyTurn()
@@ -46,11 +50,6 @@ namespace BBS.Enemies
             {
                 EnemySpawnManager.Instance.EnemyCount();
             }
-        }
-
-        public override void Exit()
-        {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
         }
     }
 }
