@@ -1211,7 +1211,7 @@ RectTransform:
   m_GameObject: {fileID: 986116678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 788534625}
@@ -1625,6 +1625,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad23dc4677ac2654d936e58bbbfbaec9, type: 2}
   - {fileID: 11400000, guid: 1328cda378b39b8408ba01d64ed070da, type: 2}
   - {fileID: 11400000, guid: 43732fc1e50f3ab4a803ac39d8b397df, type: 2}
+  statCardDataList: []
   background: {fileID: 1980438319}
 --- !u!1 &1246637105
 GameObject:
