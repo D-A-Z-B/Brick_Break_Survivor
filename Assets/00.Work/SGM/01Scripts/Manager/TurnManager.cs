@@ -33,6 +33,7 @@ namespace BBS
 
             if (currentTurnType == TurnType.EnemyTurn)
             {
+                Debug.Log($"turn: {turnCount}");
                 turnCount++;
                 TurnStartEvent?.Invoke();
 

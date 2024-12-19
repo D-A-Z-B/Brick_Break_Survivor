@@ -60,18 +60,10 @@ namespace KHJ.Core
             }
         }
 
-        public void ReSpawnElite()
-        {
-            int rand = Random.Range(1, 11);
-            if (rand <= 3)
-            {
-                spawnCount = 7;
-                HandleSpawnEnemy();
-            }
-        }
-
         private void HandleSpawnEnemy()
         {
+            Debug.Log("enemy spawn");
+
             if (mapManager.isEliteOrBoss)
                 spawnCount = 1;
 
