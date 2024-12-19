@@ -21,12 +21,11 @@ namespace BBS
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Player player))
+            if (other.CompareTag("Player"))
             {
                 ActionData actionData = new ActionData(damage, transform);
-                player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
+                PlayerManager.Instance.Player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
             }
-
             Destroy(gameObject);
         }
     }
