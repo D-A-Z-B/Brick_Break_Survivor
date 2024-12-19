@@ -70,12 +70,6 @@ namespace KHJ.Core
             enemyBoardArr = new Enemy[range, range];
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.L))
-                CameraShake.Instance.Shake(30);
-        }
-
         private void SpawnMap()
         {
             Transform mapPar = Instantiate(mapParent, transform);
@@ -130,7 +124,7 @@ namespace KHJ.Core
             {
                 Vector3 spawnPosition = centerPoint + directions[i];
                 Transform wall = Instantiate(wallObj, mapPar).transform;
-                wall.DOScaleX(range, 0);
+                wall.DOScaleX(range + 2, 0);
                 wall.SetPositionAndRotation(spawnPosition, Quaternion.LookRotation(directions[i]));
             }
         }

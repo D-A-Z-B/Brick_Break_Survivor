@@ -22,6 +22,8 @@ namespace BBS.Enemies
 
         private void HandleStartEnemyTurn()
         {
+            if (TurnManager.Instance.TurnCount >= 20) return;   
+
             if (enemy.IsStun)
             {
                 enemy.SetStun(false);
