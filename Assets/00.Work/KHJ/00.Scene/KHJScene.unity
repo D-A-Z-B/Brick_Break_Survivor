@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstBossTurn: 20
   lastBossTurn: 60
+  currentTurnType: 0
 --- !u!1 &400194719
 GameObject:
   m_ObjectHideFlags: 0

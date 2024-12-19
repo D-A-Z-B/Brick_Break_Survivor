@@ -18,5 +18,6 @@ namespace BBS
         public int moveDistance; //얼마나 움직이냐
         public int damage;
         public int attakRange;
+        public AnimationCurve ease;
     }
 }

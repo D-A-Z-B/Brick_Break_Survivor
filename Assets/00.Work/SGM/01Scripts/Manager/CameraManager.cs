@@ -41,7 +41,7 @@ namespace BBS
 
                 yield return null;
             }
-
+            
             TurnManager.Instance.EnemyTurnStart?.Invoke();
         }
 
