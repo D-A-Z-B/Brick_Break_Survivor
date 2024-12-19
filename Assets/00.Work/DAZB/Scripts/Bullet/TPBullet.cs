@@ -18,6 +18,8 @@ namespace BBS.Bullets {
                 myPool.Push(this);
             }
 
+            if (GameManager.Instance.IsFever) return;
+
             if (isCollision == true && lastCollisionTime + destroyTime < Time.time) {
                 Player player = PlayerManager.Instance.Player;
                 player.ChangeState("IDLE");
