@@ -15,11 +15,22 @@ namespace KHJ.Core
         public List<Enemy> enemyList { get; private set; } = new List<Enemy>();
         private int currentEnemyCount = 0;
 
-        private Player player => PlayerManager.Instance.Player;
+        private Player player
+        {
+            get
+            {
+                if (PlayerManager.Instance != null)
+                {
+                    return PlayerManager.Instance.Player;
+                }
+                return null;
+            }
+        }
         [SerializeField] private List<Enemy> enemyPrefab;
         [SerializeField] private int spawnRadiusMin;
         [SerializeField] private int spawnRadiusMax;
         [SerializeField] private int spawnCount;
+        [SerializeField] private Transform spawnPointWithoutPlyer;
 
         [Header("EnemyRespawnInfo")]
         [SerializeField] private int howTurn;
@@ -76,7 +87,15 @@ namespace KHJ.Core
             if (!mapManager.isEliteOrBoss)
             {
                 spawnPosition = GetRandomSpawnPosition();
-                float distanceToPlayer = Vector3.Distance(spawnPosition, player.transform.position);
+                float distanceToPlayer;
+                if (player == null)
+                {
+                    distanceToPlayer = Vector3.Distance(spawnPosition, spawnPointWithoutPlyer.position);
+                }
+                else
+                {
+                    distanceToPlayer = Vector3.Distance(spawnPosition, player.transform.position);
+                }
 
                 float normalizedDistance = (distanceToPlayer - spawnRadiusMin) / (spawnRadiusMax - spawnRadiusMin);
                 normalizedDistance = Mathf.Clamp01(normalizedDistance);
@@ -111,7 +130,14 @@ namespace KHJ.Core
 
             Vector3 randomPosition = new Vector3(randomCircle.x, 0, randomCircle.y) * randomDistance;
 
-            randomPosition += player.transform.position;
+            if (player == null)
+            {
+                randomPosition += spawnPointWithoutPlyer.position;
+            }
+            else
+            {
+                randomPosition += player.transform.position;
+            }
 
             return new Vector3((int)randomPosition.x, 1, (int)randomPosition.z);
         }
