@@ -1,3 +1,4 @@
+using BBS.Core;
 using KHJ.Core;
 using System;
 using UnityEngine;
@@ -45,6 +46,7 @@ namespace BBS
                     LastBossEvent?.Invoke();
                 }
 
+                GameManager.Instance.ResetHitCount();
                 CameraManager.Instance.StartZoomOut();
             }
             else if (type == TurnType.PlayerTurn)

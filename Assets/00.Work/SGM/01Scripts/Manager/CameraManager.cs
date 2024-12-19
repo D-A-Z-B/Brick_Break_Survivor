@@ -1,3 +1,4 @@
+using DG.Tweening;
 using KHJ.Core;
 using System.Collections;
 using Unity.Cinemachine;
@@ -19,6 +20,7 @@ namespace BBS
 
         public void StartZoomOut()
         {
+            cam.transform.DOKill();
             StartCoroutine(ZoomOut());
         }
 
@@ -47,6 +49,7 @@ namespace BBS
 
         public void StartZoomIn()
         {
+            cam.transform.DOKill();
             StartCoroutine(ZoomIn());
         }
 

@@ -16,6 +16,7 @@ namespace BBS
         private int level = 0;
         private float curentExp = 0;
         private float needExp;
+        private int killCount = 0;
 
         private void Awake()
         {
@@ -29,6 +30,7 @@ namespace BBS
 
         public void CreateExp(Vector3 pos)
         {
+            killCount++;
             Exp exp = Instantiate(expPrefab, transform).GetComponent<Exp>();
             exp.transform.position = pos;
             expList.Add(exp);
@@ -61,5 +63,7 @@ namespace BBS
             skillSelectionUI.Open();
             levelPanel.UpdateExpBarLevel(needExp, level);
         }
+
+        public int GetKillCount() => killCount;
     }
 }
