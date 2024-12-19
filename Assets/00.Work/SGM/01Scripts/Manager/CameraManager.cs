@@ -17,12 +17,12 @@ namespace BBS
             originYPos = cam.transform.position.y;
         }
 
-        public void StartZoomIn()
+        public void StartZoomOut()
         {
-            StartCoroutine(ZoomIn());
+            StartCoroutine(ZoomOut());
         }
 
-        private IEnumerator ZoomIn()
+        private IEnumerator ZoomOut()
         {
             float timer = 0;
 
@@ -45,13 +45,15 @@ namespace BBS
             TurnManager.Instance.EnemyTurnStart?.Invoke();
         }
 
-        public void StartZoomOut()
+        public void StartZoomIn()
         {
-            StartCoroutine(ZoomOut());
+            StartCoroutine(ZoomIn());
         }
 
-        private IEnumerator ZoomOut()
+        private IEnumerator ZoomIn()
         {
+            yield return new WaitForSeconds(2f);
+
             float timer = 0;
 
             Transform playerTrm = PlayerManager.Instance.Player.transform;
