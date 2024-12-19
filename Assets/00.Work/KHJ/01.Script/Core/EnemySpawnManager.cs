@@ -44,6 +44,8 @@ namespace KHJ.Core
 
         public void ReSpawnEnemy()
         {
+            if (TurnManager.Instance.TurnCount >= 20) return;
+
             if (enemyList.Count <= 0)
             {
                 HandleSpawnEnemy();
@@ -60,8 +62,12 @@ namespace KHJ.Core
 
         public void ReSpawnElite()
         {
-            spawnCount = 7;
-            HandleSpawnEnemy();
+            int rand = Random.Range(1, 11);
+            if (rand <= 3)
+            {
+                spawnCount = 7;
+                HandleSpawnEnemy();
+            }
         }
 
         private void HandleSpawnEnemy()

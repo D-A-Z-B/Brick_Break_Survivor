@@ -60,7 +60,6 @@ namespace BBS.Enemies
 
         public override void Exit()
         {
-            Test.Instance.OnChangeTurn -= HandleStartEnemyTurn;
             base.Exit();
         }
     }

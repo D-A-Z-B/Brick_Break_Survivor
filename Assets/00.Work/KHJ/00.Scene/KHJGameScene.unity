@@ -135,6 +135,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7daaa76131b00a45a035a2947824d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &90885756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90885757}
+  - component: {fileID: 90885758}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &90885757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90885756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1110054790}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &90885758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90885756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ab9a36294ad22498857b6b00c4176d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMapObj: {fileID: 6851661892261023211, guid: 43f44a5986626524b8c3b102890c95a0, type: 3}
+  wallObj: {fileID: 6054840624135340199, guid: d899291afdbef494dad604771cde93e4, type: 3}
+  groundTextureObj: {fileID: 3891234181948478370, guid: e530f23990dd43b488ad768815303033, type: 3}
+  mapParent: {fileID: 1065278057140396199, guid: 47637e5022e04a640855d61aecce419c, type: 3}
+  <range>k__BackingField: 41
+  interval: 1
+  renderMoveSpeed: 1
+  <isEliteOrBoss>k__BackingField: 0
+  bossRange: 21
 --- !u!1001 &314019456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1102,7 +1155,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1110054790}
-  - component: {fileID: 1110054789}
   - component: {fileID: 1110054788}
   - component: {fileID: 1110054787}
   - component: {fileID: 1110054791}
@@ -1155,26 +1207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _poolManager: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
---- !u!114 &1110054789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110054786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ab9a36294ad22498857b6b00c4176d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundMapObj: {fileID: 6851661892261023211, guid: 43f44a5986626524b8c3b102890c95a0, type: 3}
-  wallObj: {fileID: 6054840624135340199, guid: d899291afdbef494dad604771cde93e4, type: 3}
-  groundTextureObj: {fileID: 3891234181948478370, guid: e530f23990dd43b488ad768815303033, type: 3}
-  <range>k__BackingField: 41
-  interval: 1
-  renderMoveSpeed: 1
-  <isEliteOrBoss>k__BackingField: 0
-  bossRange: 21
 --- !u!4 &1110054790
 Transform:
   m_ObjectHideFlags: 0
@@ -1187,7 +1219,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 90885757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1110054791
@@ -1584,8 +1617,8 @@ Camera:
   m_GameObject: {fileID: 2008831135}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
