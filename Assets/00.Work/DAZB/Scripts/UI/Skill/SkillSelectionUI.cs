@@ -39,7 +39,7 @@ namespace BBS.UI.Skills {
         }
 
         public void Open() {
-            Time.timeScale = 1;
+            Time.timeScale = 0;
 
             List<BulletDataSO> shuffledBulletDataList = new List<BulletDataSO>(bulletDataList);
             for (int i = 0; i < shuffledBulletDataList.Count; ++i) {

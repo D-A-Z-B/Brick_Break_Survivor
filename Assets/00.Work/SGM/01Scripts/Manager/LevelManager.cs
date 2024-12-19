@@ -1,3 +1,4 @@
+using BBS.UI.Skills;
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace BBS
         private List<Exp> expList;
 
         [SerializeField] private LevelPanelUI levelPanel;
+        [SerializeField] private SkillSelectionUI skillSelectionUI;
         [SerializeField] private Transform expPrefab;
         [SerializeField] private float levelUpExpCalculation = 1;
         private int level = 0;
@@ -56,7 +58,7 @@ namespace BBS
             curentExp = 0;
             level++;
             needExp = Mathf.Pow(level * 50 / 49, 2.5f) * levelUpExpCalculation;
-
+            skillSelectionUI.Open();
             levelPanel.UpdateExpBarLevel(needExp, level);
         }
     }

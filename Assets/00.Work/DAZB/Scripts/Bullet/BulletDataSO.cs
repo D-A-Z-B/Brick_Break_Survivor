@@ -23,6 +23,7 @@ namespace BBS.Bullets {
             currentDamage = defaultDamage;
             currentScale = defaultScale;
             currentSpeed = defaultSpeed;
+            currentLevel = -1;
         }
 
         private void OnDisable() {
@@ -33,6 +34,7 @@ namespace BBS.Bullets {
         }
 
         public BulletLevelDataSO GetEffectByLevel(int level) {
+            if (levelDataList[level] == null) return null;
             return levelDataList[level];
         }
     }
