@@ -19,13 +19,14 @@ namespace BBS.Enemies
 
         private void HandleDieEvent()
         {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
+            if (TurnManager.Instance != null)
+                TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
             enemy.OnDestroyEvent -= HandleStartEnemyTurn;
         }
 
         private void HandleStartEnemyTurn()
         {
-            if(enemy == null)
+            if (enemy == null)
             {
                 HandleDieEvent();
                 return;

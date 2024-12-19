@@ -2,7 +2,6 @@ using BBS.Animators;
 using BBS.Entities;
 using BBS.FSM;
 using KHJ.Core;
-using System;
 
 namespace BBS.Enemies
 {
@@ -20,7 +19,8 @@ namespace BBS.Enemies
 
         private void HandleDieEvent()
         {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
+            if (TurnManager.Instance != null)
+                TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
             enemy.OnDestroyEvent -= HandleStartEnemyTurn;
         }
 
