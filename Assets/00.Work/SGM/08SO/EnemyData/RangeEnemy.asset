@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RangeEnemy
   m_EditorClassIdentifier: 
   type: 1
-  maxHealth: 10
+  maxHealth: 20
   actionTurn: 4
   moveDistance: 0
   damage: 20

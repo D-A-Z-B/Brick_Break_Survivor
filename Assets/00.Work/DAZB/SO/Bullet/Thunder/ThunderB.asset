@@ -25,7 +25,7 @@ MonoBehaviour:
   currentScale: 0.3
   defaultScale: 0.3
   currentSpeed: 10
-  defaultSpeed: 10
+  defaultSpeed: 20
   currentLevel: -1
   ShootAmount: 0
   levelDataList:

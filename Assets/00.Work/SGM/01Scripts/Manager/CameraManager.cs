@@ -1,3 +1,4 @@
+using DG.Tweening;
 using KHJ.Core;
 using System.Collections;
 using Unity.Cinemachine;
@@ -12,18 +13,40 @@ namespace BBS
 
         private float originYPos;
 
+        private bool isZoomOut = false;
+        private float zoomTimer = 0;
+
         private void Start()
         {
             originYPos = cam.transform.position.y;
+            zoomTimer = Time.time;
+        }
+
+        private void Update()
+        {
+            if(isZoomOut && zoomTimer + 2f > Time.time)
+            {
+                TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
+                StartZoomIn();
+            }
         }
 
         public void StartZoomOut()
         {
+            StopAllCoroutines();
+            cam.transform.DOKill();
             StartCoroutine(ZoomOut());
         }
 
         private IEnumerator ZoomOut()
         {
+            if (EnemySpawnManager.Instance.enemyList.Count == 0)
+            {
+                yield return new WaitForSeconds(0.5f);
+                TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
+                StartZoomIn();
+            }
+
             float timer = 0;
 
             cam.Follow = null;
@@ -42,11 +65,17 @@ namespace BBS
                 yield return null;
             }
             
-            TurnManager.Instance.EnemyTurnStart?.Invoke();
+            isZoomOut = true;
+            zoomTimer = Time.time;
+            TurnManager.Instance.EnemyTurnStartEvent?.Invoke();
         }
 
         public void StartZoomIn()
         {
+            isZoomOut = false;
+
+            StopAllCoroutines();
+            cam.transform.DOKill();
             StartCoroutine(ZoomIn());
         }
 
