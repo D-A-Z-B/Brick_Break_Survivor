@@ -1028,7 +1028,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9c2f6fed06df44b9f76280ae8a365c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 42684958}
   enemyPrefab:
   - {fileID: 7914036220743236643, guid: 9ddf824a5606bec479bf27b764d3c3a4, type: 3}
   - {fileID: 1423551586906424850, guid: a95f482aa2622654da445a522c6a1a69, type: 3}
@@ -1037,7 +1036,8 @@ MonoBehaviour:
   spawnRadiusMin: 6
   spawnRadiusMax: 60
   spawnCount: 10
-  spawnEnemyCount: 0
+  howTurn: 1
+  prob: 5
 --- !u!114 &1110054792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,8 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4774e0710119b4ea7af8830b7bf6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstBossTurn: 20
-  lastBossTurn: 60
+  BossTurn: 20
   currentTurnType: 0
 --- !u!114 &1110054794
 MonoBehaviour:
@@ -1079,6 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolManager: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
+  hitCountText: {fileID: 11400000, guid: 9a51f95a5ae17cf48bb5d4bcc96c872d, type: 2}
   startFeverHitCount: 100
   feverDuration: 5
 --- !u!114 &1110054795

@@ -15,21 +15,39 @@ namespace KHJ.Core
         public List<Enemy> enemyList { get; private set; } = new List<Enemy>();
         private int currentEnemyCount = 0;
 
-        [SerializeField] private Transform player;
+        private Player player => PlayerManager.Instance.Player;
         [SerializeField] private List<Enemy> enemyPrefab;
         [SerializeField] private int spawnRadiusMin;
         [SerializeField] private int spawnRadiusMax;
         [SerializeField] private int spawnCount;
 
-        [Header("EliteAndBossSet")]
-        [SerializeField] private int spawnEnemyCount;
+        [Header("EnemyRespawnInfo")]
+        [SerializeField] private int howTurn;
+        [SerializeField] private int prob;
 
         private void Awake()
         {
             mapManager.OnSpawnEnemiesEvent += HandleSpawnEnemy;
+            TurnManager.Instance.TurnStartEvent += ReSpawnEnemy;
         }
 
         public void ReSpawnEnemy()
+        {
+            if (enemyList.Count <= 0)
+            {
+                HandleSpawnEnemy();
+                return;
+            }
+
+            if (TurnManager.Instance.TurnCount % howTurn == 0)
+            {
+                int rand = Random.Range(1, 11);
+                if (rand <= prob)
+                    HandleSpawnEnemy();
+            }
+        }
+
+        public void ReSpawnElite()
         {
             spawnCount = 7;
             HandleSpawnEnemy();
@@ -58,7 +76,7 @@ namespace KHJ.Core
             if (!mapManager.isEliteOrBoss)
             {
                 spawnPosition = GetRandomSpawnPosition();
-                float distanceToPlayer = Vector3.Distance(spawnPosition, player.position);
+                float distanceToPlayer = Vector3.Distance(spawnPosition, player.transform.position);
 
                 float normalizedDistance = (distanceToPlayer - spawnRadiusMin) / (spawnRadiusMax - spawnRadiusMin);
                 normalizedDistance = Mathf.Clamp01(normalizedDistance);
@@ -68,7 +86,7 @@ namespace KHJ.Core
             else
             {
                 spawnChance = 1;
-                spawnPosition = new Vector3((mapManager.range-1) / 2, 1, (mapManager.range-1) / 2);
+                spawnPosition = new Vector3((mapManager.range - 1) / 2, 1, (mapManager.range - 1) / 2);
             }
 
             if (Random.value <= spawnChance && MapCondition(spawnPosition))
@@ -93,7 +111,7 @@ namespace KHJ.Core
 
             Vector3 randomPosition = new Vector3(randomCircle.x, 0, randomCircle.y) * randomDistance;
 
-            randomPosition += player.position;
+            randomPosition += player.transform.position;
 
             return new Vector3((int)randomPosition.x, 1, (int)randomPosition.z);
         }
@@ -122,7 +140,7 @@ namespace KHJ.Core
         public void EnemyCount()
         {
             currentEnemyCount++;
-            if(currentEnemyCount >= enemyList.Count)
+            if (currentEnemyCount >= enemyList.Count)
             {
                 CameraManager.Instance.StartZoomIn();
                 currentEnemyCount = 0;
