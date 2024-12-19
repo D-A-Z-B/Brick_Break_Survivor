@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: HEAL
   m_EditorClassIdentifier: 
   type: 1
-  displayName: "\uD68C\uBCF5"
-  description: 
+  displayName: "\uC790\uAC00\uC7AC\uC0DD"
+  description: "\uD53C\uD574\uB97C \uBC1B\uC73C\uBA74 \uBCF5\uAD6C\uD558\uBA74 \uB418\uB294\uBC95!
+    Hp\uAC00 10% \uD68C\uBCF5\uB429\uB2C8\uB2E4."
   icon: {fileID: 21300000, guid: e4d714ac6f8c1ec4cabe024d983756c1, type: 3}
   increaseHp: 0
   increaseDR: 0
