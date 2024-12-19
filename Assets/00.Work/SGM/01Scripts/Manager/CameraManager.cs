@@ -100,7 +100,10 @@ namespace BBS
 
                 yield return null;
             }
+
             cam.Follow = playerTrm;
+            LevelManager.Instance.GetExp();
+            TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
         }
     }
 }
