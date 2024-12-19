@@ -26,8 +26,6 @@ namespace BBS.UI.Skills {
         }
 
         public void Open() {
-            Time.timeScale = 0;
-
             List<BulletDataSO> shuffledBulletDataList = new List<BulletDataSO>(bulletDataList);
             List<StatCardDataSO> shuffledStatCardDataList = new List<StatCardDataSO>(statCardDataList);
 
@@ -86,7 +84,6 @@ namespace BBS.UI.Skills {
             sq.Append(skillCards[currentSelectedIndex].RectTrm.DOScale(0.0f, time));
             sq.Join(skillCards[currentSelectedIndex].RectTrm.DOAnchorPosY(0, time));
             sq.OnComplete(() => {
-                Time.timeScale = 1;
                 Refresh();
             });
 

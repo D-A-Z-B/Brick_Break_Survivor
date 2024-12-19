@@ -1,6 +1,7 @@
 using BBS.Entities;
 using BBS.FSM;
 using DG.Tweening;
+using KHJ.Camera;
 using KHJ.Core;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace BBS.Enemies
 
         public bool IsMoving = false;
 
+        private int modifyCount = 1;
+
         protected override void AfterInitialize()
         {
             base.AfterInitialize();
@@ -36,6 +39,7 @@ namespace BBS.Enemies
             GetCompo<EnemyHealth>().OnDead += HandleOnDead;
 
             SpawnAnim();
+            ModifyEnemyDataSO();
         }
 
         private void HandleOnDead()
@@ -47,7 +51,7 @@ namespace BBS.Enemies
 
         private void SpawnAnim()
         {
-            transform.DOMoveY(transform.position.y, 0.5f).ChangeStartValue(transform.position + Vector3.up * 5);
+            transform.DOMoveY(transform.position.y, 0.5f).ChangeStartValue(transform.position + Vector3.up * 30).OnComplete(() => CameraShake.Instance.Shake(0.5f));
         }
 
         private Vector3 EnemyToPlayerDir()
@@ -127,8 +131,7 @@ namespace BBS.Enemies
         {
             Collider[] verticalColliders = Physics.OverlapBox(transform.position, new Vector3(0.9f, 1, data.attakRange * 2 + 1) * 0.5f, transform.rotation, whatIsPlayer);
             Collider[] horizontalColliders = Physics.OverlapBox(transform.position, new Vector3(data.attakRange * 2 + 1, 1, 0.9f) * 0.5f, transform.rotation, whatIsPlayer);
-
-            Debug.Log($"can: {verticalColliders.Length > 0 || horizontalColliders.Length > 0}");
+         
             return verticalColliders.Length > 0 || horizontalColliders.Length > 0;
         }
 
@@ -137,20 +140,13 @@ namespace BBS.Enemies
             GetCompo<EnemyHealth>().OnDead -= HandleOnDead;
         }
 
-        //private void OnDrawGizmos()
-        //{
-        //    Vector3 verticalBoxSize = new Vector3(0.9f, 1, data.attakRange * 2 + 1);
-        //    Vector3 verticalBoxCenter = transform.position;
-
-        //    Vector3 horizontalBoxSize = new Vector3(data.attakRange * 2 + 1, 1, 0.9f);
-        //    Vector3 horizontalBoxCenter = transform.position;
-
-        //    Gizmos.color = Color.green;
-        //    Gizmos.matrix = Matrix4x4.TRS(verticalBoxCenter, transform.rotation, Vector3.one);
-        //    Gizmos.DrawWireCube(Vector3.zero, verticalBoxSize);
-
-        //    Gizmos.matrix = Matrix4x4.TRS(horizontalBoxCenter, transform.rotation, Vector3.one);
-        //    Gizmos.DrawWireCube(Vector3.zero, horizontalBoxSize);
-        //}
+        private void ModifyEnemyDataSO()
+        {
+            int count = TurnManager.Instance.modifyStatCount;
+            EnemyDataSO newEnem = ScriptableObject.CreateInstance<EnemyDataSO>();
+            newEnem.maxHealth = data.maxHealth + Mathf.RoundToInt(data.maxHealth * 0.05f * count);
+            newEnem.damage = data.maxHealth + Mathf.RoundToInt(data.damage * 0.05f * count);
+            data = newEnem;
+        }
     }
 }
