@@ -14,6 +14,8 @@ namespace BBS.Players {
         [field: SerializeField] public CinemachineVirtualCameraBase cineCamCompo {get; private set;}
         [field: SerializeField] public PoolManagerSO PoolManager {get; private set;}
 
+        public TPBallGayz gayz;
+
         private TPBullet tPBullet;
 
         public List<StateSO> states;
@@ -63,6 +65,7 @@ namespace BBS.Players {
 
         public void SetTPBullet(TPBullet bullet) {
             tPBullet = bullet;
+            gayz.Show(bullet);
         }
 
         public TPBullet GetTPBullet() {

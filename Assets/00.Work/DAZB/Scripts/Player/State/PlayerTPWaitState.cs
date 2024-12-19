@@ -19,16 +19,16 @@ namespace BBS.Players {
         {
             base.Enter();
             player.cineCamCompo.Follow = player.GetTPBullet().transform;
-            player.PlayerInput.tpEvent += HandleTPEvent;
+            //player.PlayerInput.tpEvent += HandleTPEvent;
         }
 
         public override void Exit()
         {
-            player.PlayerInput.tpEvent -= HandleTPEvent;
+            //.PlayerInput.tpEvent -= HandleTPEvent;
             player.transform.position = player.GetTPBullet().GetTPPoint() + Vector3.up;
             player.cineCamCompo.Follow = player.transform;
             MapManager.Instance.SetPos(new (player.GetTPBullet().GetTPPoint().x, player.GetTPBullet().GetTPPoint().z), EntityType.Player);
-
+            player.gayz.Hide();
             TurnManager.Instance.ChangeTurn(TurnType.EnemyTurn);
             base.Exit();
         }
