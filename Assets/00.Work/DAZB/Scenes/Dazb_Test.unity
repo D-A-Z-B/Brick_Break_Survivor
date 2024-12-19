@@ -1172,8 +1172,8 @@ MonoBehaviour:
   <range>k__BackingField: 41
   interval: 1
   renderMoveSpeed: 1
-  <isEliteOrBoss>k__BackingField: 0
-  bossRange: 0
+  <isEliteOrBoss>k__BackingField: 1
+  bossRange: 21
 --- !u!4 &1110054790
 Transform:
   m_ObjectHideFlags: 0
