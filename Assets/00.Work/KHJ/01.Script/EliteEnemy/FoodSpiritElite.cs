@@ -13,12 +13,11 @@ namespace BBS.Enemies
 
         private void OnCollisionEnter(Collision collision)
         {
-            print(collision);
             if (collision.gameObject.TryGetComponent(out Player player))
             {
+                print("맞음");
                 eatPlayer = player;
                 mapManager.DestroyEntity(new Coord(eatPlayer.transform.position), player);
-                print("맞음");
             }
 
             if (collision.gameObject.TryGetComponent(out Enemy enemy))

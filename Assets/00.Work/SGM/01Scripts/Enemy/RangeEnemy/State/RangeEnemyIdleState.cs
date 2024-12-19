@@ -13,11 +13,14 @@ namespace BBS.Enemies
         public RangeEnemyIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             enemy = entity as Enemy;
+            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
+            enemy.OnDestroyEvent += HandleDieEvent;
         }
 
-        public override void Enter()
+        private void HandleDieEvent()
         {
-            TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
+            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
+            enemy.OnDestroyEvent -= HandleStartEnemyTurn;
         }
 
         private void HandleStartEnemyTurn()
