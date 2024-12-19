@@ -82,6 +82,7 @@ namespace BBS
         private IEnumerator ZoomIn()
         {
             yield return new WaitForSeconds(2f);
+            LevelManager.Instance.GetExp();
 
             float timer = 0;
 
@@ -102,7 +103,6 @@ namespace BBS
             }
 
             cam.Follow = playerTrm;
-            LevelManager.Instance.GetExp();
             TurnManager.Instance.ChangeTurn(TurnType.PlayerTurn);
         }
     }
