@@ -47,9 +47,7 @@ namespace BBS.Bullets {
                 if (iter.type == type) {
                     if (iter.currentLevel >= 5) return;
 
-                    Debug.Log(type);
                     iter.currentLevel += amount;
-                    Debug.Log(iter.currentLevel);
                     for (int i = 0; i < iter.GetEffectByLevel(iter.currentLevel).effectList.Count; ++i) {
                         if (iter.GetEffectByLevel(iter.currentLevel).effectList[i] != null) {
                             iter.GetEffectByLevel(iter.currentLevel).effectList[i].SetOwner(iter);

@@ -55,7 +55,6 @@ namespace BBS.Combat
         public virtual void ApplyDamage(ActionData data)
         {
             currentHealth -= (int)(data.damage - ((float)data.damage * (dr / 100)));
-            Debug.Log("apply damage");
 
             OnHit?.Invoke();
 

@@ -22,7 +22,6 @@ namespace BBS.Enemies
 
             ActionData actionData = new ActionData(enemy.data.damage, enemy.transform);
             PlayerManager.Instance.Player.GetCompo<PlayerHealth>().ApplyDamage(actionData);
-            Debug.Log("attack");
 
             EnemySpawnManager.Instance.EnemyCount();
             enemy.ChangeState("IDLE");

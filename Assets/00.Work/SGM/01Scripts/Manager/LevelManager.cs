@@ -40,7 +40,8 @@ namespace BBS
         {
             expList.ForEach(exp =>
             {
-                exp.MoveToPlayer();
+                if(exp != null)
+                    exp.MoveToPlayer();
             });
             expList.Clear();
         }

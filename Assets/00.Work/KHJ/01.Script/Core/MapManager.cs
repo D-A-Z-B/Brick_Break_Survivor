@@ -156,7 +156,6 @@ namespace KHJ.Core
         private void MoveRenderEnemy(Enemy enemy, Coord moveCoord)
         {
             Enemy moveEnemy = FindEnemy(enemy);
-            print(moveEnemy);
             moveEnemy.DoMoveEnemy(moveCoord, renderMoveSpeed, moveEnemy.data.ease, moveEnemy is AssassinEnemy);
 
             SetEnemyBoard(new Coord(moveEnemy.transform.position), null);

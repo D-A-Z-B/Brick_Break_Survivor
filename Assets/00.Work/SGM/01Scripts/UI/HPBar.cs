@@ -6,19 +6,18 @@ namespace BBS
 {
     public class HPBar : MonoBehaviour
     {
-        private Slider hpBar;
         private PlayerHealth health;
 
         private void Awake()
         {
-            hpBar = GetComponent<Slider>();
-            health = transform.root.GetComponent<PlayerHealth>();
+            health = GetComponentInParent<PlayerHealth>();
         }
 
         private void Update()
         {
-            hpBar.maxValue = health.MaxHealth;
-            hpBar.value = health.CurrentHealth;
+            float curHealth = health.CurrentHealth / health.MaxHealth;
+            Debug.Log(curHealth);
+            transform.localScale = new Vector3(curHealth, 1, 1);
         }
     }
 }

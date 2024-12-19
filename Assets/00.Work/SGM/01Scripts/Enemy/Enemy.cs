@@ -102,19 +102,11 @@ namespace BBS.Enemies
             IsMoving = true;
             if (!isJump)
             {
-                transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), speed).SetEase(ease).OnComplete(() =>
-                {
-                    EnemySpawnManager.Instance.EnemyCount();
-                    IsMoving = false;
-                });
+                transform.DOMove(new Vector3(moveCoord.x, 1, moveCoord.y), speed).SetEase(ease).OnComplete(() => IsMoving = false );
             }
             else
             {
-                transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
-                {
-                    EnemySpawnManager.Instance.EnemyCount();
-                    IsMoving = false;
-                });
+                transform.DOJump(transform.position + (curDir * data.moveDistance), jumpPower, 1, 0.5f).SetEase(Ease.Linear).OnComplete(() => IsMoving = false );
             }
         }
 
