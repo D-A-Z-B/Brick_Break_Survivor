@@ -57,7 +57,7 @@ namespace BBS.Combat
             currentHealth -= (int)(data.damage - ((float)data.damage * (dr / 100)));
 
             OnHit?.Invoke();
-            SoundManager.Instance.PlaySFX("PlayerGetDamage");
+            SoundManager.Instance.PlaySFX("Player_GetDamage");
 
             if (currentHealth <= 0)
             {
