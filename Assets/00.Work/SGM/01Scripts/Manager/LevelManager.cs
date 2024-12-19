@@ -58,6 +58,7 @@ namespace BBS
 
         private void LevelUp()
         {
+            SoundManager.Instance.PlaySFX("LevelUp");
             curentExp = 0;
             level++;
             needExp = Mathf.Pow(level * 50 / 49, 2.5f) * levelUpExpCalculation;

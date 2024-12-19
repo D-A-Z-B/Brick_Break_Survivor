@@ -21,6 +21,7 @@ namespace BBS.Enemies
         public override void Enter()
         {
             base.Enter();
+            SoundManager.Instance.PlaySFX("Boss_Attack");
             PlayerManager.Instance.Player.GetCompo<Health>().CurrentHealth -= 100;
 
             Player player = enemy.eatPlayer;

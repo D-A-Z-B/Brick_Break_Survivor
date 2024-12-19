@@ -40,6 +40,7 @@ namespace BBS.Players {
                     }
                     Vector3 dir = (player.GetArrow().GetLineEndPoint().position - player.transform.position).normalized;
                     bullet.Setup(player.transform.position, dir);
+                    SoundManager.Instance.PlaySFX("Player_Shot");
                     yield return new WaitForSeconds(0.1f);
                 }
             }

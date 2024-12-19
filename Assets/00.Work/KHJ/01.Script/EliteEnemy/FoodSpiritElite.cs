@@ -15,13 +15,15 @@ namespace BBS.Enemies
         {
             if (collision.gameObject.TryGetComponent(out Player player))
             {
-                print("¸ÂÀ½");
+                print("ï¿½ï¿½ï¿½ï¿½");
                 eatPlayer = player;
+                SoundManager.Instance.PlaySFX("Boss_Eat");
                 mapManager.DestroyEntity(new Coord(eatPlayer.transform.position), player);
             }
 
             if (collision.gameObject.TryGetComponent(out Enemy enemy))
             {
+                SoundManager.Instance.PlaySFX("Boss_Eat");
                 mapManager.DestroyEntity(new Coord(enemy.transform.position), enemy, true);
 
                 EnemyHealth health = GetCompo<Health>(true) as EnemyHealth;

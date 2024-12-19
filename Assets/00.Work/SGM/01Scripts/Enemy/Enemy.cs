@@ -1,3 +1,4 @@
+using BBS.Combat;
 using BBS.Entities;
 using BBS.FSM;
 using DG.Tweening;
@@ -48,6 +49,7 @@ namespace BBS.Enemies
         private void HandleOnDead()
         {
             ChangeState("DEAD");
+            SoundManager.Instance.PlaySFX("Enemy_dead");
             LevelManager.Instance.CreateExp(transform.position);
             mapManager.DestroyEntity(new Coord(transform.position), this);
         }
