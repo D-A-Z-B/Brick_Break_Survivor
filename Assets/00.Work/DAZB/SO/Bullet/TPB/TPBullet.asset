@@ -20,8 +20,8 @@ MonoBehaviour:
   currentScale: 0.3
   defaultScale: 0.3
   currentSpeed: 10
-  defaultSpeed: 10
-  currentLevel: 0
+  defaultSpeed: 20
+  currentLevel: -1
   ShootAmount: 0
   levelDataList:
   - {fileID: 11400000, guid: 2531f473d78bca84a86e4f729805aac8, type: 2}

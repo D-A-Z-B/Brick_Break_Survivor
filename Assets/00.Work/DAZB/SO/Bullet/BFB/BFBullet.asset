@@ -19,12 +19,12 @@ MonoBehaviour:
     \uAC1C\uC218 \uCD94\uAC00 \uBC0F \uB300\uBBF8\uC9C0 \uC99D\uAC00\nLv.2  \uAC1C\uC218
     \uCD94\uAC00\nLv.3  \uB300\uBBF8\uC9C0 \uC99D\uAC00\nLv.4  \uAC1C\uC218 \uCD94\uAC00\nLv.5 
     \uAC1C\uC218 \uCD94\uAC00 \uBC0F \uC0AC\uC774\uC988 \uC99D\uAC00"
-  currentDamage: 0
+  currentDamage: 10
   defaultDamage: 10
   currentScale: 0.3
   defaultScale: 0.3
   currentSpeed: 10
-  defaultSpeed: 10
+  defaultSpeed: 20
   currentLevel: -1
   ShootAmount: 0
   levelDataList:
