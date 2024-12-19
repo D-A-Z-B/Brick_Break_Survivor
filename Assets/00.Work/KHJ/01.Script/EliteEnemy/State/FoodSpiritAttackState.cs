@@ -22,7 +22,7 @@ namespace BBS.Enemies
         {
             base.Enter();
             SoundManager.Instance.PlaySFX("Boss_Attack");
-            PlayerManager.Instance.Player.GetCompo<Health>().CurrentHealth -= 100;
+            PlayerManager.Instance.Player.GetCompo<Health>(true).CurrentHealth -= 20;
 
             Player player = enemy.eatPlayer;
 
@@ -60,13 +60,13 @@ namespace BBS.Enemies
                     goPosType = enemy.mapManager.GetPos(new Coord(newPosition));
                 else
                 {
-                    PlayerManager.Instance.Player.GetCompo<Health>().CurrentHealth -= 20;
+                    PlayerManager.Instance.Player.GetCompo<Health>(true).CurrentHealth -= 5;
                     return lastPos;
                 }
 
                 if (goPosType == EntityType.Enemy)
                 {
-                    PlayerManager.Instance.Player.GetCompo<Health>().CurrentHealth -= 20;
+                    PlayerManager.Instance.Player.GetCompo<Health>(true).CurrentHealth -= 5;
                     lastPos = newPosition;
                     return lastPos;
                 }
