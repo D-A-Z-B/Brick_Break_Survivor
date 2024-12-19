@@ -24,8 +24,8 @@ namespace BBS
         {
             if (isMove) return;
 
-            transform.DOMoveY(initalY + 1f, 2f).SetEase(easeCurve)
-            .OnComplete(() => transform.DOMoveY(initalY, 2f).SetEase(easeCurve)
+            transform.DOMoveY(initalY + 0.5f, 1f).SetEase(easeCurve)
+            .OnComplete(() => transform.DOMoveY(initalY, 1f).SetEase(easeCurve)
             .OnComplete(() => Floating()));
         }
 
@@ -35,11 +35,11 @@ namespace BBS
                 transform.position += dir * moveSpeed * Time.deltaTime;
         }
 
-        public void MoveToPlayer(Transform playerTrm)
+        public void MoveToPlayer()
         {
             transform.DOKill();
 
-            dir = (playerTrm.position - transform.position).normalized;
+            dir = (PlayerManager.Instance.Player.transform.position - transform.position).normalized;
             isMove = true;
         }
 
@@ -47,7 +47,7 @@ namespace BBS
         {
             if(other.CompareTag("Player"))
             {
-                LevelManager.Instance.AddExp(exp);
+                LevelManager.Instance.PlusExp(exp);
                 Destroy(gameObject);
             }
         }

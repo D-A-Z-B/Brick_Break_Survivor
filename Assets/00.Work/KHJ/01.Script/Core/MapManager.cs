@@ -162,10 +162,12 @@ namespace KHJ.Core
             }
         }
 
-        public void DestroyEntity(Coord coord)
+        public void DestroyEntity(Coord coord, Enemy enemy)
         {
             mapBoardArr[coord.x, coord.y] = EntityType.Empty;
             enemyBoardArr[coord.x, coord.y] = null;
+            EnemySpawnManager.Instance.enemyList.Remove(enemy);
+            Destroy(enemy.gameObject);
         }
     }
 }

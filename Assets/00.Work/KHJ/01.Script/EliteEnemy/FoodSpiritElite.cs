@@ -18,7 +18,7 @@ namespace BBS.Enemies
 
             if (other.gameObject.TryGetComponent(out Enemy enemy))
             {
-                mapManager.DestroyEntity(new Coord(enemy.transform.position));
+                mapManager.DestroyEntity(new Coord(enemy.transform.position), enemy);
                 Destroy(enemy);
 
                 EnemyHealth health = GetCompo<Health>(true) as EnemyHealth;
