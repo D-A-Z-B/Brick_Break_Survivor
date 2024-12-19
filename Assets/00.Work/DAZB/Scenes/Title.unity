@@ -746,8 +746,8 @@ MonoBehaviour:
   - {fileID: 508242533197795355, guid: 77a78739695ac0f41ba087c0b3fdfc02, type: 3}
   spawnRadiusMin: 6
   spawnRadiusMax: 60
-  spawnCount: 100
-  spawnEnemyCount: 0
+  spawnCount: 200
+  spawnEnemyCount: 200
 --- !u!114 &816496648
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalEnemy
   m_EditorClassIdentifier: 
   type: 0
-  maxHealth: 100
+  maxHealth: 30
   actionTurn: 2
   moveDistance: 1
   damage: 1
