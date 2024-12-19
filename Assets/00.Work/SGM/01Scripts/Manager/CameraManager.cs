@@ -43,6 +43,7 @@ namespace BBS
             }
 
             TurnManager.Instance.EnemyTurnStart?.Invoke();
+            Debug.Log("invoke");
         }
 
         public void StartZoomIn()

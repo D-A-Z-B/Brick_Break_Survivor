@@ -73,10 +73,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f0aaf137ffbfc6b4391590ba81128115, type: 2}
   - {fileID: 11400000, guid: 756c214e585fda74baa5c6463ab875ab, type: 2}
   - {fileID: 11400000, guid: 5229ec88b94fd784ea77711fc3e37c9f, type: 2}
+  - {fileID: 11400000, guid: a04c7ec2772080140811bcba2e429479, type: 2}
   data: {fileID: 11400000, guid: bbc4a273c6fa66d468bb863e06cdf31f, type: 2}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  IsCantMove: 0
 --- !u!1 &1169995535481980935
 GameObject:
   m_ObjectHideFlags: 0

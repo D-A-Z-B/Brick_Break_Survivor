@@ -38,8 +38,8 @@ namespace BBS.Enemies
 
         private void HandleOnDead()
         {
-            mapManager.DestroyEntity(new Coord(transform.position));
-            Destroy(gameObject);
+            ChangeState("DEAD");
+            mapManager.DestroyEntity(new Coord(transform.position), this);
         }
 
         private Vector3 EnemyToPlayerDir()

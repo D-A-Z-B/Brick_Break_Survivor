@@ -14,8 +14,6 @@ namespace BBS.Enemies
 
         private void Awake()
         {
-            Enemy enemy = GetComponentInParent<Enemy>();
-            
             maxHealth = enemy.data.maxHealth;
         }
     }
