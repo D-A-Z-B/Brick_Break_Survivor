@@ -37,5 +37,11 @@ namespace BBS.Bullets {
                 dataSO.currentSpeed = 50;
             }
         }
+
+        public override void ResetItem()
+        {
+            base.ResetItem();
+            dataSO.currentSpeed = dataSO.defaultSpeed;
+        }
     }
 }
