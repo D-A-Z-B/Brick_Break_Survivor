@@ -1,6 +1,7 @@
 using BBS.Bullets;
 using BBS.Core;
 using DG.Tweening;
+using KHJ.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 
 namespace BBS
 {
-    public class ResultPanel : MonoBehaviour
+    public class ResultPanel : MonoSingleton<ResultPanel>
     {
         [SerializeField] private Transform cardPrefab;
         [SerializeField] private Transform cardContainer;
@@ -18,35 +19,55 @@ namespace BBS
         [SerializeField] private TextMeshProUGUI maxHitText;
         [SerializeField] private Button retryBtn;
         [SerializeField] private Button titleBtn;
+        [SerializeField] private TextMeshProUGUI titleText;
 
         private void Start()
         {
-            //retryBtn.onClick.AddListener(() => SceneManager.LoadScene("GameScene"));
-            //retryBtn.onClick.AddListener(() => SceneManager.LoadScene("TitleScene"));
+            retryBtn.onClick.AddListener(() => SceneManager.LoadScene("Dazb_Test"));
+            titleBtn.onClick.AddListener(() => SceneManager.LoadScene("Title"));
         }
 
-        private void Update()
+        //private void Update()
+        //{
+        //    if (Input.GetKeyUp(KeyCode.Q))
+        //    {
+        //        OnResultPanel(true);
+        //    }
+        //    if (Input.GetKeyUp(KeyCode.R))
+        //    {
+        //        OnResultPanel(false);
+        //    }
+        //}
+
+        public void OnResultPanel(bool isClear)
         {
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                OnResultPanel();
-            }
+            if(isClear)
+                titleText.text = "game clear";
+            else
+                titleText.text = "game end";
+
+            ResultText();
         }
 
-        public void OnResultPanel()
+        public void ResultText()
         {
-            killCountText.text = LevelManager.Instance.GetKillCount().ToString();
-            maxHitText.text = GameManager.Instance.GetMaxHitCount().ToString();
+            titleText.color = Color.white; 
+            titleText.transform.DOScale(Vector3.one, 1f).SetEase(Ease.InSine)
+                .OnComplete(() =>
+                {
+                    killCountText.text = LevelManager.Instance.GetKillCount().ToString();
+                    maxHitText.text = GameManager.Instance.GetMaxHitCount().ToString();
 
-            GetResultSkillCard();
-            ShowPanel();
+                    GetResultSkillCard();
+                    ShowPanel();
+                });
         }
 
         private void GetResultSkillCard()
         {
-            foreach(BulletDataSO skill in BulletManager.Instance.PlayerBulletList)
+            foreach (BulletDataSO skill in BulletManager.Instance.PlayerBulletList)
             {
-                if(skill != null && skill.icon != null)
+                if (skill != null && skill.icon != null)
                 {
                     ResultSkillCard card = Instantiate(cardPrefab, cardContainer).GetComponent<ResultSkillCard>();
                     card.Init(skill.currentLevel, skill.icon);

@@ -3,6 +3,7 @@ using BBS.Enemies;
 using BBS.Entities;
 using BBS.Players;
 using DG.Tweening;
+using KHJ.Camera;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,10 @@ namespace KHJ.Core
     {
         public event Action OnSpawnEnemiesEvent;
 
-        [SerializeField] private GameObject groundMapObj, wallObj;
+        private Player player => PlayerManager.Instance.Player;
+
+        [SerializeField] private GameObject groundMapObj, wallObj, groundTextureObj;
+        [SerializeField] private Transform mapParent;
         [field: SerializeField] public int range { get; private set; }
         [SerializeField] private float interval;
         [SerializeField] private float renderMoveSpeed;
@@ -36,7 +40,6 @@ namespace KHJ.Core
 
         private EntityType[,] mapBoardArr;
         private Enemy[,] enemyBoardArr;
-        private List<GameObject> groundList = new();
 
         private void Awake()
         {
@@ -69,28 +72,43 @@ namespace KHJ.Core
 
         private void SpawnMap()
         {
+            Transform mapPar = Instantiate(mapParent, transform);
             for (int i = 0; i < range; i++)
             {
                 for (int j = 0; j < range; j++)
                 {
-                    GameObject ground = Instantiate(groundMapObj, transform);
+                    GameObject ground = Instantiate(groundMapObj, mapPar);
                     ground.transform.position = new Vector3(i, 0, j) * interval;
-                    groundList.Add(ground);
                     mapBoardArr[i, j] = EntityType.Empty;
                 }
             }
+            for (int i = 0; i < range; i += 2)
+            {
+                for (int j = 0; j < range; j += 2)
+                {
+                    GameObject groundTex = Instantiate(groundTextureObj, mapPar);
+                    groundTex.transform.position = new Vector3(i, 0.5f, j) * interval;
+                }
+            }
 
-            SetWall();
+            SetWall(mapPar);
 
+            int half = (range - 1) / 2;
             if (!isEliteOrBoss)
-                mapBoardArr[(range - 1) / 2, (range - 1) / 2] = EntityType.Player;
+            {
+                mapBoardArr[half, half] = EntityType.Player;
+                player.transform.position = new Vector3(half, 1,half);
+            }
             else
-                mapBoardArr[(range - 1) / 2, (range - 1) / 2 - 6] = EntityType.Player;
+            {
+                mapBoardArr[half, half - 6] = EntityType.Player;
+                player.transform.position = new Vector3(half,1, half - 6);
+            }
 
             OnSpawnEnemiesEvent?.Invoke();
         }
 
-        private void SetWall()
+        private void SetWall(Transform mapPar)
         {
             int half = range / 2 + 1;
             Vector3 centerPoint = new Vector3((range - 1) / 2, 1f, (range - 1) / 2);
@@ -105,8 +123,8 @@ namespace KHJ.Core
             for (int i = 0; i < directions.Length; i++)
             {
                 Vector3 spawnPosition = centerPoint + directions[i];
-                Transform wall = Instantiate(wallObj, transform).transform;
-                wall.DOScaleX(range, 0);
+                Transform wall = Instantiate(wallObj, mapPar).transform;
+                wall.DOScaleX(range + 2, 0);
                 wall.SetPositionAndRotation(spawnPosition, Quaternion.LookRotation(directions[i]));
             }
         }
@@ -199,8 +217,6 @@ namespace KHJ.Core
             {
                 for (int j = 0; j < range; j++)
                 {
-                    if (mapBoardArr[i, j] == EntityType.Player) continue;
-
                     mapBoardArr[i, j] = EntityType.Empty;
                     enemyBoardArr[i, j] = null;
                 }
@@ -208,8 +224,8 @@ namespace KHJ.Core
 
             EnemySpawnManager.Instance.enemyList.ForEach(x => Destroy(x.gameObject));
             EnemySpawnManager.Instance.enemyList.Clear();
-            groundList.ForEach(x => Destroy(x.gameObject));
-            groundList.Clear();
+
+            Destroy(transform.GetChild(0).gameObject);
         }
 
         private Enemy FindEnemy(Enemy enemy)

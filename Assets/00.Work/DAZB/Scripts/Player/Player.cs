@@ -29,9 +29,16 @@ namespace BBS.Players {
         protected override void AfterInitialize() {
             base.AfterInitialize();
 
-            GetCompo<Health>(true).OnDead += ()=> IsDead = true;
+            GetCompo<Health>(true).OnDead += Dead;
 
             stateMachine = new StateMachine(states, this);
+        }
+
+        private void Dead()
+        {
+            IsDead = true;
+            Time.timeScale = 0;
+            ResultPanel.Instance.OnResultPanel(false);
         }
 
         private void Start() {
