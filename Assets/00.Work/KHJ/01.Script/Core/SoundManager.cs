@@ -41,7 +41,7 @@ public class SoundManager : MonoSingleton<SoundManager>
             _sfxSource.PlayOneShot(clip);
         }
         else {
-            Debug.LogError($"아니 없음 - SFX {name}");
+            Debug.LogWarning($"아니 없음 - SFX {name}");
         }
     }
 

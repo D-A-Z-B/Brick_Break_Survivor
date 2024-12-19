@@ -136,7 +136,6 @@ namespace KHJ.Core
         public void MoveEntity(Enemy enemy, Coord moveCoord, EntityType entity, bool isElite = false)
         {
             Coord currentCoord = new Coord(enemy.transform.position);
-            Debug.Log($"{currentCoord.x}, {currentCoord.y}");
 
             if (isElite)
             {

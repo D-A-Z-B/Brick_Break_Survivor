@@ -15,11 +15,11 @@ MonoBehaviour:
   icon: {fileID: 0}
   displayName: "\uC774\uB3D9 \uACF5"
   description: dddd
-  currentDamage: 0
-  defaultDamage: 0
+  currentDamage: 1
+  defaultDamage: 1
   currentScale: 0.3
   defaultScale: 0.3
-  currentSpeed: 10
+  currentSpeed: 20
   defaultSpeed: 20
   currentLevel: -1
   ShootAmount: 0
