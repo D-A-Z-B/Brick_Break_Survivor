@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4774e0710119b4ea7af8830b7bf6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossTurn: 20
+  BossTurn: 30
   currentTurnType: 0
 --- !u!114 &362111058
 MonoBehaviour:
@@ -565,7 +565,7 @@ MonoBehaviour:
   - {fileID: 2281336927354833685, guid: f97d80417bb6afd498bcc25306479491, type: 3}
   spawnRadiusMin: 6
   spawnRadiusMax: 60
-  spawnCount: 15
+  spawnCount: 20
   spawnPointWithoutPlyer: {fileID: 0}
   howTurn: 1
   prob: 5
