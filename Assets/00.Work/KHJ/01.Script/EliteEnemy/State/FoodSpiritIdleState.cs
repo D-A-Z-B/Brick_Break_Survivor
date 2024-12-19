@@ -45,7 +45,7 @@ namespace BBS.Enemies
             }
             else
             { 
-                EnemySpawnManager.Instance.ReSpawnEnemy();
+                EnemySpawnManager.Instance.ReSpawnElite();
                 EnemySpawnManager.Instance.EnemyCount();
             }
         }

@@ -17,7 +17,7 @@ namespace BBS.Enemies
             {
                 print("����");
                 eatPlayer = player;
-                SoundManager.Instance.PlaySFX("Boss_Eat");
+                SoundManager.Instance.PlaySFX("Boss_Eat");  
                 mapManager.DestroyEntity(new Coord(eatPlayer.transform.position), player);
             }
 

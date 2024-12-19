@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FoodSpiritEliteEnemy
   m_EditorClassIdentifier: 
   type: 0
-  maxHealth: 500
-  actionTurn: 1
+  maxHealth: 9999
+  actionTurn: 2
   moveDistance: 3
   damage: 100
   attakRange: 0

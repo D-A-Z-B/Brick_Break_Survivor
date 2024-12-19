@@ -80,12 +80,7 @@ namespace KHJ.Core
                     GameObject ground = Instantiate(groundMapObj, mapPar);
                     ground.transform.position = new Vector3(i, 0, j) * interval;
                     mapBoardArr[i, j] = EntityType.Empty;
-                }
-            }
-            for (int i = 0; i < range; i += 2)
-            {
-                for (int j = 0; j < range; j += 2)
-                {
+
                     GameObject groundTex = Instantiate(groundTextureObj, mapPar);
                     groundTex.transform.position = new Vector3(i, 0.5f, j) * interval;
                 }
@@ -141,6 +136,8 @@ namespace KHJ.Core
         public void MoveEntity(Enemy enemy, Coord moveCoord, EntityType entity, bool isElite = false)
         {
             Coord currentCoord = new Coord(enemy.transform.position);
+            Debug.Log($"{currentCoord.x}, {currentCoord.y}");
+
             if (isElite)
             {
                 if (!MapCondition(currentCoord, true) || !MapCondition(moveCoord, true))
@@ -173,7 +170,7 @@ namespace KHJ.Core
 
         private void MoveRenderEnemy(Enemy enemy, Coord moveCoord)
         {
-            Enemy moveEnemy = FindEnemy(enemy);
+            Enemy moveEnemy = enemy;
             moveEnemy.DoMoveEnemy(moveCoord, renderMoveSpeed, moveEnemy.data.ease, moveEnemy is AssassinEnemy);
 
             SetEnemyBoard(new Coord(moveEnemy.transform.position), null);

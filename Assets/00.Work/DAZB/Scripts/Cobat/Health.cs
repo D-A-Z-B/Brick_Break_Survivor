@@ -18,8 +18,6 @@ namespace BBS.Combat
             get => currentHealth;
             set
             {
-                currentHealth = value;
-
                 if (currentHealth < 0)
                 {
                     currentHealth = 0;
@@ -28,6 +26,8 @@ namespace BBS.Combat
                 {
                     currentHealth = maxHealth;
                 }
+                else
+                    currentHealth = value;
             }
         }
 

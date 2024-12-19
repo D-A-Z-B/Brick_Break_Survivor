@@ -109,7 +109,7 @@ namespace KHJ.Core
                 float normalizedDistance = (distanceToPlayer - spawnRadiusMin) / (spawnRadiusMax - spawnRadiusMin);
                 normalizedDistance = Mathf.Clamp01(normalizedDistance);
 
-                spawnChance = Mathf.Pow(1f - normalizedDistance, 2);
+                spawnChance = Mathf.Pow(1f - normalizedDistance, 3);
             }
             else
             {
