@@ -16,38 +16,25 @@ namespace BBS
         public Action TurnStartEvent;
         public Action EnemyTurnStartEvent;
 
-        public Action EliteBossEvent;
-        public Action LastBossEvent;
-
-        [SerializeField] private int firstBossTurn = 20;
-        [SerializeField] private int lastBossTurn = 40;
+        public Action BossEvent;
+        [SerializeField] private int BossTurn = 20;
 
         public TurnType currentTurnType = TurnType.PlayerTurn;
 
         private int turnCount = 1;
         public int TurnCount => turnCount;
 
-        private bool isBossRound = false;
-
         public void ChangeTurn(TurnType type)
         {
             currentTurnType = type;
 
-            if (currentTurnType == TurnType.EnemyTurn && !isBossRound)
+            if (currentTurnType == TurnType.EnemyTurn)
             {
                 turnCount++;
                 TurnStartEvent?.Invoke();
 
-                if (turnCount == firstBossTurn)
-                {
-                    isBossRound = true;
-                    EliteBossEvent?.Invoke();
-                }
-                else if (turnCount == lastBossTurn)
-                {
-                    isBossRound = true;
-                    LastBossEvent?.Invoke();
-                }
+                if (turnCount == BossTurn)
+                    BossEvent?.Invoke();
 
                 GameManager.Instance.ResetHitCount();
                 CameraManager.Instance.StartZoomOut();
@@ -59,11 +46,6 @@ namespace BBS
             }
 
             currentTurnType = type;
-        }
-
-        public void EndBossRound()
-        {
-            isBossRound = false;
         }
     }
 }
