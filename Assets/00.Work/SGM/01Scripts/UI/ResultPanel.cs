@@ -24,7 +24,10 @@ namespace BBS
 
         private void Start()
         {
-            retryBtn.onClick.AddListener(() => SceneManager.LoadScene("Dazb_Test"));
+            retryBtn.onClick.AddListener(() => {
+                SceneManager.LoadScene("GameScene");
+                Debug.Log("Click");
+            });
             titleBtn.onClick.AddListener(() => SceneManager.LoadScene("Title"));
         }
 
@@ -81,7 +84,7 @@ namespace BBS
         private void ShowPanel()
         {
             LevelPanel.GetComponent<CanvasGroup>().alpha = 1f;
-
+            group.interactable = true;
             Sequence seq = DOTween.Sequence().SetUpdate(true);
             seq.Append(LevelPanel.DOScale(new Vector3(1.4f, 1.4f, 1f), 1f));
             seq.Join(LevelPanel.DOMoveY(25, 1f)
