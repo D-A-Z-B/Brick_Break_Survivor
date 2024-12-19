@@ -36,7 +36,7 @@ namespace BBS
             if (currentTurnType == TurnType.EnemyTurn && !isBossRound)
             {
                 turnCount++;
-                TurnStartEvent?.Invoke();
+                    TurnStartEvent?.Invoke();
 
                 if (turnCount == firstBossTurn)
                 {

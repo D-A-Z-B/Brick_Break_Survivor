@@ -3,7 +3,9 @@ using BBS.Enemies;
 using BBS.Entities;
 using BBS.Players;
 using DG.Tweening;
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KHJ.Core
@@ -34,8 +36,29 @@ namespace KHJ.Core
 
         private EntityType[,] mapBoardArr;
         private Enemy[,] enemyBoardArr;
+        private List<GameObject> groundList = new();
 
         private void Awake()
+        {
+            TurnManager.Instance.EliteBossEvent += HandleEliteSpawn;
+
+            SetRange();
+        }
+
+        private void Start()
+        {
+            SpawnMap();
+        }
+
+        private void HandleEliteSpawn()
+        {
+            DestoyAll();
+            isEliteOrBoss = true;
+            SetRange();
+            SpawnMap();
+        }
+
+        private void SetRange()
         {
             if (isEliteOrBoss)
                 range = bossRange;
@@ -44,20 +67,15 @@ namespace KHJ.Core
             enemyBoardArr = new Enemy[range, range];
         }
 
-        private void Start()
-        {
-            SpawnMap();
-        }
-
         private void SpawnMap()
         {
-
             for (int i = 0; i < range; i++)
             {
                 for (int j = 0; j < range; j++)
                 {
                     GameObject ground = Instantiate(groundMapObj, transform);
                     ground.transform.position = new Vector3(i, 0, j) * interval;
+                    groundList.Add(ground);
                     mapBoardArr[i, j] = EntityType.Empty;
                 }
             }
@@ -174,6 +192,25 @@ namespace KHJ.Core
 
             EnemySpawnManager.Instance.enemyList.Remove(entity as Enemy);
             Destroy(entity.gameObject);
+        }
+
+        public void DestoyAll()
+        {
+            for (int i = 0; i < range; i++)
+            {
+                for (int j = 0; j < range; j++)
+                {
+                    if (mapBoardArr[i, j] == EntityType.Player) continue;
+
+                    mapBoardArr[i, j] = EntityType.Empty;
+                    enemyBoardArr[i, j] = null;
+                }
+            }
+
+            EnemySpawnManager.Instance.enemyList.ForEach(x => Destroy(x.gameObject));
+            EnemySpawnManager.Instance.enemyList.Clear();
+            groundList.ForEach(x => Destroy(x.gameObject));
+            groundList.Clear();
         }
 
         private Enemy FindEnemy(Enemy enemy)

@@ -34,6 +34,8 @@ namespace BBS.Enemies
             transform.forward = curDir;
 
             GetCompo<EnemyHealth>().OnDead += HandleOnDead;
+
+            SpawnAnim();
         }
 
         private void HandleOnDead()
@@ -41,6 +43,11 @@ namespace BBS.Enemies
             ChangeState("DEAD");
             LevelManager.Instance.CreateExp(transform.position);
             mapManager.DestroyEntity(new Coord(transform.position), this);
+        }
+
+        private void SpawnAnim()
+        {
+            transform.DOMoveY(transform.position.y, 0.5f).ChangeStartValue(transform.position + Vector3.up * 5);
         }
 
         private Vector3 EnemyToPlayerDir()
