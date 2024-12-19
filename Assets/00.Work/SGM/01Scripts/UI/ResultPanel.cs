@@ -2,7 +2,6 @@ using BBS.Bullets;
 using BBS.Core;
 using DG.Tweening;
 using KHJ.Core;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

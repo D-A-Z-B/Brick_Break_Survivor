@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4774e0710119b4ea7af8830b7bf6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossTurn: 30
+  BossTurn: 20
   currentTurnType: 0
 --- !u!114 &362111058
 MonoBehaviour:
@@ -3710,7 +3710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6981964874501041274, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8463641346683235295, guid: 09f31debe48983d4091d762d18a61cdb, type: 3}
       propertyPath: gayz

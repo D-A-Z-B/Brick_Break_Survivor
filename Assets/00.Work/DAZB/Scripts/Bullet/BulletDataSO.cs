@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace BBS.Bullets {
     [CreateAssetMenu(fileName = "BulletDataSO", menuName = "SO/BulletData")]
