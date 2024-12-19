@@ -39,13 +39,6 @@ namespace BBS
                 GameManager.Instance.ResetHitCount();
                 CameraManager.Instance.StartZoomOut();
             }
-            else if (type == TurnType.PlayerTurn)
-            {
-                LevelManager.Instance.GetExp();
-                CameraManager.Instance.StartZoomIn();
-            }
-
-            currentTurnType = type;
         }
     }
 }
