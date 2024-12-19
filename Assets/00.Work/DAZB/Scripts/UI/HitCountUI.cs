@@ -23,6 +23,8 @@ namespace BBS.UI {
         public void ResetItem()
         {
             Routine();
+            text.color = new Color(1, 1, 1, 1);
+            text.rectTransform.anchoredPosition = new Vector2(-210, 210);
         }
 
         public void SetUpPool(Pool pool)
@@ -33,8 +35,8 @@ namespace BBS.UI {
 
         private void Routine() {
             Sequence sq = DOTween.Sequence();
-            sq.Append(RectTrm.DOAnchorPosY(RectTrm.anchoredPosition.y + 100, 1.5f));
-            //sq.Join(text.DOFade(0, 1.5f));
+            sq.Append(text.rectTransform.DOAnchorPosY(text.rectTransform.anchoredPosition.y + 100, 1.5f));
+            sq.Join(text.DOFade(0, 1.5f));
             sq.OnComplete(() => myPool.Push(this));
         }
     }

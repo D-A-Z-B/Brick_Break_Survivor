@@ -1134,7 +1134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolManager: {fileID: 11400000, guid: b49d6c8e15ebcc548b0d295985bd38b0, type: 2}
   hitCountText: {fileID: 11400000, guid: 9a51f95a5ae17cf48bb5d4bcc96c872d, type: 2}
-  canvas: {fileID: 1041602991}
   startFeverHitCount: 100
   feverDuration: 5
 --- !u!114 &1110054795

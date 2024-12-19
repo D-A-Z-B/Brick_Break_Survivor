@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BBS.Bullets;
 using BBS.Players;
+using BBS.UI;
 using KHJ.Core;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace BBS.Core
     public class GameManager : MonoSingleton<GameManager>
     {
         [SerializeField] private PoolManagerSO poolManager;
+        [SerializeField] private PoolTypeSO hitCountText;
         public int startFeverHitCount;
         public float feverDuration;
         private List<Bullet> spawnedBullet = new List<Bullet>();
@@ -27,6 +29,8 @@ namespace BBS.Core
         }
 
         private bool isCloning = false;
+
+        private int feverCount;
 
         private void Update()
         {
@@ -70,6 +74,18 @@ namespace BBS.Core
         {
             currentHitCount++;
             isCloning = false;
+            HitCountUI text = poolManager.Pop(hitCountText) as HitCountUI;
+            if (isFever == false) {
+                if (currentHitCount >= 1) {
+                    text.SetText("<#FF6347>hit* " + currentHitCount +"</color>");
+                }
+                else {
+                    text.SetText("hit* " + currentHitCount);
+                }
+            }
+            else {
+                text.SetText("fever* " + feverCount);
+            }
             if (currentHitCount >= startFeverHitCount && isFever == false)
             {
                 isFever = true;
