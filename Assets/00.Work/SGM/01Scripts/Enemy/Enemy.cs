@@ -29,8 +29,6 @@ namespace BBS.Enemies
 
         public bool IsMoving = false;
 
-        private int modifyCount = 1;
-
         protected override void AfterInitialize()
         {
             base.AfterInitialize();

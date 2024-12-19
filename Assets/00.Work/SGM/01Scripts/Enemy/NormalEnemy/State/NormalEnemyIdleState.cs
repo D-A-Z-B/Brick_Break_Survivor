@@ -53,14 +53,8 @@ namespace BBS.Enemies
             }
             else
             {
-                EnemySpawnManager.Instance.ReSpawnElite();
                 EnemySpawnManager.Instance.EnemyCount();
             }
-        }
-
-        public override void Exit()
-        {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
         }
     }
 }
