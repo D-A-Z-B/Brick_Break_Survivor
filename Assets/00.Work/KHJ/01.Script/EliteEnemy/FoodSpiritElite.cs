@@ -11,17 +11,30 @@ namespace BBS.Enemies
       public float forceDuration;
        public AnimationCurve forceEase;
 
+       private bool isExe;
+
         protected override void AfterInitialize()
         {
             base.AfterInitialize();
-            GetComponent<EnemyHealth>().OnDead += () => ResultPanel.Instance.OnResultPanel(true);
+            //GetCompo<Health>(true).OnDead += () => ResultPanel.Instance.OnResultPanel(true);
+
+            isExe = false;
+        }
+
+        
+
+        private void Update() {
+            if (isExe == false && GetCompo<Health>(true).CurrentHealth <= 0) {
+                Time.timeScale = 0;
+                ResultPanel.Instance.OnResultPanel(true);
+                isExe = true;
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out Player player))
             {
-                print("����");
                 eatPlayer = player;
                 SoundManager.Instance.PlaySFX("Boss_Eat");  
                 mapManager.DestroyEntity(new Coord(eatPlayer.transform.position), player);

@@ -17,29 +17,28 @@ namespace BBS
         [SerializeField] private CanvasGroup group;
         [SerializeField] private TextMeshProUGUI killCountText;
         [SerializeField] private TextMeshProUGUI maxHitText;
-        [SerializeField] private Button retryBtn;
         [SerializeField] private Button titleBtn;
         [SerializeField] private TextMeshProUGUI titleText;
 
         private void Start()
         {
-            retryBtn.onClick.AddListener(() => {
-                SceneManager.LoadScene("GameScene");
-                Debug.Log("Click");
+            titleBtn.onClick.AddListener(() =>  {
+                Time.timeScale = 1;
+                Destroy(SoundManager.Instance.gameObject);
+                SceneManager.LoadScene("Title");
             });
-            titleBtn.onClick.AddListener(() => SceneManager.LoadScene("Title"));
         }
 
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.Q))
+/*             if (Input.GetKeyUp(KeyCode.Q))
             {
                 OnResultPanel(false);
             }
             if (Input.GetKeyUp(KeyCode.R))
             {
                 OnResultPanel(true);
-            }
+            } */
         }
 
         public void OnResultPanel(bool isClear)

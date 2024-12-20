@@ -24,9 +24,11 @@ namespace BBS.FSM
 
         public virtual void Enter()
         {
-            _renderer.SetParam(_stateAnimParam, true);
+            if (_renderer != null)
+                _renderer.SetParam(_stateAnimParam, true);
+            if (_animTrigger != null)
+                _animTrigger.OnAnimationEnd += AnimationEndTrigger;
             _isTriggered = false;
-            _animTrigger.OnAnimationEnd += AnimationEndTrigger;
         }
 
         public virtual void Update()
@@ -34,8 +36,10 @@ namespace BBS.FSM
 
         public virtual void Exit()
         {
-            _renderer.SetParam(_stateAnimParam, false);
-            _animTrigger.OnAnimationEnd -= AnimationEndTrigger;
+            if (_renderer != null)
+                _renderer.SetParam(_stateAnimParam, false);
+            if (_animTrigger != null)
+                _animTrigger.OnAnimationEnd -= AnimationEndTrigger;
         }
 
         public virtual void AnimationEndTrigger()
