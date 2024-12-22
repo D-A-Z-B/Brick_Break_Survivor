@@ -9935,7 +9935,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   moveSpeed: 30
-  exp: 2
+  exp: 3.5
 --- !u!1 &7873056776665578549
 GameObject:
   m_ObjectHideFlags: 0

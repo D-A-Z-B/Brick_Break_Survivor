@@ -2,9 +2,7 @@ using BBS;
 using BBS.Enemies;
 using BBS.Players;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace KHJ.Core
 {

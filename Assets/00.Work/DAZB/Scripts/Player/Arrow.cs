@@ -25,6 +25,8 @@ namespace BBS.Players {
             lineRenderer.startWidth = 0.1f;
             lineRenderer.endWidth = 0.1f;
             lineRenderer.useWorldSpace = true;
+
+            gameObject.SetActive(false);
         }
 
         private void Update() {

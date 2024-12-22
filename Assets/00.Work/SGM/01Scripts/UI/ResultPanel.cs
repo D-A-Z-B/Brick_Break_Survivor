@@ -2,7 +2,6 @@ using BBS.Bullets;
 using BBS.Core;
 using DG.Tweening;
 using KHJ.Core;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,26 +17,28 @@ namespace BBS
         [SerializeField] private CanvasGroup group;
         [SerializeField] private TextMeshProUGUI killCountText;
         [SerializeField] private TextMeshProUGUI maxHitText;
-        [SerializeField] private Button retryBtn;
         [SerializeField] private Button titleBtn;
         [SerializeField] private TextMeshProUGUI titleText;
 
         private void Start()
         {
-            retryBtn.onClick.AddListener(() => SceneManager.LoadScene("Dazb_Test"));
-            titleBtn.onClick.AddListener(() => SceneManager.LoadScene("Title"));
+            titleBtn.onClick.AddListener(() =>  {
+                Time.timeScale = 1;
+                Destroy(SoundManager.Instance.gameObject);
+                SceneManager.LoadScene("Title");
+            });
         }
 
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.Q))
+/*             if (Input.GetKeyUp(KeyCode.Q))
             {
                 OnResultPanel(false);
             }
             if (Input.GetKeyUp(KeyCode.R))
             {
                 OnResultPanel(true);
-            }
+            } */
         }
 
         public void OnResultPanel(bool isClear)
@@ -52,8 +53,6 @@ namespace BBS
 
         public void ResultText()
         {
-            Debug.Log("A");
-
             titleText.color = Color.white; 
             titleText.transform.DOScale(Vector3.one, 1f).SetUpdate(true).SetEase(Ease.InSine)
                 .OnComplete(() =>
@@ -81,7 +80,7 @@ namespace BBS
         private void ShowPanel()
         {
             LevelPanel.GetComponent<CanvasGroup>().alpha = 1f;
-
+            group.interactable = true;
             Sequence seq = DOTween.Sequence().SetUpdate(true);
             seq.Append(LevelPanel.DOScale(new Vector3(1.4f, 1.4f, 1f), 1f));
             seq.Join(LevelPanel.DOMoveY(25, 1f)
