@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4774e0710119b4ea7af8830b7bf6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossTurn: 30
+  BossTurn: 1
   currentTurnType: 0
 --- !u!114 &362111058
 MonoBehaviour:
@@ -840,7 +840,7 @@ MonoBehaviour:
   spawnCount: 20
   spawnPointWithoutPlyer: {fileID: 0}
   howTurn: 1
-  prob: 5
+  prob: 6
 --- !u!114 &362111060
 MonoBehaviour:
   m_ObjectHideFlags: 0
