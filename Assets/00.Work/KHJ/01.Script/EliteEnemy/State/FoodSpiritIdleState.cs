@@ -15,12 +15,6 @@ namespace BBS.Enemies
         public FoodSpiritIdleState(Entity entity, AnimParamSO stateAnimParam) : base(entity, stateAnimParam)
         {
             enemy = entity as Enemy;
-           
-        }
-
-        public override void Enter()
-        {
-            base.Enter();
             TurnManager.Instance.EnemyTurnStartEvent += HandleStartEnemyTurn;
         }
 
@@ -41,10 +35,9 @@ namespace BBS.Enemies
             if (currentTurn >= enemy.data.actionTurn)
             {
                 currentTurn = 0;
-                enemy.ChangeState("MOVE");
             }
             else
-            { 
+            {
                 EnemySpawnManager.Instance.ReSpawnElite();
                 EnemySpawnManager.Instance.EnemyCount();
             }
@@ -53,13 +46,6 @@ namespace BBS.Enemies
         public override void Update()
         {
             base.Update();
-
-        }
-
-        public override void Exit()
-        {
-            TurnManager.Instance.EnemyTurnStartEvent -= HandleStartEnemyTurn;
-            base.Exit();
         }
     }
 }

@@ -71,7 +71,6 @@ namespace BBS.Enemies
                 dir.x = 0;
                 dir.z = Mathf.Sign(dir.z);
             }
-            Debug.Log($"EnemyToPlayerDir: {dir}");
             return dir;
         }
 
@@ -103,7 +102,6 @@ namespace BBS.Enemies
                 transform.forward = curDir;
 
             mapManager.MoveEntity(this, new Coord(transform.position + (curDir * data.moveDistance)), EntityType.Enemy, isElite);
-            Debug.Log($"{transform.position} -> {transform.position + (curDir * data.moveDistance)}");
         }
 
         public void DoMoveEnemy(Coord moveCoord, float speed, AnimationCurve ease, bool isJump = false)

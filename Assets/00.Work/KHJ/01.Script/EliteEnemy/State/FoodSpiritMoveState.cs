@@ -19,6 +19,7 @@ namespace BBS.Enemies
         {
             base.Enter();
             SoundManager.Instance.PlaySFX("Boss_Move");
+            Debug.Log("Move");
             enemy.Move(true);
         }
 

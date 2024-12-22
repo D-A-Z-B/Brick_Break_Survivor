@@ -136,19 +136,15 @@ namespace KHJ.Core
         public void MoveEntity(Enemy enemy, Coord moveCoord, EntityType entity, bool isElite = false)
         {
             Coord currentCoord = new Coord(enemy.transform.position);
-            Debug.Log($"{currentCoord.x}, {currentCoord.y}");
-            Debug.Log($"{enemy.transform.position}");
 
             if (isElite)
             {
                 if (!MapCondition(currentCoord) || !MapCondition(moveCoord))
                 {
                     EnemySpawnManager.Instance.EnemyCount();
-                    print("¸ØÃç");
                     return;
                 }
 
-                print("°¡ÀÚ");
                 SetPos(currentCoord, EntityType.Empty, true);
                 SetPos(moveCoord, entity, true);
             }
@@ -199,7 +195,6 @@ namespace KHJ.Core
             {
                 int newX = coord.x + dirX[i];
                 int newY = coord.y + dirY[i];
-
                 if (MapCondition(new Coord(newX, newY), true))
                 {
                     mapBoardArr[newX, newY] = entity;

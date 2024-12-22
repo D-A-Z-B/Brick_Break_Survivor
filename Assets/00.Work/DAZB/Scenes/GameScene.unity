@@ -840,7 +840,7 @@ MonoBehaviour:
   spawnCount: 20
   spawnPointWithoutPlyer: {fileID: 0}
   howTurn: 1
-  prob: 5
+  prob: -1
 --- !u!114 &362111060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2623,7 +2623,6 @@ MonoBehaviour:
   group: {fileID: 1240163134}
   killCountText: {fileID: 1687841716}
   maxHitText: {fileID: 529661028}
-  retryBtn: {fileID: 0}
   titleBtn: {fileID: 408257721}
   titleText: {fileID: 48870486}
 --- !u!1 &1299087072
