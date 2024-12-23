@@ -2,6 +2,7 @@ using BBS.Combat;
 using BBS.Players;
 using KHJ.Core;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace BBS.Enemies
 {
@@ -21,9 +22,9 @@ namespace BBS.Enemies
             isExe = false;
         }
 
-        
+        protected override void Update() {
+            base.Update();
 
-        private void Update() {
             if (isExe == false && GetCompo<Health>(true).CurrentHealth <= 0) {
                 Time.timeScale = 0;
                 ResultPanel.Instance.OnResultPanel(true);
@@ -47,6 +48,8 @@ namespace BBS.Enemies
 
                 EnemyHealth health = GetCompo<Health>(true) as EnemyHealth;
                 health.CurrentHealth += health.MaxHealth / 10;
+
+                ChangeState("EAT");
             }
         }
     }

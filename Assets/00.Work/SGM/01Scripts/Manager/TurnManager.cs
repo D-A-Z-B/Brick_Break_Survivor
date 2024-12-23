@@ -22,7 +22,7 @@ namespace BBS
 
         public TurnType currentTurnType = TurnType.PlayerTurn;
 
-        private int turnCount = 1;
+        private int turnCount = 19;
         public int TurnCount => turnCount;
 
         public int modifyStatCount { get; set; } = 1;

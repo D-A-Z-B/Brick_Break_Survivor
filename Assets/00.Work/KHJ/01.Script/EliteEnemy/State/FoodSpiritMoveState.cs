@@ -19,7 +19,6 @@ namespace BBS.Enemies
         {
             base.Enter();
             SoundManager.Instance.PlaySFX("Boss_Move");
-            Debug.Log("Move");
             enemy.Move(true);
         }
 
@@ -27,18 +26,26 @@ namespace BBS.Enemies
         {
             base.Update();
 
+
             if (enemy.eatPlayer != null)
                 enemy.eatPlayer.transform.position = enemy.transform.position;
-
+            
             if (!enemy.IsMoving)
             {
                 if (enemy.eatPlayer != null)
                     enemy.ChangeState("ATTACK");
                 else
                 {
+                    Debug.Log("dsd");
                     enemy.ChangeState("IDLE");
                 }
             }
+        }
+
+        public override void Exit()
+        {
+            Debug.Log("sfjdngioghreiughrui");
+            base.Exit();
         }
     }
 }

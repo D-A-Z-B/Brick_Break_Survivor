@@ -35,6 +35,7 @@ namespace BBS.Enemies
             if (currentTurn >= enemy.data.actionTurn)
             {
                 currentTurn = 0;
+                enemy.ChangeState("MOVE");
             }
             else
             {

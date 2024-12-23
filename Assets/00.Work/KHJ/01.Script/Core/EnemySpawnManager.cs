@@ -60,12 +60,12 @@ namespace KHJ.Core
 
         public void ReSpawnElite()
         {
-            int rand = Random.Range(1, 11);
-            if (rand <= 3)
-            {
-                spawnCount = 7;
-                HandleSpawnEnemy();
-            }
+            //int rand = Random.Range(1, 11);
+            //if (rand <= 3)
+            //{
+            //    spawnCount = 7;
+            //    HandleSpawnEnemy();
+            //}
         }
 
         private void HandleSpawnEnemy()
