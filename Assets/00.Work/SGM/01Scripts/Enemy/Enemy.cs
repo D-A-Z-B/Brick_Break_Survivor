@@ -79,7 +79,7 @@ namespace BBS.Enemies
             stateMachine.Initialize("IDLE");
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             stateMachine.UpdateFSM();
         }
