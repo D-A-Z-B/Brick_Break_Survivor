@@ -22,7 +22,7 @@ namespace BBS.Enemies
         {
             base.Enter();
             SoundManager.Instance.PlaySFX("Boss_Attack");
-            PlayerManager.Instance.Player.GetCompo<Health>(true).CurrentHealth -= 20;
+            PlayerManager.Instance.Player.GetCompo<Health>(true).ApplyDamage(new ActionData(20));
 
             Player player = enemy.eatPlayer;
 
