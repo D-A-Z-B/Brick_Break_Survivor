@@ -1,4 +1,5 @@
 using BBS;
+using BBS.Core;
 using BBS.Enemies;
 using BBS.Entities;
 using BBS.Players;
@@ -55,6 +56,7 @@ namespace KHJ.Core
 
         private void HandleEliteSpawn()
         {
+            GameManager.Instance.ResetBullet();
             DestoyAll();
             isEliteOrBoss = true;
             SetRange();
