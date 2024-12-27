@@ -41,23 +41,8 @@ namespace BBS.Core
                 {
                     // spawnedBullet 복사본 사용 후 순회
                     SoundManager.Instance.PlayBGM("Default_BackGround");
-                    isFever = false;
-                    List<Bullet> temp = new List<Bullet>(spawnedBullet);
-                    spawnedBullet.Clear();
-                    foreach (Bullet iter in temp)
-                    {
-                        iter.ForcePush();
-                    }
 
-                    // 모든 Bullet 정리
-                    currentHitCount = 0;
-
-                    // 플레이어 상태 변경
-                    if (PlayerManager.Instance.Player != null)
-                    {
-                        PlayerManager.Instance.Player.ChangeState("IDLE");
-                    }
-
+                    ResetBullet();
                     Debug.Log("Fever End");
                     return;
                 }
@@ -68,6 +53,26 @@ namespace BBS.Core
                     StartCoroutine(CloneBullets());
                     isCloning = true;
                 }
+            }
+        }
+
+        public void ResetBullet()
+        {
+            isFever = false;
+            List<Bullet> temp = new List<Bullet>(spawnedBullet);
+            spawnedBullet.Clear();
+            foreach (Bullet iter in temp)
+            {
+                iter.ForcePush();
+            }
+
+            // 모든 Bullet 정리
+            currentHitCount = 0;
+
+            // 플레이어 상태 변경
+            if (PlayerManager.Instance.Player != null)
+            {
+                PlayerManager.Instance.Player.ChangeState("IDLE");
             }
         }
 

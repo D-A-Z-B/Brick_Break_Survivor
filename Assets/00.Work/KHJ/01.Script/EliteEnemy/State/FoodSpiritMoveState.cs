@@ -36,7 +36,6 @@ namespace BBS.Enemies
                     enemy.ChangeState("ATTACK");
                 else
                 {
-                    Debug.Log("dsd");
                     enemy.ChangeState("IDLE");
                 }
             }
@@ -44,7 +43,6 @@ namespace BBS.Enemies
 
         public override void Exit()
         {
-            Debug.Log("sfjdngioghreiughrui");
             base.Exit();
         }
     }

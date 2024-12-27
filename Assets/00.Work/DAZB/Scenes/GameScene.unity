@@ -840,7 +840,7 @@ MonoBehaviour:
   spawnCount: 20
   spawnPointWithoutPlyer: {fileID: 0}
   howTurn: 1
-  prob: -1
+  prob: 5
 --- !u!114 &362111060
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ namespace BBS.Enemies
 
         private void HandleStartEnemyTurn()
         {
+            Debug.Log("ddddd");
             if (enemy.IsStun)
             {
                 enemy.SetStun(false);
