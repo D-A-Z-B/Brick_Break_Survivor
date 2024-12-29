@@ -4902,7 +4902,6 @@ GameObject:
   - component: {fileID: 6818008445769152434}
   - component: {fileID: 970440554703164915}
   - component: {fileID: 6336844183546462238}
-  - component: {fileID: -2396237826950825081}
   m_Layer: 0
   m_Name: 'Basic Hit '
   m_TagString: Untagged
@@ -9785,18 +9784,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-2396237826950825081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5238538877814813142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e18702b2f14a464c8e3ea3e9025fb37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5591956570360517138
 GameObject:
   m_ObjectHideFlags: 0

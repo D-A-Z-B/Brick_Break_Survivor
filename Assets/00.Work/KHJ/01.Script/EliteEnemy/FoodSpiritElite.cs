@@ -25,7 +25,9 @@ namespace BBS.Enemies
         protected override void Update() {
             base.Update();
 
+            print(GetCompo<Health>(true).CurrentHealth);
             if (isExe == false && GetCompo<Health>(true).CurrentHealth <= 0) {
+                print("DIE");
                 Time.timeScale = 0;
                 ResultPanel.Instance.OnResultPanel(true);
                 isExe = true;
