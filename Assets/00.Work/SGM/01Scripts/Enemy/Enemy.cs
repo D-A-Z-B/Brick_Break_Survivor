@@ -48,6 +48,7 @@ namespace BBS.Enemies
 
         private void HandleOnDead()
         {
+            if (this is FoodSpiritElite) return;
             Debug.Log("dead");
             ChangeState("DEAD");
             IsDead = true;
